@@ -533,8 +533,8 @@ export default function App() {
                 onOpenDetail={setSelectedCharacter}
                 onOpenAdmin={() => setIsAdminOpen(true)}
                 onSendLove={handleSendLoveToCharacter}
-                onDeleteCharacter={handleDeleteCharacter}
-                onDeleteMultipleCharacters={handleDeleteMultipleCharacters}
+                onDeleteCharacter={isAdminLoggedIn ? handleDeleteCharacter : undefined}
+                onDeleteMultipleCharacters={isAdminLoggedIn ? handleDeleteMultipleCharacters : undefined}
                 showOnlyFavorites={showOnlyFavorites}
                 onToggleFavoriteFilter={() => setShowOnlyFavorites((prev) => !prev)}
                 selectedGenreFilter={selectedGenreFilter}
@@ -652,7 +652,7 @@ export default function App() {
         onLikeCharacter={handleLikeCharacter}
         onSendLove={handleSendLoveToCharacter}
         onSelectCharacter={setSelectedCharacter}
-        onDeleteCharacter={handleDeleteCharacter}
+        onDeleteCharacter={isAdminLoggedIn ? handleDeleteCharacter : undefined}
         allCharacters={characters}
         darkMode={darkMode}
       />
