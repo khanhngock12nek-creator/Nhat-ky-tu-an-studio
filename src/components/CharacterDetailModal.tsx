@@ -130,7 +130,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
     character.chatLink || 'https://beta.character.ai/chat?char=luc_canh_tieu_sample';
 
   // Navigation between prisoners
-  const pool = allCharacters.length > 0 ? allCharacters : ALL_SAMPLE_PRISONERS;
+  const pool = allCharacters.length > 0 ? allCharacters : [character];
   const currentIndex = pool.findIndex((c) => c.id === character.id);
   const prevPrisoner =
     currentIndex > 0 ? pool[currentIndex - 1] : pool[pool.length - 1];

@@ -10,10 +10,12 @@ import {
   RotateCw,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Character } from '../../types';
 
 interface WheelGameProps {
   darkMode: boolean;
   onBack: () => void;
+  character?: Character | null;
 }
 
 interface WheelSegment {

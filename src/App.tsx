@@ -13,7 +13,6 @@ import { Leaderboard } from './components/Leaderboard';
 import { GachaWheel } from './components/GachaWheel';
 import { LetterBox } from './components/LetterBox';
 import { GenreView } from './components/GenreView';
-import { PrivateChatView } from './components/PrivateChatView';
 import { MidnightCourtView } from './components/MidnightCourtView';
 import { PsychWardView } from './components/PsychWardView';
 import { MinigameView } from './components/MinigameView';
@@ -545,16 +544,6 @@ export default function App() {
               />
             )}
 
-            {activeTab === 'chat' && (
-              <PrivateChatView
-                characters={characters}
-                onOpenDetail={setSelectedCharacter}
-                onOpenAdmin={() => setIsAdminOpen(true)}
-                darkMode={darkMode}
-                isAdmin={isAdminLoggedIn}
-                onTabChange={handleTabChange}
-              />
-            )}
 
             {activeTab === 'ranking' && (
               <Leaderboard

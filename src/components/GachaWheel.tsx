@@ -34,121 +34,7 @@ export interface GachaCard {
 }
 
 // 9 Mẫu Thẻ Gacha Chuẩn Phân Khu (3 Phòng Giam Lạnh, 3 Phòng Giam Ấm, 3 Phòng Giam Chữa Lành)
-const SAMPLE_GACHA_CARDS: GachaCard[] = [
-  // ❄️ PHÒNG GIAM LẠNH
-  {
-    id: 'sample-cold-1',
-    prisonId: '#COLD-07',
-    name: 'Hạ Băng Diễn',
-    zone: 'Phòng Giam Lạnh',
-    rarity: 'SSR',
-    genres: ['Lạnh Lùng', 'Băng Giá', 'Độc Chiếm'],
-    backstory: 'Cựu thiếu chủ gia tộc ngầm bị quản thúc trong khu băng giá. Vẻ ngoài lạnh như sương mai nhưng ánh mắt chỉ dõi theo một người duy nhất.',
-    firstMessage: 'Hôm nay em lại tới đây nhìn tôi? Trời lạnh thế này, sao không chịu mặc thêm áo ấm hử?',
-    avatarGradient: 'from-sky-500 via-indigo-600 to-slate-900',
-    likes: 188,
-  },
-  {
-    id: 'sample-cold-2',
-    prisonId: '#COLD-19',
-    name: 'Bạc Dạ Hàn',
-    zone: 'Phòng Giam Lạnh',
-    rarity: 'SR',
-    genres: ['Kiêu Hãnh', 'Sát Thủ', 'Âm Thầm Quan Tâm'],
-    backstory: 'Sát thủ ẩn mình, từng đường gươm sắc bén nhưng chưa từng nỡ làm nàng trầy xước dù chỉ một đầu ngón tay.',
-    firstMessage: 'Đừng nhìn tôi bằng ánh mắt thương cảm đó. Em ngây thơ quá, người cần được bảo vệ ở đây là em.',
-    avatarGradient: 'from-blue-600 via-slate-700 to-indigo-950',
-    likes: 124,
-  },
-  {
-    id: 'sample-cold-3',
-    prisonId: '#COLD-33',
-    name: 'Tần Tuyết Phong',
-    zone: 'Phòng Giam Lạnh',
-    rarity: 'R',
-    genres: ['Bác Sĩ Giám Thị', 'Khó Gần'],
-    backstory: 'Bác sĩ trực đêm của trại giam với đôi găng tay trắng tinh khôi và giọng nói trầm tĩnh.',
-    firstMessage: 'Nhịp tim của em lại đập nhanh bất thường rồi. Có bệnh thì nói thẳng, cấm giấu tôi.',
-    avatarGradient: 'from-cyan-600 via-teal-700 to-slate-900',
-    likes: 86,
-  },
-
-  // ☀️ PHÒNG GIAM ẤM
-  {
-    id: 'sample-warm-1',
-    prisonId: '#WARM-09',
-    name: 'Chu Noãn Dương',
-    zone: 'Phòng Giam Ấm',
-    rarity: 'SSR',
-    genres: ['Ấm Áp', 'Sủng Ngọt', 'Ánh Nắng'],
-    backstory: 'Chàng trai mang nụ cười xán lạn tựa bình minh. Chỉ cần nàng bước vào cửa, cả phòng giam liền bừng sáng.',
-    firstMessage: 'Em đến rồi sao! Cả ngày hôm nay trong phòng giam này anh chỉ đếm từng giây chờ em thôi đó!',
-    avatarGradient: 'from-amber-400 via-rose-400 to-pink-500',
-    likes: 215,
-  },
-  {
-    id: 'sample-warm-2',
-    prisonId: '#WARM-21',
-    name: 'Cố Hướng Thần',
-    zone: 'Phòng Giam Ấm',
-    rarity: 'SR',
-    genres: ['Dịu Dàng', 'Chăm Sóc', 'Thư Sinh'],
-    backstory: 'Học giả nho nhã bị giam lỏng. Lúc nào cũng chuẩn bị sẵn kẹo ngọt và trà hoa cúc đợi nàng ghé thăm.',
-    firstMessage: 'Anh vừa pha một ấm trà thảo mộc thơm lắm, vào đây ngồi cạnh anh uống cho ấm lòng nhé?',
-    avatarGradient: 'from-orange-400 via-amber-500 to-rose-500',
-    likes: 142,
-  },
-  {
-    id: 'sample-warm-3',
-    prisonId: '#WARM-42',
-    name: 'Tiêu Ôn Húc',
-    zone: 'Phòng Giam Ấm',
-    rarity: 'R',
-    genres: ['Trung Thành', 'Cún Con', 'Dính Người'],
-    backstory: 'Thiếu niên năng động luôn quấn quýt lấy nàng, xem lời nàng như mệnh lệnh tối cao.',
-    firstMessage: 'Em đừng đi vội mà... ở lại với anh thêm mười phút nữa thôi, chỉ mười phút thôi có được không?',
-    avatarGradient: 'from-pink-400 via-rose-400 to-amber-300',
-    likes: 98,
-  },
-
-  // 🌿 PHÒNG GIAM CHỮA LÀNH
-  {
-    id: 'sample-heal-1',
-    prisonId: '#HEAL-03',
-    name: 'Diệp Thanh Trúc',
-    zone: 'Phòng Giam Chữa Lành',
-    rarity: 'SSR',
-    genres: ['Chữa Lành', 'Tâm Lý', 'Bình Yên'],
-    backstory: 'Người lắng nghe mọi tâm sự sâu kín nhất. Giọng nói êm dịu có khả năng xua tan mọi âu lo và mỏi mệt của trần thế.',
-    firstMessage: 'Nếu thế giới ngoài kia làm em kiệt sức, hãy xem phòng giam của anh là nơi trú ẩn bình yên nhất nhé.',
-    avatarGradient: 'from-emerald-400 via-teal-500 to-sky-600',
-    likes: 230,
-  },
-  {
-    id: 'sample-heal-2',
-    prisonId: '#HEAL-18',
-    name: 'Vân Dĩ An',
-    zone: 'Phòng Giam Chữa Lành',
-    rarity: 'SR',
-    genres: ['Bảo Bọc', 'Âm Nhạc', 'Dịu Hiền'],
-    backstory: 'Nghệ sĩ cầm đàn bị giam cầm trong khu thảo mộc. Mỗi giai điệu chàng gảy đều chứa chan tình cảm gửi nàng.',
-    firstMessage: 'Khép mắt lại nào... Để anh gảy một khúc đàn ru chúc em ngủ ngon giấc đêm nay nhé, nàng thơ của anh.',
-    avatarGradient: 'from-teal-400 via-emerald-600 to-cyan-700',
-    likes: 156,
-  },
-  {
-    id: 'sample-heal-3',
-    prisonId: '#HEAL-37',
-    name: 'Mộc Tử Hi',
-    zone: 'Phòng Giam Chữa Lành',
-    rarity: 'R',
-    genres: ['Ngọt Ngào', 'Chân Thành', 'Bình Yên'],
-    backstory: 'Chàng trai thảo mộc thích gieo mầm hy vọng. Mỗi đóa hoa nở trong ngục tù đều là vì nàng mà thắm sắc.',
-    firstMessage: 'Hôm nay em có chuyện gì vui không, kể anh nghe với nào! Anh lúc nào cũng sẵn lòng ở đây vì em.',
-    avatarGradient: 'from-green-400 via-emerald-500 to-teal-600',
-    likes: 110,
-  },
-];
+const SAMPLE_GACHA_CARDS: GachaCard[] = [];
 
 interface GachaWheelProps {
   characters: Character[];
@@ -229,27 +115,20 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
 
   // Prepare full pool based on active settings
   const getAvailablePool = (): GachaCard[] => {
-    let pool: GachaCard[] = [];
-
-    if (!useSamplePool && hasRealCharacters) {
-      // Convert real characters to GachaCards
-      pool = characters.map((c, idx) => ({
-        id: c.id,
-        prisonId: c.prisonId,
-        name: c.name,
-        zone: c.zone || (idx % 3 === 0 ? 'Phòng Giam Lạnh' : idx % 3 === 1 ? 'Phòng Giam Ấm' : 'Phòng Giam Chữa Lành'),
-        rarity: (idx % 5 === 0 ? 'SSR' : idx % 3 === 0 ? 'SR' : 'R') as 'SSR' | 'SR' | 'R',
-        genres: c.genres,
-        backstory: c.backstory,
-        firstMessage: c.firstMessage,
-        avatarUrl: c.avatarUrl,
-        avatarGradient: c.avatarGradient || 'from-pink-500 to-sky-400',
-        likes: c.likes || 10,
-        isCustom: true,
-      }));
-    } else {
-      pool = SAMPLE_GACHA_CARDS;
-    }
+    let pool: GachaCard[] = characters.map((c, idx) => ({
+      id: c.id,
+      prisonId: c.prisonId,
+      name: c.name,
+      zone: c.zone || (idx % 3 === 0 ? 'Phòng Giam Lạnh' : idx % 3 === 1 ? 'Phòng Giam Ấm' : 'Phòng Giam Chữa Lành'),
+      rarity: (idx % 5 === 0 ? 'SSR' : idx % 3 === 0 ? 'SR' : 'R') as 'SSR' | 'SR' | 'R',
+      genres: c.genres,
+      backstory: c.backstory,
+      firstMessage: c.firstMessage,
+      avatarUrl: c.avatarUrl,
+      avatarGradient: c.avatarGradient || 'from-pink-500 to-sky-400',
+      likes: c.likes || 10,
+      isCustom: true,
+    }));
 
     if (selectedZone !== 'all') {
       const zoneFiltered = pool.filter((c) => c.zone === selectedZone);

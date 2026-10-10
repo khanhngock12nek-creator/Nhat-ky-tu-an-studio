@@ -12,10 +12,12 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Character } from '../../types';
 
 interface TruthGameProps {
   darkMode: boolean;
   onBack: () => void;
+  character?: Character | null;
 }
 
 const DEFAULT_QUESTIONS = [

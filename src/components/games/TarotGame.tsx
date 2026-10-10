@@ -14,10 +14,12 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Character } from '../../types';
 
 interface TarotGameProps {
   darkMode: boolean;
   onBack: () => void;
+  character?: Character | null;
 }
 
 interface TarotCard {

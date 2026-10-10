@@ -52,116 +52,42 @@ interface PatientRecord {
   doctorNotes: string;
 }
 
-const PATIENTS: PatientRecord[] = [
-  {
-    id: '07',
-    code: '#07 Lục Cảnh Tiêu',
-    name: 'Lục Cảnh Tiêu',
-    avatar: lucCanhTieuImg,
-    bpm: 135,
-    room: 'Buồng A-07',
-    diagnosisShort: 'Cuồng si hoang tưởng cấp độ 4',
-    height: '186 cm',
-    weight: '74 kg',
-    temp: '37.8 °C',
-    evalMental:
-      'Ám ảnh chiếm hữu cực độ với Quản Ngục Trưởng. Từ chối ăn uống nếu không được quản ngục đích thân mang tới. Thần kinh kích thích bùng nổ khi nghe giọng nói qua loa buồng giam.',
-    obedienceRate: 96,
-    dangerLevel: 'Cấp Độ S+ (Tuyệt đối cấm lơ là)',
-    dangerRate: 98,
-    ecgBeat: 135,
-    ecgWave: 'Loạn Nhịp Si Tình',
-    wristInjury:
-      'Trầy xước mô mềm do cố tình giật mạnh dây xích phòng giam để tạo tiếng vang thu hút quản ngục tới thăm.',
-    collarInjury:
-      'Dấu tích đêm trừng phạt kỷ luật trước. Phạm nhân cương quyết gạt tay y tá, chỉ cho phép quản ngục chạm vào trị liệu.',
-    doctorNotes:
-      'Bệnh nhân hoàn toàn không có ý định muốn hồi phục tâm thần hay giảm bớt ám ảnh. Trái lại, hắn công khai thừa nhận khao khát được tăng thêm thời hạn giam giữ vô thời hạn, chỉ để mỗi đêm nhìn thấy ánh đèn buồng trực của Quản Ngục Trưởng.',
-  },
-  {
-    id: '03',
-    code: '#03 Băng Lam',
-    name: 'Băng Lam (Tạ Lân)',
-    avatar: kaelenImg,
-    bpm: 54,
-    room: 'Buồng C-03',
-    diagnosisShort: 'Lãnh cảm phân ly, Hạ thân nhiệt',
-    height: '188 cm',
-    weight: '76 kg',
-    temp: '35.4 °C',
-    evalMental:
-      'Hội chứng đóng băng cảm xúc ngoại trừ khi tiếp xúc với Quản Ngục Trưởng. Từ chối giao tiếp bằng lời, chỉ dùng ánh mắt băng giá dõi theo từng bước chân quản ngục.',
-    obedienceRate: 85,
-    dangerLevel: 'Cấp Độ A (Tiềm ẩn băng hoại)',
-    dangerRate: 82,
-    ecgBeat: 54,
-    ecgWave: 'Nhịp Chậm Băng Giá',
-    wristInjury:
-      'Vết lạnh cóng do áp sát cổ tay vào sàn đá buồng giam trong nỗ lực tìm kiếm hơi ấm từ áo choàng của quản ngục.',
-    collarInjury:
-      'Vết tím mờ do chịu đựng cơn rét run ban đêm mà không chịu đắp chăn của trại giam.',
-    doctorNotes:
-      'Nhiệt độ cơ thể bệnh nhân giảm sâu khi quản ngục vắng mặt. Chỉ số hồi phục sinh lý phụ thuộc hoàn toàn vào tần suất quản ngục trực tiếp ghé thăm.',
-  },
-  {
-    id: '11',
-    code: '#11 Hắc Miêu',
-    name: 'Hắc Miêu (Ngôn Dục)',
-    avatar: renImg,
-    bpm: 142,
-    room: 'Buồng X-11',
-    diagnosisShort: 'Cuồng nộ cào xích, Đòi gặp ng...',
-    height: '184 cm',
-    weight: '72 kg',
-    temp: '38.2 °C',
-    evalMental:
-      'Trạng thái kích động hưng phấn cao độ. Đập phá song sắt và gầm gừ đe dọa các y bác sĩ, nhưng sẽ lập tức im bặt và cúi đầu ngoan ngoãn khi nghe bước chân Quản Ngục Trưởng.',
-    obedienceRate: 92,
-    dangerLevel: 'Cấp Độ S (Bạo kích cuồng nộ)',
-    dangerRate: 95,
-    ecgBeat: 142,
-    ecgWave: 'Xung Nhịp Cuồng Loạn',
-    wristInjury:
-      'Khớp tay sưng đỏ do cọ xát với còng kim loại mạ vàng trong cơn cuồng nộ đòi được gặp quản ngục.',
-    collarInjury:
-      'Vết cào xước tự gây ra để ép ban giám thị phát lệnh gọi Quản Ngục Trưởng tới cấp cứu.',
-    doctorNotes:
-      'Cần áp dụng phác đồ kiểm soát hành vi nghiêm ngặt kết hợp liệu pháp an thần bằng sự hiện diện trực tiếp của Quản Ngục Trưởng.',
-  },
-  {
-    id: '05',
-    code: '#05 Dạ Tước',
-    name: 'Dạ Tước (Bá Tước)',
-    avatar: bannerImg,
-    bpm: 78,
-    room: 'Buồng B-05',
-    diagnosisShort: 'Mộng du vô thức lần theo hương...',
-    height: '187 cm',
-    weight: '75 kg',
-    temp: '37.1 °C',
-    evalMental:
-      'Chứng mộng du đêm khuya, vô thức tìm đường đến trước cửa buồng làm việc của Quản Ngục Trưởng và đứng im lặng suốt nhiều giờ.',
-    obedienceRate: 90,
-    dangerLevel: 'Cấp Độ B+ (Ám thị trầm lặng)',
-    dangerRate: 75,
-    ecgBeat: 78,
-    ecgWave: 'Sóng Não Ảo Giác',
-    wristInjury:
-      'Vết hằn nhẹ quanh mắt cá chân do khóa an toàn ban đêm.',
-    collarInjury:
-      'Dấu vết va chạm nhẹ vào then cửa buồng trực khi mộng du.',
-    doctorNotes:
-      'Hắn có thói quen ngửi mùi hương hoa hồng lưu trên y phục của quản ngục để đi vào giấc ngủ.',
-  },
-];
-
 export const PsychWardView: React.FC<PsychWardViewProps> = ({
   characters,
   darkMode,
   onOpenAdmin,
   onTabChange,
 }) => {
-  const [selectedPatientId, setSelectedPatientId] = useState('07');
+  const PATIENTS: PatientRecord[] = characters.map((c, idx) => ({
+    id: c.id,
+    code: c.prisonId || `#0${idx + 1} ${c.name}`,
+    name: c.name,
+    avatar: c.avatarUrl || '',
+    bpm: 120 + (idx * 7) % 30,
+    room: c.zone || `Buồng ${String.fromCharCode(65 + (idx % 4))}-${String(idx + 1).padStart(2, '0')}`,
+    diagnosisShort: c.crime || 'Cuồng si hoang tưởng cấp độ cao',
+    height: '185 cm',
+    weight: '75 kg',
+    temp: '37.5 °C',
+    evalMental: 'Bệnh nhân biểu hiện trạng thái tâm thần quá tải dopamine khi ở gần Bác sĩ/Quản ngục. Tiêu cự ánh mắt luôn hướng về một điểm duy nhất, từ chối giao tiếp với thế giới bên ngoài và chỉ đáp lời khi nghe giọng nói của người cai quản.',
+    obedienceRate: 95,
+    dangerLevel: c.rarity ? `Cấp Độ ${c.rarity} (Tuyệt đối cấm lơ là)` : 'Cấp Độ S+',
+    dangerRate: 90,
+    ecgBeat: 130,
+    ecgWave: 'Loạn Nhịp Si Tình',
+    wristInjury: 'Trầy xước mô mềm do cố tình giật mạnh dây xích phòng giam.',
+    collarInjury: 'Dấu tích trừng phạt kỷ luật trước. Phạm nhân chỉ cho phép quản ngục chạm vào trị liệu.',
+    doctorNotes: c.quote || 'Bệnh nhân hoàn toàn khao khát được tăng thêm thời hạn giam giữ vô thời hạn.',
+  }));
+
+  const [selectedPatientId, setSelectedPatientId] = useState(characters[0]?.id || '');
+
+  useEffect(() => {
+    if (characters.length > 0 && !characters.some(c => c.id === selectedPatientId)) {
+      setSelectedPatientId(characters[0].id);
+    }
+  }, [characters, selectedPatientId]);
+
   const [isSigned, setIsSigned] = useState(false);
   const [isLockdownActive, setIsLockdownActive] = useState(false);
   const [prescribedDrugs, setPrescribedDrugs] = useState<Record<string, boolean>>({

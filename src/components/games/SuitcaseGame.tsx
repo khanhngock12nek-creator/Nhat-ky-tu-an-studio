@@ -12,10 +12,12 @@ import {
   XCircle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Character } from '../../types';
 
 interface SuitcaseGameProps {
   darkMode: boolean;
   onBack: () => void;
+  character?: Character | null;
 }
 
 const MONEY_VALUES = [

@@ -10,7 +10,6 @@ import {
   Moon,
   ShieldCheck,
   Heart,
-  MessageCircleHeart,
   MoreVertical,
   Gavel,
   HeartPulse,
@@ -78,11 +77,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       label: 'THẺ NHÂN VẬT',
       icon: Users,
       badge: totalCharacters > 0 ? totalCharacters : undefined,
-    },
-    {
-      id: 'chat' as ActiveTab,
-      label: 'NHẮN TIN RIÊNG',
-      icon: MessageCircleHeart,
     },
     {
       id: 'ranking' as ActiveTab,

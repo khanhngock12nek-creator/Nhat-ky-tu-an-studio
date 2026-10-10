@@ -36,131 +36,7 @@ interface VerdictOption {
   effect: string;
 }
 
-const DEFENDANTS = [
-  {
-    id: '07',
-    code: '#07 Lục Cảnh Tiêu',
-    shortName: '#07 Tiêu',
-    alias: 'Bướm Đêm',
-    status: 'Hiện tại',
-    heartbeat: '138 bpm',
-    resistance: '0.0%',
-    image: lucCanhTieuImg,
-    mentalStatus:
-      'Cúi đầu tuyệt đối phục tùng, ánh mắt đong đầy si mê không giấu giếm nhìn thẳng lên bục Thẩm phán tôn kính.',
-    confession:
-      '“Thưa Thẩm phán tối cao... nếu yêu người là một trọng tội không thể dung thứ, tôi xin nhận trọn bản án chung thân không bao giờ xin ân xá, vĩnh viễn giam mình trong vòng tay người.”',
-    confessionTime: 'Khai tại vành móng 00:05',
-    counts: [
-      {
-        roman: 'I',
-        title: 'Tội Danh Thứ Nhất',
-        quote: '“Cướp đoạt toàn bộ thời gian và tâm trí của Quản Ngục suốt 24/7 không ngừng nghỉ.”',
-        impact: 'Quản ngục mất tập trung khi tuần tra',
-        severity: 'Cực Kỳ Nguy Hại',
-        severityColor: 'text-rose-500',
-      },
-      {
-        roman: 'II',
-        title: 'Tội Danh Thứ Hai',
-        quote: '“Cố ý quyến rũ qua vách kính buồng giam và thì thầm những lời dụ dỗ vào canh ba.”',
-        impact: 'Tang chứng: Mẩu giấy thơm kẹp kẽ khóa',
-        severity: 'Mức Độ Nghiêm Trọng',
-        severityColor: 'text-purple-500',
-      },
-      {
-        roman: 'III',
-        title: 'Tội Danh Thứ Ba',
-        quote: '“Mưu toan cướp chìa khóa phòng giam để đảo ngược vị trí quản thúc đối với Thẩm phán.”',
-        impact: 'Ý đồ: Yandere chiếm đoạt vĩnh viễn',
-        severity: 'Tối Mật Cảnh Báo',
-        severityColor: 'text-rose-600 font-black',
-      },
-    ],
-  },
-  {
-    id: '03',
-    code: '#03 Tạ Lân',
-    shortName: '#03 Tạ Lân',
-    alias: 'Băng Đế Thủy Tinh',
-    status: 'Chờ lệnh',
-    heartbeat: '54 bpm',
-    resistance: '1.2%',
-    image: kaelenImg,
-    mentalStatus:
-      'Lạnh lùng kiêu hãnh nhưng khi chạm ánh mắt Thẩm phán liền rủ mi, ngón tay khẽ run run kiềm chế si tình.',
-    confession:
-      '“Băng giá ngàn năm của tôi chỉ có thể bị nung chảy bởi hơi thở của Thẩm phán. Xin hãy kết án giam tôi bên cạnh người.”',
-    confessionTime: 'Khai tại vành móng 00:12',
-    counts: [
-      {
-        roman: 'I',
-        title: 'Tội Danh Thứ Nhất',
-        quote: '“Dùng ánh mắt băng lãnh mê hoặc người gác cổng để tự ý tiếp cận buồng thẩm vấn.”',
-        impact: 'Gây tê liệt ý chí của lính gác',
-        severity: 'Cực Kỳ Nguy Hại',
-        severityColor: 'text-rose-500',
-      },
-      {
-        roman: 'II',
-        title: 'Tội Danh Thứ Hai',
-        quote: '“Lén giấu dải ruy băng nhung của Quản Ngục vào trong gối ngủ suốt 30 ngày.”',
-        impact: 'Chiếm đoạt tư trang trái phép',
-        severity: 'Mức Độ Nghiêm Trọng',
-        severityColor: 'text-purple-500',
-      },
-      {
-        roman: 'III',
-        title: 'Tội Danh Thứ Ba',
-        quote: '“Đòi hỏi Thẩm phán phải tự tay đeo còng tay mỗi đêm mới chịu ngoan ngoãn ngủ.”',
-        impact: 'Lũng đoạn quyền lực tư pháp',
-        severity: 'Tối Mật Cảnh Báo',
-        severityColor: 'text-rose-600 font-black',
-      },
-    ],
-  },
-  {
-    id: '11',
-    code: '#11 Ngôn Dục',
-    shortName: '#11 Ngôn Dục',
-    alias: 'Bá Đạo Hắc Miêu',
-    status: 'Chờ lệnh',
-    heartbeat: '142 bpm',
-    resistance: '0.5%',
-    image: renImg,
-    mentalStatus:
-      'Cuồng nhiệt hung bạo với cả thế giới, nhưng chỉ cần Thẩm phán bước vào liền ngoan ngoãn quỳ rạp dưới chân bục.',
-    confession:
-      '“Xiềng xích của người là món trang sức lộng lẫy nhất tôi từng mang. Đừng bao giờ tháo nó ra khỏi cổ tôi...”',
-    confessionTime: 'Khai tại vành móng 00:18',
-    counts: [
-      {
-        roman: 'I',
-        title: 'Tội Danh Thứ Nhất',
-        quote: '“Gầm gừ đe dọa bất kỳ phạm nhân nào dám liếc nhìn bóng lưng của Quản Ngục.”',
-        impact: 'Gây náo loạn an ninh ngục thất',
-        severity: 'Cực Kỳ Nguy Hại',
-        severityColor: 'text-rose-500',
-      },
-      {
-        roman: 'II',
-        title: 'Tội Danh Thứ Hai',
-        quote: '“Cắn rách găng tay thẩm vấn của Quản Ngục để lưu lại dấu vết sở hữu.”',
-        impact: 'Hành vi cuồng si vượt tầm kiểm soát',
-        severity: 'Mức Độ Nghiêm Trọng',
-        severityColor: 'text-purple-500',
-      },
-      {
-        roman: 'III',
-        title: 'Tội Danh Thứ Ba',
-        quote: '“Công khai tuyên bố phòng giam này là cung điện tân hôn giữa hắn và Thẩm phán.”',
-        impact: 'Ảo tưởng si tình cấp độ tối cao',
-        severity: 'Tối Mật Cảnh Báo',
-        severityColor: 'text-rose-600 font-black',
-      },
-    ],
-  },
-];
+
 
 const VERDICTS: VerdictOption[] = [
   {
@@ -195,7 +71,29 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
   onOpenAdmin,
   onTabChange,
 }) => {
-  const [selectedDefendantId, setSelectedDefendantId] = useState('07');
+  const DEFENDANTS = characters.map((c, idx) => ({
+    id: c.id,
+    code: c.prisonId || `#0${idx + 1} ${c.name}`,
+    shortName: `#0${idx + 1} ${c.name.split(' ').slice(-1)[0]}`,
+    alias: c.genres?.[0] || 'Phạm nhân si tình',
+    status: idx === 0 ? 'Hiện tại' : 'Chờ lệnh',
+    heartbeat: `${120 + (idx * 7) % 30} bpm`,
+    resistance: '0.0%',
+    image: c.avatarUrl || '',
+    mentalStatus: 'Hội chứng cuồng si biệt giam cấp độ tối cao: Bị cáo hiển thị trạng thái tâm thần đặc trưng bởi sự lệ thuộc cảm xúc tuyệt đối vào Thẩm phán. Các chỉ số sinh tồn và nhịp đập tâm can liên tục dao động mạnh theo từng nhịp búa gỗ tuyên án. Toàn bộ vỏ não ghi nhận sự từ bỏ mọi quyền chống cự, nguyện chìm đắm vĩnh viễn trong xiềng xích ái tình của ngục thất.',
+    confession: c.quote || '“Thưa Thẩm phán tối cao... nếu yêu người là một trọng tội không thể dung thứ, tôi xin nhận trọn bản án chung thân.”',
+    confessionTime: `Khai tại vành móng 00:${String(idx * 5).padStart(2, '0')}`,
+  }));
+
+  const [selectedDefendantId, setSelectedDefendantId] = useState(characters[0]?.id || '');
+  
+  useEffect(() => {
+    if (characters.length > 0 && !characters.some(c => c.id === selectedDefendantId)) {
+      setSelectedDefendantId(characters[0].id);
+    }
+  }, [characters, selectedDefendantId]);
+
+  const activeDefendant = DEFENDANTS.find((d) => d.id === selectedDefendantId) || DEFENDANTS[0];
   const [selectedVerdict, setSelectedVerdict] = useState('1');
   const [obsessionRatio, setObsessionRatio] = useState(88); // 88% Cuồng Si vs 12% Ăn Năn
   const [isGavelStriking, setIsGavelStriking] = useState(false);
@@ -206,6 +104,30 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
     setToastNotice(msg);
     setTimeout(() => setToastNotice(null), 3000);
   };
+
+  const [customIndictments, setCustomIndictments] = useState<Record<string, Array<{id: string; title: string; content: string; time: string}>>>({});
+  const [newIndictmentTitle, setNewIndictmentTitle] = useState('');
+  const [newIndictmentContent, setNewIndictmentContent] = useState('');
+
+  const handleAddIndictment = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newIndictmentTitle.trim() && !newIndictmentContent.trim()) return;
+    const newItem = {
+      id: `ind-${Date.now()}`,
+      title: newIndictmentTitle.trim() || 'Tội danh tư tình mới',
+      content: newIndictmentContent.trim() || 'Cố ý làm xao xuyến trái tim Thẩm phán trong phiên tòa nửa đêm.',
+      time: 'Vừa lập cáo trạng • ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    };
+    setCustomIndictments(prev => ({
+      ...prev,
+      [selectedDefendantId]: [newItem, ...(prev[selectedDefendantId] || [])]
+    }));
+    setNewIndictmentTitle('');
+    setNewIndictmentContent('');
+    showToast('Đã gửi bản cáo trạng tình ái mới thành công!');
+  };
+
+  const currentIndictments = customIndictments[selectedDefendantId] || [];
   const [verdictHistory, setVerdictHistory] = useState([
     {
       id: 'h1',
@@ -613,42 +535,86 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               </span>
             </div>
 
-            {/* Counts of Indictment */}
-            <div className="space-y-3">
-              {defendant.counts.map((c, idx) => (
-                <div
-                  key={idx}
-                  className={`p-4 rounded-2xl border space-y-2 transition-all ${
-                    darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-white border-pink-100 shadow-2xs'
+            {/* Thanh ghi / Ô nhập viết và gửi bản cáo trạng mới */}
+            <form onSubmit={handleAddIndictment} className={`p-4 rounded-2xl border space-y-3 ${
+              darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-rose-50/50 border-rose-100'
+            }`}>
+              <div className="flex items-center gap-1.5 font-bold text-xs text-rose-600 dark:text-rose-400">
+                <FileText className="w-4 h-4" />
+                <span>Viết & Gửi Bản Cáo Trạng Tình Ái Mới</span>
+              </div>
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  placeholder="Tiêu đề tội danh (VD: Tội danh cố ý gây thương nhớ...)"
+                  value={newIndictmentTitle}
+                  onChange={(e) => setNewIndictmentTitle(e.target.value)}
+                  className={`w-full px-3 py-2 rounded-xl text-xs border outline-none transition-all ${
+                    darkMode
+                      ? 'bg-slate-900 border-slate-700 text-white focus:border-rose-500'
+                      : 'bg-white border-pink-200 text-slate-800 focus:border-rose-400'
                   }`}
+                />
+                <textarea
+                  rows={2}
+                  placeholder="Nội dung chi tiết bản cáo trạng, lời buộc tội hoặc chứng cứ tình ái..."
+                  value={newIndictmentContent}
+                  onChange={(e) => setNewIndictmentContent(e.target.value)}
+                  className={`w-full px-3 py-2 rounded-xl text-xs border outline-none resize-none transition-all ${
+                    darkMode
+                      ? 'bg-slate-900 border-slate-700 text-white focus:border-rose-500'
+                      : 'bg-white border-pink-200 text-slate-800 focus:border-rose-400'
+                  }`}
+                />
+                <button
+                  type="submit"
+                  className="w-full py-2 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-black text-xs shadow-md shadow-rose-500/20 hover:opacity-95 transition-all flex items-center justify-center gap-1.5"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-rose-500 text-white font-black text-[11px] flex items-center justify-center">
-                        {c.roman}
-                      </span>
-                      <h4 className="font-black text-xs text-slate-900 dark:text-white">
-                        {c.title}
-                      </h4>
-                    </div>
-                    {/* 5-star rating */}
-                    <div className="flex items-center gap-0.5 text-amber-400">
-                      {[...Array(5)].map((_, s) => (
-                        <Star key={s} className="w-3 h-3 fill-amber-400" />
-                      ))}
-                    </div>
-                  </div>
+                  <Stamp className="w-3.5 h-3.5" />
+                  <span>Gửi Bản Cáo Trạng</span>
+                </button>
+              </div>
+            </form>
 
-                  <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                    {c.quote}
-                  </p>
-
-                  <div className="pt-1.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[10px]">
-                    <span className="text-slate-400">{c.impact}</span>
-                    <span className={`font-bold ${c.severityColor}`}>{c.severity}</span>
-                  </div>
+            {/* Danh sách các bản cáo trạng đã lập */}
+            <div className="space-y-3">
+              {currentIndictments.length === 0 ? (
+                <div className="p-6 text-center rounded-2xl border border-dashed border-rose-200 dark:border-slate-800 bg-rose-50/20 dark:bg-slate-900/40 text-slate-400 text-xs italic">
+                  Chưa có bản cáo trạng nào được thiết lập. Hãy viết và gửi bản cáo mới ở thanh phía trên để khởi động công tố.
                 </div>
-              ))}
+              ) : (
+                currentIndictments.map((ind, idx) => (
+                  <div
+                    key={ind.id}
+                    className={`p-4 rounded-2xl border space-y-2 transition-all ${
+                      darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-white border-pink-100 shadow-2xs'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-rose-500 text-white font-black text-[11px] flex items-center justify-center">
+                          {idx + 1}
+                        </span>
+                        <h4 className="font-black text-xs text-slate-900 dark:text-white">
+                          {ind.title}
+                        </h4>
+                      </div>
+                      <span className="text-[10px] text-pink-500 font-bold bg-pink-100 dark:bg-pink-950/60 px-2 py-0.5 rounded-full">
+                        Chính Thức
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                      &ldquo;{ind.content}&rdquo;
+                    </p>
+
+                    <div className="pt-1.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                      <span>{ind.time}</span>
+                      <span className="text-rose-500 font-bold">Mức án: Chung thân si tình</span>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
 
             {/* Cán Cân Công Lý Tình Ái (Interactive Scale) */}

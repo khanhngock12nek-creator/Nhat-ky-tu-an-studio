@@ -11,17 +11,19 @@ import {
   RotateCw,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Character } from '../../types';
 
 interface CaroGameProps {
   darkMode: boolean;
   onBack: () => void;
+  character?: Character | null;
 }
 
 const BOARD_SIZE = 12; // 12x12 grid suitable for both mobile and desktop
 
 type CellValue = 'X' | 'O' | null;
 
-export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack }) => {
+export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character }) => {
   const [board, setBoard] = useState<CellValue[][]>(() =>
     Array(BOARD_SIZE)
       .fill(null)
@@ -202,11 +204,18 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack }) => {
           <span>Về Khu Trò Chơi</span>
         </button>
 
-        {/* Notice: Chưa có nhân vật nào để chơi */}
-        <div className="px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold flex items-center gap-2">
-          <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-          <span>Chưa có nhân vật nào để chơi • Đang chạy chế độ Luyện Tập / Bot Giám Thị</span>
-        </div>
+        {/* Notice */}
+        {character ? (
+          <div className="px-3 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs font-bold flex items-center gap-2">
+            <Sparkles className="w-3.5 h-3.5 shrink-0 text-rose-500" />
+            <span>Đang thách đấu cùng: {character.name} ({character.rarity || 'Tù nhân'})</span>
+          </div>
+        ) : (
+          <div className="px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold flex items-center gap-2">
+            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+            <span>Chưa có nhân vật nào để chơi • Đang chạy chế độ Luyện Tập / Bot Giám Thị</span>
+          </div>
+        )}
       </div>
 
       {/* Hero card */}

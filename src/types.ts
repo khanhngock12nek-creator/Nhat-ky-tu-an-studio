@@ -124,7 +124,6 @@ export type ActiveTab =
   | 'all'
   | 'home'
   | 'cards'
-  | 'chat'
   | 'ranking'
   | 'gacha'
   | 'letters'

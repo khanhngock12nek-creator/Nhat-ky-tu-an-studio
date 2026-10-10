@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Gamepad2,
   Lock,
@@ -52,7 +52,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: 'Đấu trí 5 nước thắng trên bàn cờ ngục tối',
     tag: 'Đấu Trí • 1v1',
     color: 'from-amber-500 to-rose-600',
-    description: 'Bàn cờ caro 12x12 kinh điển, chuẩn luật 5 quân thẳng hàng. Chơi luyện tập một mình hoặc đấu bot tạm thời.',
+    description: 'Bàn cờ caro 12x12 kinh điển, chuẩn luật 5 quân thẳng hàng. Thách đấu trực tiếp cùng nhân vật phạm nhân yêu thích.',
     emoji: '#',
   },
   {
@@ -61,7 +61,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: '22 lá Major Arcana tiên tri vận mệnh ngục tối',
     tag: 'Huyền Bí • Tiên Tri',
     color: 'from-purple-600 to-indigo-600',
-    description: 'Rút bài 1 lá hoặc trải bài 3 lá Quá khứ - Hiện tại - Tương lai để giải mã vận mệnh và tâm lý bí ẩn.',
+    description: 'Rút bài 1 lá hoặc trải bài 3 lá Quá khứ - Hiện tại - Tương lai để giải mã vận mệnh và tâm lý bí ẩn của chàng.',
     emoji: '🔮',
   },
   {
@@ -70,7 +70,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: 'Bánh xe số phận Truth or Dare buồng giam',
     tag: 'May Rủi • Tương Tác',
     color: 'from-pink-500 to-rose-600',
-    description: 'Quay vòng quay để nhận các mệnh lệnh thử thách độc đáo, hát tình ca, chống đẩy hoặc thú nhận bí mật thầm kín.',
+    description: 'Quay vòng quay để nhận các mệnh lệnh thử thách độc đáo cùng nhân vật, hát tình ca hoặc thú nhận bí mật thầm kín.',
     emoji: '🎡',
   },
   {
@@ -79,7 +79,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: 'Polygraph đo sóng điện não & nhịp tim thẩm vấn',
     tag: 'Tâm Lý • Thẩm Vấn',
     color: 'from-cyan-500 to-blue-600',
-    description: 'Thử nghiệm máy quét đa nghiệm để kiểm tra sự thật, phát hiện nhịp tim tăng vọt và vạch trần lời nói dối.',
+    description: 'Thử nghiệm máy quét đa nghiệm để kiểm tra sự thật, phát hiện nhịp tim tăng vọt và vạch trần lời nói dối của tù nhân.',
     emoji: '📊',
   },
   {
@@ -88,7 +88,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: '16 vali bí ẩn & đàm phán với Công Tố Viên',
     tag: 'Hồi Hộp • Đấu Trí',
     color: 'from-amber-500 to-yellow-600',
-    description: 'Chọn 1 chiếc vali may mắn, mở loại trừ 15 vali còn lại và trả lời cuộc gọi mua lại vali từ Công Tố Viên.',
+    description: 'Chọn 1 chiếc vali may mắn, mở loại trừ 15 vali còn lại cùng sự đồng hành và hồi hộp của nhân vật.',
     emoji: '💼',
   },
   {
@@ -97,7 +97,7 @@ const GAME_MODES: GameModeItem[] = [
     subtitle: 'Gắp thú bông & bảo vật định ước hoàng gia',
     tag: 'Kỹ Năng • Bộ Sưu Tập',
     color: 'from-pink-500 to-amber-500',
-    description: 'Điều khiển cần gạt Joystick, căn chỉnh tọa độ và thả càng gắp các kỷ vật hiếm để lưu vào Tủ Quà.',
+    description: 'Điều khiển cần gạt Joystick, căn chỉnh tọa độ và thả càng gắp các kỷ vật hiếm để tặng cho nhân vật yêu thích.',
     emoji: '🕹️',
   },
 ];
@@ -106,28 +106,39 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
   characters = [],
   darkMode,
   onTabChange,
+  onOpenAdmin,
 }) => {
   const [selectedGame, setSelectedGame] = useState<SelectedGameId>(null);
-  const [alertMsg, setAlertMsg] = useState<string | null>(null);
+  const [selectedCharacterId, setSelectedCharacterId] = useState<string>(
+    characters.length > 0 ? characters[0].id : ''
+  );
+
+  useEffect(() => {
+    if (characters.length > 0 && (!selectedCharacterId || !characters.some((c) => c.id === selectedCharacterId))) {
+      setSelectedCharacterId(characters[0].id);
+    }
+  }, [characters, selectedCharacterId]);
+
+  const selectedCharacter = characters.find((c) => c.id === selectedCharacterId) || characters[0] || null;
 
   // If a game is active, render that game component
   if (selectedGame === 'caro') {
-    return <CaroGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <CaroGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
   if (selectedGame === 'tarot') {
-    return <TarotGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <TarotGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
   if (selectedGame === 'wheel') {
-    return <WheelGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <WheelGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
   if (selectedGame === 'truth') {
-    return <TruthGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <TruthGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
   if (selectedGame === 'suitcase') {
-    return <SuitcaseGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <SuitcaseGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
   if (selectedGame === 'claw') {
-    return <ClawMachineGame darkMode={darkMode} onBack={() => setSelectedGame(null)} />;
+    return <ClawMachineGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
   }
 
   return (
@@ -155,10 +166,17 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 font-bold flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
-            Trạng thái: Chưa có nhân vật tham gia
-          </span>
+          {characters.length > 0 ? (
+            <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Đã có {characters.length} nhân vật tham gia
+            </span>
+          ) : (
+            <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 font-bold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+              Trạng thái: Chưa có nhân vật tham gia
+            </span>
+          )}
         </div>
       </div>
 
@@ -196,61 +214,107 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
               Tập hợp đầy đủ 6 minigame: <strong>Cờ Caro</strong>, <strong>Bói Bài Tarot</strong>, <strong>Vòng Quay Thử Thách</strong>, <strong>Nói Thật</strong>, <strong>Vụ Án Vali</strong> và <strong>Máy Gắp Thú</strong>.
+              {characters.length > 0 ? ' Chọn nhân vật bên dưới để cùng tham gia thách đấu!' : ''}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Prominent Empty Character Notice (CHƯA CÓ NHÂN VẬT NÀO ĐỂ CHƠI) */}
-      <div
-        className={`rounded-3xl p-6 sm:p-8 border text-center shadow-lg relative overflow-hidden ${
-          darkMode
-            ? 'bg-slate-900/60 border-slate-800'
-            : 'bg-white border-amber-200'
-        }`}
-      >
-        <div className="max-w-2xl mx-auto space-y-4">
-          <div className="relative inline-block">
-            <div className="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/70 flex items-center justify-center mx-auto shadow-inner">
-              <Lock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-md text-xs font-bold">
-              0
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
-              <ShieldAlert className="w-3.5 h-3.5" />
-              THÔNG BÁO TỪ BAN QUẢN NGỤC
+      {/* CHARACTER SELECTION FOR GAMES */}
+      {characters.length === 0 ? (
+        <div
+          className={`rounded-3xl p-6 sm:p-8 border text-center shadow-lg relative overflow-hidden ${
+            darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-amber-200'
+          }`}
+        >
+          <div className="max-w-2xl mx-auto space-y-4">
+            <div className="relative inline-block">
+              <div className="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/70 flex items-center justify-center mx-auto shadow-inner">
+                <Lock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-md text-xs font-bold">
+                0
+              </div>
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-              CHƯA CÓ NHÂN VẬT NÀO ĐỂ CHƠI
-            </h2>
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                <ShieldAlert className="w-3.5 h-3.5" />
+                THÔNG BÁO TỪ BAN QUẢN NGỤC
+              </div>
 
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              Hiện tại sàn đấu chưa có nhân vật tù nhân nào được chỉ định để thách đấu trực tiếp. Tuy nhiên, bạn hoàn toàn có thể nhấn vào từng trò chơi bên dưới để <strong>trải nghiệm ở chế độ Thử Nghiệm / Đấu với Bot Tạm Thời / Luyện Tập Đơn</strong>!
-            </p>
-          </div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                CHƯA CÓ NHÂN VẬT NÀO ĐỂ CHƠI
+              </h2>
 
-          {/* Quick Counter */}
-          <div className="grid grid-cols-3 gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 text-center">
-            <div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Nhân Vật Sẵn Sàng</div>
-              <div className="text-base font-black text-rose-500">0 / 0</div>
-            </div>
-            <div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Minigame Tích Hợp</div>
-              <div className="text-base font-black text-indigo-500">6 Trò Chơi</div>
-            </div>
-            <div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Chế Độ Chơi</div>
-              <div className="text-base font-black text-amber-500">Thử Nghiệm Sẵn Sàng</div>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Hiện tại sàn đấu chưa có nhân vật tù nhân nào. Khi Quản Trị Viên tạo và đăng nhân vật mới, các nhân vật sẽ tự động xuất hiện tại đây để bạn chọn thách đấu!
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={`p-5 sm:p-6 rounded-3xl border shadow-lg space-y-4 ${
+            darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-rose-100'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-rose-500" />
+              <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white font-serif">
+                Chọn Nhân Vật Thách Đấu / Đồng Hành ({characters.length})
+              </h3>
+            </div>
+            <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-rose-500/15 text-rose-500">
+              Đang chọn: {selectedCharacter?.name || 'Không có'}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {characters.map((char) => {
+              const isSelected = char.id === selectedCharacter?.id;
+              return (
+                <button
+                  key={char.id}
+                  type="button"
+                  onClick={() => setSelectedCharacterId(char.id)}
+                  className={`p-3 rounded-2xl border transition-all text-left flex flex-col items-center gap-2 cursor-pointer relative overflow-hidden ${
+                    isSelected
+                      ? 'border-rose-500 bg-rose-500/10 shadow-md scale-105'
+                      : darkMode
+                      ? 'border-slate-800 bg-slate-900/50 hover:bg-slate-800'
+                      : 'border-pink-100 bg-pink-50/40 hover:bg-pink-50'
+                  }`}
+                >
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xs border border-pink-200/60 relative">
+                    {char.avatarUrl ? (
+                      <img src={char.avatarUrl} alt={char.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className={`w-full h-full flex items-center justify-center font-bold text-white text-base ${char.avatarGradient || 'bg-gradient-to-tr from-pink-500 to-rose-400'}`}>
+                        {char.name.charAt(0)}
+                      </div>
+                    )}
+                    {isSelected && (
+                      <div className="absolute inset-0 bg-rose-500/20 border-2 border-rose-500 rounded-2xl flex items-center justify-center">
+                        <Sparkles className="w-5 h-5 text-white drop-shadow" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-center w-full min-w-0">
+                    <div className="font-bold text-xs truncate text-slate-900 dark:text-white">
+                      {char.name}
+                    </div>
+                    <div className="text-[10px] text-slate-400 truncate">
+                      {char.rarity || 'Tù nhân'} • {char.zone || 'Khu giam'}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Grid of the 6 Games */}
       <div className="space-y-4">
@@ -261,7 +325,9 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
               <span>Danh Sách 6 Trò Chơi</span>
             </h3>
             <p className="text-xs text-slate-400">
-              Bấm vào trò chơi để mở giao diện và trải nghiệm ngay
+              {characters.length > 0 && selectedCharacter
+                ? `Bấm vào trò chơi để cùng ${selectedCharacter.name} tham gia ngay`
+                : 'Bấm vào trò chơi để mở giao diện và trải nghiệm ngay'}
             </p>
           </div>
           <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
@@ -307,9 +373,9 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                     </p>
 
                     <div className="pt-3 flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-[10px] text-amber-600 dark:text-amber-400 font-bold">
-                        <Lock className="w-3 h-3" />
-                        <span>Chưa có NV (Chơi Thử)</span>
+                      <div className="flex items-center gap-1.5 text-[10px] text-rose-500 font-bold">
+                        <Sparkles className="w-3 h-3" />
+                        <span>{characters.length > 0 && selectedCharacter ? `Chơi cùng ${selectedCharacter.name}` : 'Chế độ luyện tập'}</span>
                       </div>
 
                       <button
@@ -321,7 +387,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                         className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white text-xs font-black shadow-md shadow-rose-500/20 hover:from-rose-600 hover:to-pink-700 transition-all cursor-pointer flex items-center gap-1.5"
                       >
                         <Play className="w-3 h-3 fill-current" />
-                        <span>Chơi Thử</span>
+                        <span>Chơi Ngay</span>
                       </button>
                     </div>
                   </div>
