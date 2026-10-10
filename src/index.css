@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-pink: #fdf2f8;
+    --bg-blue: #f0f9ff;
+  }
+}
+
+@keyframes float-heart {
+  0% {
+    transform: translateY(105vh) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.1) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bob-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hover-bob-smooth {
+  0%, 100% {
+    transform: translateY(-16px) rotate(-4deg) scale(0.96);
+  }
+  50% {
+    transform: translateY(16px) rotate(5deg) scale(1.04);
+  }
+}
+
+@keyframes float-sway-slow {
+  0%, 100% {
+    transform: translate(0px, -20px) rotate(-6deg);
+  }
+  33% {
+    transform: translate(12px, 0px) rotate(3deg);
+  }
+  66% {
+    transform: translate(-10px, 20px) rotate(6deg);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes flap-open {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes flap-close {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes paper-unfold {
+  0% {
+    transform: translateY(60px) scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-10px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes paper-fold-and-tuck {
+  0% {
+    transform: translateY(0) scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(20px) scale(0.8) rotateX(45deg);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(90px) scale(0.65) rotateX(70deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(140px) scale(0.4) rotateX(85deg);
+    opacity: 0;
+  }
+}
+
+@keyframes envelope-fly-send {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-15px) scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(-400px) scale(0.5) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes seal-stamp {
+  0% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin-vinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes music-bar-1 {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes music-bar-2 {
+  0%, 100% { height: 14px; }
+  50% { height: 6px; }
+}
+
+@keyframes music-bar-3 {
+  0%, 100% { height: 6px; }
+  50% { height: 20px; }
+}
+
+.animate-spin-vinyl {
+  animation: spin-vinyl 4s linear infinite;
+}
+
+.animate-music-bar-1 {
+  animation: music-bar-1 0.8s ease-in-out infinite;
+}
+.animate-music-bar-2 {
+  animation: music-bar-2 0.6s ease-in-out infinite;
+}
+.animate-music-bar-3 {
+  animation: music-bar-3 0.9s ease-in-out infinite;
+}
+
+.animate-bob {
+  animation: bob-slow 3s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+.animate-paper-unfold {
+  animation: paper-unfold 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-paper-fold-tuck {
+  animation: paper-fold-and-tuck 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-envelope-fly {
+  animation: envelope-fly-send 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-seal-stamp {
+  animation: seal-stamp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 114, 182, 0.7);
+}
+

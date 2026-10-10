@@ -1,0 +1,8 @@
+{
+  "name": "Remix Nhật Ký Tù Án",
+  "description": "Nơi lưu giữ các phạm nhân nhỏ - Trang web chọn nhân vật, bxh, gacha, gửi thư và quản trị viên",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

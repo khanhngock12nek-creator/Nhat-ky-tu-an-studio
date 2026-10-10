@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Character": {
+      "title": "Character",
+      "description": "Prisoner/Character entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "prisonId": { "type": "string" },
+        "likes": { "type": "number" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "name", "prisonId"]
+    },
+    "Letter": {
+      "title": "Letter",
+      "description": "Postcard / review letter entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderName": { "type": "string" },
+        "content": { "type": "string" },
+        "likes": { "type": "number" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "content"]
+    }
+  },
+  "firestore": {
+    "/characters/{charId}": {
+      "schema": { "$ref": "#/entities/Character" },
+      "description": "Characters/Prisoners collection"
+    },
+    "/letters/{letterId}": {
+      "schema": { "$ref": "#/entities/Letter" },
+      "description": "Letters/Postcards collection"
+    }
+  }
+}
