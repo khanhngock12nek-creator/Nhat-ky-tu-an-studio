@@ -78,14 +78,14 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
   // Active view: 'machine' | 'collection' | 'rates'
   const [activeSubTab, setActiveSubTab] = useState<'machine' | 'collection' | 'rates'>('machine');
 
-  // Pulled collection stored in localStorage
+  // Pulled collection stored in localStorage (starts empty)
   const [collectedCards, setCollectedCards] = useState<GachaCard[]>(() => {
     try {
-      const saved = localStorage.getItem('gacha_collected_cards');
-      return saved ? JSON.parse(saved) : [];
+      localStorage.removeItem('gacha_collected_cards');
     } catch {
-      return [];
+      // ignore
     }
+    return [];
   });
 
   // Quick Love Message Modal

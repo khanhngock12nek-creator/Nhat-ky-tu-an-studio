@@ -649,9 +649,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </h3>
                 <p className="text-xs italic opacity-75 font-medium">{sortedReal[1].genres.join(' · ')}</p>
 
-                <p className="mt-3 text-xs italic opacity-75 leading-relaxed min-h-[44px] flex items-center justify-center px-1 font-serif line-clamp-2">
-                  “{sortedReal[1].backstory || 'Phạm nhân đang chờ quản ngục thăm nuôi...'}”
-                </p>
+
 
                 <div className="w-full mt-4 space-y-1.5">
                   <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
@@ -736,9 +734,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </h3>
                 <p className="text-sm italic font-serif text-rose-700 dark:text-rose-400 font-bold">{sortedReal[0].genres.join(' · ')}</p>
 
-                <p className="mt-3.5 text-xs sm:text-sm italic text-slate-900 dark:text-slate-300 leading-relaxed min-h-[48px] flex items-center justify-center px-1 font-serif line-clamp-2">
-                  “{sortedReal[0].backstory || 'Chồng nhỏ quốc dân đang nhận trọn vẹn tình cảm từ các nàng quản ngục...'}”
-                </p>
+
 
                 <div className="w-full mt-4 space-y-1.5">
                   <div className="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden p-0.5">
@@ -820,9 +816,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </h3>
                 <p className="text-xs italic opacity-75 font-medium">{sortedReal[2].genres.join(' · ')}</p>
 
-                <p className="mt-3 text-xs italic opacity-75 leading-relaxed min-h-[44px] flex items-center justify-center px-1 font-serif line-clamp-2">
-                  “{sortedReal[2].backstory || 'Phạm nhân đang tích cực cạnh tranh thứ hạng...'}”
-                </p>
+
 
                 <div className="w-full mt-4 space-y-1.5">
                   <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">

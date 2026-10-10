@@ -130,7 +130,6 @@ export type ActiveTab =
   | 'letters'
   | 'genres'
   | 'midnightCourt'
-  | 'psychWard'
   | 'profile'
   | 'minigame';
 

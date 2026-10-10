@@ -71,19 +71,49 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
   onOpenAdmin,
   onTabChange,
 }) => {
-  const DEFENDANTS = characters.map((c, idx) => ({
-    id: c.id,
-    code: c.prisonId || `#0${idx + 1} ${c.name}`,
-    shortName: `#0${idx + 1} ${c.name.split(' ').slice(-1)[0]}`,
-    alias: c.genres?.[0] || 'Phạm nhân si tình',
-    status: idx === 0 ? 'Hiện tại' : 'Chờ lệnh',
-    heartbeat: `${120 + (idx * 7) % 30} bpm`,
-    resistance: '0.0%',
-    image: c.avatarUrl || '',
-    mentalStatus: 'Hội chứng cuồng si biệt giam cấp độ tối cao: Bị cáo hiển thị trạng thái tâm thần đặc trưng bởi sự lệ thuộc cảm xúc tuyệt đối vào Thẩm phán. Các chỉ số sinh tồn và nhịp đập tâm can liên tục dao động mạnh theo từng nhịp búa gỗ tuyên án. Toàn bộ vỏ não ghi nhận sự từ bỏ mọi quyền chống cự, nguyện chìm đắm vĩnh viễn trong xiềng xích ái tình của ngục thất.',
-    confession: c.quote || '“Thưa Thẩm phán tối cao... nếu yêu người là một trọng tội không thể dung thứ, tôi xin nhận trọn bản án chung thân.”',
-    confessionTime: `Khai tại vành móng 00:${String(idx * 5).padStart(2, '0')}`,
-  }));
+  const DEFENDANTS = characters.map((c, idx) => {
+    const genreText = c.genres?.join(', ') || 'Si tình';
+    const crimeText = c.crime || c.backstory || 'Cố ý gây thương nhớ và chiếm đoạt trái tim Thẩm phán.';
+
+    let trialStyle = 'Phiên xử kín dưới ánh trăng sương mờ';
+    let mentalStatus = '';
+    let confession = c.quote || '“Thưa Thẩm phán tối cao... nếu yêu người là một trọng tội không thể dung thứ, tôi xin nhận trọn bản án chung thân.”';
+
+    if (c.name.includes('Lục Diệp') || genreText.includes('Cún con')) {
+      trialStyle = 'Tội danh: Cố ý bám đuôi, ghen tuông vô cớ & Giấu kín quà tặng tình ái.';
+      mentalStatus = 'Hội chứng bám dính cảm xúc cấp độ tối cao: Phạm nhân liên tục hoảng loạn khi cách xa Thẩm phán. Nhịp tim tăng vọt mỗi khi nghe tiếng bước chân ngoài vành móng ngựa.';
+    } else if (c.name.includes('Thẩm Vấn') || genreText.includes('Văn nhã bại hoại')) {
+      trialStyle = 'Tội danh: Giam lỏng ánh mắt 24/7 & Cố tình phá vỡ vách kính buồng giam.';
+      mentalStatus = 'Hội chứng chiếm hữu tri thức: Bệnh nhân giữ thái độ văn nhã đáng sợ, từ chối kháng án và đòi tuyên mức án biệt giam vĩnh viễn bên cạnh Thẩm phán.';
+    } else if (c.name.includes('Trần Khang') || genreText.includes('Boy phố')) {
+      trialStyle = 'Tội danh: Náo loạn trật tự phố cổ & Lạng lách vượt biên giới cấm.';
+      mentalStatus = 'Hội chứng tăng động ái tình: Cố tình ngậm kẹo cao su và huýt sáo trêu chọc thẩm phán giữa phiên tòa trang nghiêm.';
+    } else if (c.name.includes('Tiêu Cảnh') || genreText.includes('cổ trang')) {
+      trialStyle = 'Tội danh: Phế truất giang sơn vạn dặm để đổi lấy một ánh mắt dung thứ.';
+      mentalStatus = 'Hội chứng đế vương si tình: Tự nguyện cởi bỏ hoàng bào, quỳ gối chờ lệnh búa gỗ của Thẩm phán với độ trung thành tuyệt đối 100%.';
+    } else if (c.name.includes('Bạch Duật') || genreText.includes('Game thủ')) {
+      trialStyle = 'Tội danh: Đào tẩu khỏi giải đấu quốc tế chỉ vì nghe tiếng khóc của nàng.';
+      mentalStatus = 'Hội chứng cô lập thần kinh số: Mọi thao tác tư duy đều lập trình sẵn hình bóng của Thẩm phán, từ chối mọi đặc xá tự do.';
+    } else {
+      trialStyle = `Tội danh đặc biệt #${idx + 1}: ${crimeText.slice(0, 50)}`;
+      mentalStatus = `Hội chứng cuồng si biệt giam #${idx + 1}: Bị cáo hiển thị trạng thái lệ thuộc cảm xúc tuyệt đối vào phán quyết của Thẩm phán.`;
+    }
+
+    return {
+      id: c.id,
+      code: c.prisonId || `#0${idx + 1} ${c.name}`,
+      shortName: `#0${idx + 1} ${c.name.split(' ').slice(-1)[0]}`,
+      alias: c.genres?.[0] || 'Phạm nhân si tình',
+      status: idx === 0 ? 'Hiện tại' : 'Chờ lệnh',
+      heartbeat: `${120 + (idx * 7) % 30} bpm`,
+      resistance: `${(idx * 0.8).toFixed(1)}%`,
+      image: c.avatarUrl || '',
+      trialStyle,
+      mentalStatus,
+      confession,
+      confessionTime: `Khai tại vành móng 00:${String(idx * 5).padStart(2, '0')}`,
+    };
+  });
 
   const [selectedDefendantId, setSelectedDefendantId] = useState(characters[0]?.id || '');
   
@@ -425,6 +455,16 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-300">
                 Đang Thẩm Vấn
               </span>
+            </div>
+
+            {/* Unique Trial Style / Accusation Banner */}
+            <div className="p-3 rounded-2xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900/50 space-y-1">
+              <span className="text-[9px] font-black uppercase text-rose-600 dark:text-rose-400 block tracking-wider">
+                ⚖️ Kiểu Xét Xử & Cáo Trạng Riêng Biệt
+              </span>
+              <p className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                {defendant.trialStyle}
+              </p>
             </div>
 
             {/* Large Portrait Box */}

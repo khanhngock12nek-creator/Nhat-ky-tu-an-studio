@@ -12,7 +12,6 @@ import {
   Heart,
   MoreVertical,
   Gavel,
-  HeartPulse,
   User,
   Gamepad2,
 } from 'lucide-react';
@@ -105,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       className={`sticky top-0 z-30 transition-colors backdrop-blur-md border-b ${
         darkMode
           ? 'bg-slate-900/85 border-slate-800/80 text-slate-100'
-          : 'bg-sky-50/80 border-sky-200/80 text-slate-900'
+          : 'bg-stone-50/90 border-stone-200/80 text-slate-900'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -178,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-label="Tính năng mở rộng"
                 title="Tính năng & Tùy chọn"
                 className={`p-2 rounded-xl border transition-all cursor-pointer relative ${
-                  isMoreOpen || activeTab === 'midnightCourt' || activeTab === 'psychWard' || showOnlyFavorites
+                  isMoreOpen || activeTab === 'midnightCourt' || showOnlyFavorites
                     ? 'bg-rose-500 text-white border-rose-500 shadow-sm'
                     : darkMode
                     ? 'bg-slate-800 border-slate-700 text-slate-300 hover:text-white'
@@ -186,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }`}
               >
                 <MoreVertical className="w-3.5 h-3.5" />
-                {(activeTab === 'midnightCourt' || activeTab === 'psychWard' || showOnlyFavorites) && (
+                {(activeTab === 'midnightCourt' || showOnlyFavorites) && (
                   <span className="absolute -top-1 -right-1 w-2 h-2 bg-pink-300 rounded-full animate-ping pointer-events-none" />
                 )}
               </button>
@@ -335,37 +334,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
                   </button>
 
-                  {/* 2. Ở DƯỚI PHIÊN TÒA NỬA ĐÊM: Phòng Giám Sát Tâm Lý */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onTabChange('psychWard');
-                      setIsMoreOpen(false);
-                    }}
-                    className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-3 cursor-pointer mt-1 ${
-                      activeTab === 'psychWard'
-                        ? 'bg-rose-500 text-white font-bold shadow-xs'
-                        : darkMode
-                        ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-900'
-                    }`}
-                  >
-                    <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                        activeTab === 'psychWard'
-                          ? 'bg-sky-50/20 text-white'
-                          : 'bg-pink-100 dark:bg-pink-950/70 text-pink-500'
-                      }`}
-                    >
-                      <HeartPulse className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-black text-xs">Phòng Giám Sát Tâm Lý</div>
-                      <div className="text-[10px] opacity-75 truncate">
-                        Y án mật • Hồ sơ thần kinh khẩn
-                      </div>
-                    </div>
-                  </button>
+
 
                   {/* 3. Tài Khoản Quản Ngục Google */}
                   <button

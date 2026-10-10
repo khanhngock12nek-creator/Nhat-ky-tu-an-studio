@@ -14,7 +14,6 @@ import { GachaWheel } from './components/GachaWheel';
 import { LetterBox } from './components/LetterBox';
 import { GenreView } from './components/GenreView';
 import { MidnightCourtView } from './components/MidnightCourtView';
-import { PsychWardView } from './components/PsychWardView';
 import { MinigameView } from './components/MinigameView';
 import { UserProfileView } from './components/UserProfileView';
 import { CharacterDetailModal } from './components/CharacterDetailModal';
@@ -74,7 +73,6 @@ export default function App() {
 
   // Navigation tab ('home' as default)
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
-  const [secretWardMode, setSecretWardMode] = useState<'midnightCourt' | 'psychWard'>('midnightCourt');
 
   // Google User auth state
   const [googleUser, setGoogleUser] = useState<GoogleUser | null>(() => getStoredGoogleUser());
@@ -458,11 +456,6 @@ export default function App() {
   // Tab change handler
   const handleTabChange = (tab: ActiveTab) => {
     setActiveTab(tab);
-    if (tab === 'psychWard') {
-      setSecretWardMode('psychWard');
-    } else if (tab === 'midnightCourt') {
-      setSecretWardMode('midnightCourt');
-    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -477,7 +470,7 @@ export default function App() {
       className={`min-h-screen relative flex flex-col font-['Quicksand',sans-serif] transition-colors duration-300 ${
         darkMode
           ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100'
-          : 'bg-gradient-to-br from-pink-100 via-rose-50 to-sky-100 text-slate-900'
+          : 'bg-gradient-to-br from-stone-100 via-amber-50/50 to-stone-200/60 text-slate-900'
       }`}
     >
       {/* Full-screen Custom Site Background */}
@@ -492,7 +485,7 @@ export default function App() {
           {/* Subtle translucent veil so text and cards remain crystal clear */}
           <div
             className={`absolute inset-0 ${
-              darkMode ? 'bg-slate-950/80 backdrop-blur-[1px]' : 'bg-pink-50/75 via-rose-50/60 to-sky-50/75 backdrop-blur-[1px]'
+              darkMode ? 'bg-slate-950/80 backdrop-blur-[1px]' : 'bg-stone-100/85 via-amber-50/50 to-stone-50/80 backdrop-blur-[1px]'
             }`}
           />
         </div>
@@ -645,14 +638,6 @@ export default function App() {
               />
             )}
 
-            {activeTab === 'psychWard' && (
-              <PsychWardView
-                characters={characters}
-                darkMode={darkMode}
-                onOpenAdmin={() => setIsAdminOpen(true)}
-                onTabChange={handleTabChange}
-              />
-            )}
 
             {activeTab === 'minigame' && (
               <MinigameView
@@ -755,10 +740,6 @@ export default function App() {
           <div className="flex items-center gap-3 text-xs flex-wrap justify-center sm:justify-end text-slate-400 dark:text-slate-900">
             <span className="hover:text-rose-500 transition-colors cursor-pointer" onClick={() => setActiveTab('cards')}>
               Lệnh Giữ Người
-            </span>
-            <span>·</span>
-            <span className="hover:text-rose-500 transition-colors cursor-pointer" onClick={() => setActiveTab('psychWard')}>
-              Nhật Ký Tâm Lý
             </span>
             <span>·</span>
             <span className="hover:text-rose-500 transition-colors cursor-pointer" onClick={() => setActiveTab('midnightCourt')}>

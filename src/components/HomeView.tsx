@@ -202,7 +202,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         className={`rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 border shadow-lg relative overflow-hidden text-center transition-all ${
           darkMode
             ? 'bg-slate-900/95 border-slate-800 text-slate-100 shadow-pink-950/20'
-            : 'bg-sky-50 border-sky-200/80 text-slate-900 shadow-pink-100/50'
+            : 'bg-stone-50/95 border-stone-200/85 text-slate-900 shadow-stone-200/50'
         }`}
       >
         {/* Soft Decorative Ambient Background */}
