@@ -35,36 +35,36 @@ testConnection();
 export const charactersCollection = collection(db, 'characters');
 export const lettersCollection = collection(db, 'letters');
 
-// Initialize default sample characters in Firestore if empty
+// Initialize Firestore data without sample characters (starts empty until admin creates)
 export const initializeFirestoreData = async () => {
   try {
-    // Explicitly purge Kaelen Valerius from Firestore if still present
-    try {
-      await deleteDoc(doc(db, 'characters', 'char-kaelen-valerius-06'));
-    } catch {
-      // ignore
-    }
-
-    const isAlreadyInitialized = localStorage.getItem('nhat_ky_tu_an_db_initialized') === 'true';
-
     const snapshot = await getDocs(charactersCollection);
     
-    // Check if any lingering doc in Firestore is Kaelen Valerius
+    // Purge any lingering sample characters (Kaelen, Lục Cảnh Tiêu, Ren Amamiya) if present
     snapshot.forEach((d) => {
       const data = d.data() as Character;
-      if (d.id === 'char-kaelen-valerius-06' || data?.name?.toLowerCase().includes('kaelen')) {
+      if (
+        d.id === 'char-kaelen-valerius-06' ||
+        d.id === 'char-luc-canh-tieu-07' ||
+        d.id === 'char-ren-amamiya-08' ||
+        data?.name?.toLowerCase().includes('kaelen') ||
+        data?.name?.toLowerCase().includes('lục cảnh tiêu') ||
+        data?.name?.toLowerCase().includes('ren amamiya')
+      ) {
         deleteDoc(doc(db, 'characters', d.id)).catch(() => {});
       }
     });
 
-    if (snapshot.empty && !isAlreadyInitialized) {
-      for (const char of ALL_SAMPLE_PRISONERS) {
-        await setDoc(doc(db, 'characters', char.id), char);
+    // Purge any sample letters if present
+    const lettersSnapshot = await getDocs(lettersCollection);
+    lettersSnapshot.forEach((d) => {
+      const data = d.data() as Letter;
+      if (d.id.startsWith('letter-sample-') || data?.id?.startsWith('letter-sample-')) {
+        deleteDoc(doc(db, 'letters', d.id)).catch(() => {});
       }
-      localStorage.setItem('nhat_ky_tu_an_db_initialized', 'true');
-    } else {
-      localStorage.setItem('nhat_ky_tu_an_db_initialized', 'true');
-    }
+    });
+
+    localStorage.setItem('nhat_ky_tu_an_db_initialized', 'true');
   } catch (err) {
     console.error('Error initializing Firestore data:', err);
   }
