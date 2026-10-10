@@ -13,11 +13,14 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Character } from '../../types';
+import { GameHeader } from './GameHeader';
 
 interface SuitcaseGameProps {
   darkMode: boolean;
   onBack: () => void;
   character?: Character | null;
+  characters?: Character[];
+  onSelectCharacter?: (char: Character) => void;
 }
 
 const MONEY_VALUES = [
@@ -31,7 +34,13 @@ interface Suitcase {
   isOpened: boolean;
 }
 
-export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) => {
+export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ 
+  darkMode, 
+  onBack, 
+  character, 
+  characters, 
+  onSelectCharacter 
+}) => {
   const [suitcases, setSuitcases] = useState<Suitcase[]>(() => {
     const shuffled = [...MONEY_VALUES].sort(() => 0.5 - Math.random());
     return shuffled.map((val, idx) => ({
@@ -147,7 +156,15 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
 
   return (
     <div className="space-y-6 animate-fadeIn max-w-5xl mx-auto">
-      {/* Header */}
+      <GameHeader
+        darkMode={darkMode}
+        onBack={onBack}
+        character={character}
+        characters={characters}
+        onSelectCharacter={onSelectCharacter}
+        gameTitle="VỤ ÁN VALI"
+        badgeText="Đàm phán với Công Tố Viên"
+      />
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <button
           type="button"
@@ -155,7 +172,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
           className={`px-3 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
             darkMode
               ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-              : 'bg-white border-rose-200 text-slate-700 hover:bg-rose-50'
+              : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-rose-50'
           }`}
         >
           <ArrowLeft className="w-4 h-4 text-rose-500" />
@@ -171,7 +188,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
       {/* Banner */}
       <div
         className={`p-6 rounded-3xl border shadow-xl ${
-          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-amber-100'
+          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200'
         }`}
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -188,7 +205,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
                   16 Vali Niêm Phong
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-900 dark:text-slate-400">
                 Chọn vali may mắn của bạn, loại trừ các số tiền và đàm phán với Công Tố Viên Ngục Tối
               </p>
             </div>
@@ -201,7 +218,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
               className={`px-3 py-2 rounded-xl border text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
                 darkMode
                   ? 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
-                  : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 border-sky-200 text-slate-900 hover:bg-slate-200'
               }`}
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -245,7 +262,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
             <button
               type="button"
               onClick={handleRejectDeal}
-              className="py-3 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-black text-sm uppercase tracking-wider backdrop-blur-sm flex items-center justify-center gap-2 cursor-pointer"
+              className="py-3 rounded-2xl bg-sky-50/20 hover:bg-sky-50/30 text-white font-black text-sm uppercase tracking-wider backdrop-blur-sm flex items-center justify-center gap-2 cursor-pointer"
             >
               <XCircle className="w-4 h-4" />
               <span>TỪ CHỐI (NO DEAL)</span>
@@ -281,7 +298,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
           <button
             type="button"
             onClick={resetGame}
-            className="mt-3 px-6 py-2.5 rounded-xl bg-white text-emerald-900 font-black text-xs uppercase tracking-wider shadow hover:bg-slate-100 cursor-pointer"
+            className="mt-3 px-6 py-2.5 rounded-xl bg-sky-50 text-emerald-900 font-black text-xs uppercase tracking-wider shadow hover:bg-slate-100 cursor-pointer"
           >
             Chơi vụ án khác
           </button>
@@ -317,7 +334,7 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
           {/* Status bar */}
           <div
             className={`p-3.5 rounded-2xl border text-center text-xs font-bold ${
-              darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-amber-100'
+              darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50 border-sky-200'
             }`}
           >
             {mySuitcaseId === null ? (
@@ -348,10 +365,10 @@ export const SuitcaseGame: React.FC<SuitcaseGameProps> = ({ darkMode, onBack }) 
                     isMyCase
                       ? 'border-yellow-400 bg-gradient-to-tr from-amber-500 to-yellow-500 text-white shadow-xl scale-105 ring-4 ring-yellow-400/30'
                       : s.isOpened
-                      ? 'border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950/40 text-slate-400 opacity-60'
+                      ? 'border-sky-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950/40 text-slate-400 opacity-60'
                       : darkMode
                       ? 'border-slate-700 bg-gradient-to-br from-slate-800 to-slate-900 text-white hover:border-amber-400 hover:scale-102 shadow-md'
-                      : 'border-amber-200 bg-gradient-to-br from-white to-amber-50 text-slate-800 hover:border-amber-400 hover:scale-102 shadow-md'
+                      : 'border-sky-200 bg-gradient-to-br from-white to-amber-50 text-slate-900 hover:border-amber-400 hover:scale-102 shadow-md'
                   }`}
                 >
                   <Briefcase

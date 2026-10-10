@@ -128,18 +128,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
   };
 
   const currentIndictments = customIndictments[selectedDefendantId] || [];
-  const [verdictHistory, setVerdictHistory] = useState([
-    {
-      id: 'h1',
-      title: 'Đeo lắc chuông mắt cá chân',
-      time: 'Đêm qua 00:00 • Đã thi hành',
-    },
-    {
-      id: 'h2',
-      title: 'Cấm đọc thư tay 24 giờ',
-      time: '3 đêm trước • Hoàn tất',
-    },
-  ]);
+  const [verdictHistory, setVerdictHistory] = useState<Array<{ id: string; title: string; time: string }>>([]);
 
   // Live timer countdown simulation: 00:23:55
   const [secondsRemaining, setSecondsRemaining] = useState(1435);
@@ -200,14 +189,14 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 space-y-3 sm:space-y-4 animate-fade-in font-sans">
         {/* Section Header */}
         <div className="text-center space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-100/70 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 text-[9px] font-black tracking-wide border border-rose-200/60 dark:border-rose-900/40">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-100/70 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 text-[9px] font-black tracking-wide border border-sky-200/60 dark:border-rose-900/40">
             <Gavel className="w-2.5 h-2.5 text-rose-500 animate-pulse" />
             <span>PHIÊN TÒA TỐI CAO 00:00 • VÀNH MÓNG NGỰA TRỐNG</span>
           </div>
           <h1 className="text-lg sm:text-xl lg:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-pink-500 via-rose-400 to-sky-400 bg-clip-text text-transparent font-serif">
             Phiên Tòa Nửa Đêm & Tuyên Án Bổ Sung
           </h1>
-          <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+          <p className="text-[10px] sm:text-[11px] text-slate-900 dark:text-slate-400 max-w-md mx-auto">
             Nơi quyền lực Thẩm phán quy phục những trái tim cuồng nhiệt. Mọi ánh mắt, hơi thở và lời khẩn cầu đều được cân đo bởi cán cân công lý đẫm hương hoa hồng nhung.
           </p>
         </div>
@@ -217,7 +206,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
           className={`p-4 sm:p-6 text-center rounded-2xl sm:rounded-3xl border border-dashed relative overflow-hidden transition-all shadow-md ${
             darkMode
               ? 'bg-slate-900/80 border-rose-900/50 text-slate-100 shadow-rose-950/20'
-              : 'bg-white/90 border-rose-200 text-slate-800 shadow-pink-100/40'
+              : 'bg-sky-50/90 border-sky-200 text-slate-900 shadow-pink-100/40'
           }`}
         >
           <div className="absolute -top-20 -left-20 w-48 h-48 bg-rose-400/10 blur-3xl pointer-events-none" />
@@ -231,7 +220,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold mb-1.5 bg-pink-50 dark:bg-slate-800 text-pink-600 dark:text-pink-300 border border-pink-200/60 dark:border-slate-700">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold mb-1.5 bg-pink-50 dark:bg-slate-800 text-pink-600 dark:text-pink-300 border border-sky-200/60 dark:border-slate-700">
             <Scale className="w-2.5 h-2.5" />
             <span>VÀNH MÓNG NGỰA CHƯA CÓ BỊ CÁO</span>
           </div>
@@ -239,7 +228,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
           <h2 className="text-base sm:text-lg font-black mb-1 font-serif">
             Hiện Chưa Có Tù Nhân Nào Cần Triệu Tập Xét Xử Nửa Đêm
           </h2>
-          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-3.5 leading-relaxed">
+          <p className="text-[11px] sm:text-xs text-slate-900 dark:text-slate-400 max-w-md mx-auto mb-3.5 leading-relaxed">
             Vành móng ngựa dát vàng và bục thẩm phán hiện đang hoàn toàn yên tĩnh.
             Trại giam chưa có phạm nhân nào vi phạm kỷ luật si tình hay cần tuyên án bổ sung.
             Khi Quản Trị Viên khởi tạo phạm nhân mới, phiên tòa nửa đêm sẽ bắt đầu mở phiên xét xử!
@@ -263,7 +252,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                 className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-bold text-xs transition-all border cursor-pointer ${
                   darkMode
                     ? 'bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700'
-                    : 'bg-white border-pink-200 text-slate-700 hover:bg-pink-50 shadow-2xs'
+                    : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-pink-50 shadow-2xs'
                 }`}
               >
                 <span>Quay Về Cửa Nhà Giam</span>
@@ -281,7 +270,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-rose-100 dark:bg-rose-950/60 text-rose-600 flex items-center justify-center mb-1.5">
@@ -290,14 +279,14 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Bản Cáo Trạng Tình Ái
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Xét xử các tội danh: cướp đoạt thời gian 24/7, quyến rũ qua vách kính buồng giam và mưu toan đảo ngược vị trí quản thúc.
               </p>
             </div>
 
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 flex items-center justify-center mb-1.5">
@@ -306,14 +295,14 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Cán Cân Công Lý Tình Ái
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Đo lường mức độ tương tác giữa Cuồng Si Chiếm Hữu và Ăn Năn Phục Tùng với mô hình cân tiểu ly động.
               </p>
             </div>
 
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-purple-600 flex items-center justify-center mb-1.5">
@@ -322,7 +311,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Bảng Phán Quyết Tối Cao
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Tuyên các bản án sủng ái: gia hạn biệt giam 100 đêm, khóa xiềng chuông bạc, đặc xá dạo vườn hoa hồng hoặc tước quyền thăm nuôi.
               </p>
             </div>
@@ -344,7 +333,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
         className={`p-4 sm:p-5 rounded-3xl border transition-all relative overflow-hidden shadow-sm ${
           darkMode
             ? 'bg-slate-900/90 border-slate-800 text-slate-100'
-            : 'bg-white/95 border-pink-100 text-slate-800 shadow-pink-100/30'
+            : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-100/30'
         }`}
       >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -355,7 +344,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                 <Gavel className="w-3 h-3" />
                 PHIÊN TÒA TỐI CAO 00:00
               </span>
-              <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500">
+              <span className="text-[11px] font-bold text-slate-400 dark:text-slate-900">
                 • Phòng Xử Nguyệt Cung Hoàng Gia
               </span>
             </div>
@@ -368,7 +357,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               <span className="text-[11px] font-black text-rose-500 dark:text-rose-400 block tracking-wide">
                 Mật Hiệu Án Tình #{defendant.id}/HC
               </span>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-900 dark:text-slate-400 leading-relaxed">
                 Nơi quyền lực Thẩm phán quy phục những trái tim cuồng nhiệt. Mọi ánh mắt, hơi thở và lời khẩn cầu đều được cân đo bởi cán cân công lý đẫm hương hoa hồng nhung.
               </p>
             </div>
@@ -378,7 +367,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
           <div className="flex items-center gap-3 shrink-0">
             <div
               className={`p-3.5 sm:p-4 rounded-2xl border text-center min-w-[130px] ${
-                darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-rose-50/50 border-rose-100'
+                darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-rose-50/50 border-sky-200'
               }`}
             >
               <span className="text-[10px] font-black uppercase text-slate-400 block tracking-wider">
@@ -391,7 +380,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
 
             <div
               className={`p-3.5 sm:p-4 rounded-2xl border text-center min-w-[130px] ${
-                darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-rose-50/50 border-rose-100'
+                darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-rose-50/50 border-sky-200'
               }`}
             >
               <span className="text-[10px] font-black uppercase text-slate-400 block tracking-wider">
@@ -415,11 +404,11 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
         <div className="lg:col-span-4 space-y-4">
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
             {/* Header Col 1 */}
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <span className="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center font-bold text-xs">
                   ⚖️
@@ -439,7 +428,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             </div>
 
             {/* Large Portrait Box */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-inner border border-rose-200/50 group">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-inner border border-sky-200/50 group">
               <img
                 src={defendant.image}
                 alt={defendant.code}
@@ -466,14 +455,14 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             {/* Lời Tự Thú Mở Màn */}
             <div
               className={`p-4 rounded-2xl border space-y-2 ${
-                darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-rose-50/60 border-rose-100'
+                darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-rose-50/60 border-sky-200'
               }`}
             >
               <div className="flex items-center gap-1.5 text-rose-500 font-black text-xs">
                 <span>💬</span>
                 <span>LỜI TỰ THÚ MỞ MÀN CỦA BỊ CÁO</span>
               </div>
-              <p className="text-xs text-slate-700 dark:text-slate-300 italic leading-relaxed">
+              <p className="text-xs text-slate-900 dark:text-slate-300 italic leading-relaxed">
                 {defendant.confession}
               </p>
               <div className="flex items-center justify-end gap-1 text-[10px] text-slate-400 font-bold">
@@ -500,7 +489,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                           ? 'bg-rose-500 text-white border-rose-500 shadow-md shadow-rose-400/30'
                           : darkMode
                           ? 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-700'
-                          : 'bg-white border-pink-100 text-slate-700 hover:bg-rose-50'
+                          : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-rose-50'
                       }`}
                     >
                       <span className="block font-black text-xs">{d.shortName}</span>
@@ -519,11 +508,11 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
         <div className="lg:col-span-4 space-y-4">
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
             {/* Header Col 2 */}
-            <div className="text-center pb-3 border-b border-slate-100 dark:border-slate-800 space-y-0.5">
+            <div className="text-center pb-3 border-b border-sky-200 dark:border-slate-800 space-y-0.5">
               <span className="text-[10px] font-black uppercase text-slate-400 block tracking-wider">
                 TÒA ÁN TRỌNG ÁN TÌNH CẢM
               </span>
@@ -537,7 +526,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
 
             {/* Thanh ghi / Ô nhập viết và gửi bản cáo trạng mới */}
             <form onSubmit={handleAddIndictment} className={`p-4 rounded-2xl border space-y-3 ${
-              darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-rose-50/50 border-rose-100'
+              darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-rose-50/50 border-sky-200'
             }`}>
               <div className="flex items-center gap-1.5 font-bold text-xs text-rose-600 dark:text-rose-400">
                 <FileText className="w-4 h-4" />
@@ -552,7 +541,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                   className={`w-full px-3 py-2 rounded-xl text-xs border outline-none transition-all ${
                     darkMode
                       ? 'bg-slate-900 border-slate-700 text-white focus:border-rose-500'
-                      : 'bg-white border-pink-200 text-slate-800 focus:border-rose-400'
+                      : 'bg-sky-50 border-sky-200 text-slate-900 focus:border-rose-400'
                   }`}
                 />
                 <textarea
@@ -563,7 +552,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                   className={`w-full px-3 py-2 rounded-xl text-xs border outline-none resize-none transition-all ${
                     darkMode
                       ? 'bg-slate-900 border-slate-700 text-white focus:border-rose-500'
-                      : 'bg-white border-pink-200 text-slate-800 focus:border-rose-400'
+                      : 'bg-sky-50 border-sky-200 text-slate-900 focus:border-rose-400'
                   }`}
                 />
                 <button
@@ -579,7 +568,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             {/* Danh sách các bản cáo trạng đã lập */}
             <div className="space-y-3">
               {currentIndictments.length === 0 ? (
-                <div className="p-6 text-center rounded-2xl border border-dashed border-rose-200 dark:border-slate-800 bg-rose-50/20 dark:bg-slate-900/40 text-slate-400 text-xs italic">
+                <div className="p-6 text-center rounded-2xl border border-dashed border-sky-200 dark:border-slate-800 bg-rose-50/20 dark:bg-slate-900/40 text-slate-400 text-xs italic">
                   Chưa có bản cáo trạng nào được thiết lập. Hãy viết và gửi bản cáo mới ở thanh phía trên để khởi động công tố.
                 </div>
               ) : (
@@ -587,7 +576,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                   <div
                     key={ind.id}
                     className={`p-4 rounded-2xl border space-y-2 transition-all ${
-                      darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-white border-pink-100 shadow-2xs'
+                      darkMode ? 'bg-slate-800/60 border-slate-700/80' : 'bg-sky-50 border-sky-200 shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -604,11 +593,11 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                       </span>
                     </div>
 
-                    <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                    <p className="text-xs text-slate-900 dark:text-slate-300 italic leading-relaxed">
                       &ldquo;{ind.content}&rdquo;
                     </p>
 
-                    <div className="pt-1.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                    <div className="pt-1.5 border-t border-sky-200 dark:border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400 font-mono">
                       <span>{ind.time}</span>
                       <span className="text-rose-500 font-bold">Mức án: Chung thân si tình</span>
                     </div>
@@ -620,7 +609,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             {/* Cán Cân Công Lý Tình Ái (Interactive Scale) */}
             <div
               className={`p-4 sm:p-5 rounded-2xl border space-y-3 ${
-                darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/40 border-rose-100'
+                darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/40 border-sky-200'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -684,7 +673,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                 </svg>
               </div>
 
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center italic">
+              <p className="text-[11px] text-slate-900 dark:text-slate-400 text-center italic">
                 Cán cân lệch hẳn về phía &ldquo;Cuồng si&rdquo;. Phạm nhân hoàn toàn không có ý định hối cải.
               </p>
             </div>
@@ -697,11 +686,11 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
         <div className="lg:col-span-4 space-y-4">
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
             {/* Header Col 3 */}
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-rose-500" />
                 <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
@@ -726,7 +715,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                           : 'bg-rose-50/70 border-rose-400 shadow-xs'
                         : darkMode
                         ? 'bg-slate-800/40 border-slate-700/60 hover:bg-slate-800'
-                        : 'bg-white border-pink-100 hover:bg-pink-50/40'
+                        : 'bg-sky-50 border-sky-200 hover:bg-pink-50/40'
                     }`}
                   >
                     <div className="pt-0.5 shrink-0">
@@ -734,10 +723,10 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                         className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                           isSelected
                             ? 'border-rose-500 bg-rose-500 text-white'
-                            : 'border-slate-300 dark:border-slate-600'
+                            : 'border-sky-200 dark:border-slate-600'
                         }`}
                       >
-                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-sky-50" />}
                       </div>
                     </div>
 
@@ -745,7 +734,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
                       <h4 className="font-bold text-xs text-slate-900 dark:text-white">
                         {v.title}
                       </h4>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                      <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                         {v.desc}
                       </p>
                       <span className="inline-block text-[10px] font-bold text-rose-500 dark:text-rose-400">
@@ -771,7 +760,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             </button>
 
             {/* Lịch Sử Phán Quyết Trước Đó */}
-            <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="space-y-2 pt-2 border-t border-sky-200 dark:border-slate-800">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-bold text-slate-400 uppercase text-[10px] tracking-wider">
                   LỊCH SỬ PHÁN QUYẾT TRƯỚC ĐÓ
@@ -782,27 +771,33 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
               </div>
 
               <div className="space-y-2">
-                {verdictHistory.map((h) => (
-                  <div
-                    key={h.id}
-                    className={`p-3 rounded-xl border flex items-center justify-between gap-2 ${
-                      darkMode ? 'bg-slate-800/40 border-slate-700/60' : 'bg-slate-50 border-slate-100'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                      <div>
-                        <span className="font-bold text-xs block text-slate-800 dark:text-slate-200">
-                          {h.title}
-                        </span>
-                        <span className="text-[10px] text-slate-400">{h.time}</span>
-                      </div>
-                    </div>
-                    <span className="text-[9px] px-2 py-0.5 rounded-full font-black bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-300">
-                      ÁN
-                    </span>
+                {verdictHistory.length === 0 ? (
+                  <div className="p-4 rounded-xl border border-dashed border-sky-200 dark:border-slate-800 text-center text-slate-400 text-xs py-6">
+                    Chưa có bản án nào được tuyên trong phiên tòa này. Hãy chọn hình phạt và gõ búa.
                   </div>
-                ))}
+                ) : (
+                  verdictHistory.map((h) => (
+                    <div
+                      key={h.id}
+                      className={`p-3 rounded-xl border flex items-center justify-between gap-2 ${
+                        darkMode ? 'bg-slate-800/40 border-slate-700/60' : 'bg-slate-50 border-sky-200'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                        <div>
+                          <span className="font-bold text-xs block text-slate-900 dark:text-slate-200">
+                            {h.title}
+                          </span>
+                          <span className="text-[10px] text-slate-400">{h.time}</span>
+                        </div>
+                      </div>
+                      <span className="text-[9px] px-2 py-0.5 rounded-full font-black bg-rose-100 dark:bg-rose-950/70 text-rose-600 dark:text-rose-300">
+                        ÁN
+                      </span>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -814,7 +809,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
       {/* ======================================================== */}
       <div
         className={`p-5 rounded-3xl border flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${
-          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-rose-50/60 border-rose-200/80 shadow-xs'
+          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-rose-50/60 border-sky-200/80 shadow-xs'
         }`}
       >
         <div className="flex items-center gap-3">
@@ -825,7 +820,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             <h4 className="font-black text-sm text-slate-900 dark:text-white font-serif">
               Chế Độ Giám Sát Sau Bản Án
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-900 dark:text-slate-400">
               Phạm nhân #{defendant.id} sẽ được dẫn độ về Buồng Giam Nhung Đỏ lúc 01:00 AM cùng biên bản phán quyết.
             </p>
           </div>
@@ -838,7 +833,7 @@ export const MidnightCourtView: React.FC<MidnightCourtViewProps> = ({
             className={`flex-1 sm:flex-none px-4 py-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
               darkMode
                 ? 'bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700'
-                : 'bg-white border-pink-200 text-slate-700 hover:bg-pink-50'
+                : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-pink-50'
             }`}
           >
             <Download className="w-3.5 h-3.5" />

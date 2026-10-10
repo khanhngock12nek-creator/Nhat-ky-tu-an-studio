@@ -151,7 +151,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
     <div className="space-y-4 sm:space-y-5 font-sans">
       {/* 1. TOP ANNOUNCEMENT TICKER BANNER */}
       {showAnnouncement && (
-        <div className="rounded-2xl px-3.5 py-2 bg-gradient-to-r from-pink-100 via-rose-100 to-pink-100 dark:from-pink-950/70 dark:via-rose-950/70 dark:to-pink-950/70 border border-pink-200 dark:border-pink-900/60 flex items-center justify-between gap-2.5 text-[11px] font-semibold text-rose-700 dark:text-rose-300 shadow-xs animate-fadeIn">
+        <div className="rounded-2xl px-3.5 py-2 bg-gradient-to-r from-pink-100 via-rose-100 to-pink-100 dark:from-pink-950/70 dark:via-rose-950/70 dark:to-pink-950/70 border border-sky-200 dark:border-pink-900/60 flex items-center justify-between gap-2.5 text-[11px] font-semibold text-rose-700 dark:text-rose-300 shadow-xs animate-fadeIn">
           <div className="flex items-center gap-1.5 overflow-hidden">
             <span className="text-xs shrink-0">🌸</span>
             <span className="truncate">
@@ -174,7 +174,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400 font-bold">
           <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping shrink-0" />
           <span>🔴 TÍN HIỆU BUỒNG GIAM:</span>
-          <span className="text-slate-600 dark:text-slate-300 font-medium">
+          <span className="text-slate-900 dark:text-slate-300 font-medium">
             Xung nhịp rung động 135 BPM khi nghe tiếng bước chân nàng...
           </span>
         </div>
@@ -183,7 +183,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={onOpenAuthModal}
-              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9.5px] font-bold bg-pink-100/70 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 hover:bg-pink-200/70 dark:hover:bg-rose-900/70 transition-colors border border-pink-200/80 dark:border-rose-900 cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9.5px] font-bold bg-pink-100/70 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 hover:bg-pink-200/70 dark:hover:bg-rose-900/70 transition-colors border border-sky-200/80 dark:border-rose-900 cursor-pointer shadow-2xs"
             >
               <Sparkles className="w-2.5 h-2.5 text-rose-500" />
               <span>5 Đặc Quyền Quản Ngục Google</span>
@@ -192,7 +192,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           )}
           <div className="hidden md:flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-bold">
             <span>🗝️ Chìa Khóa Vàng:</span>
-            <span className="text-slate-600 dark:text-slate-300 font-medium">Cấm Quyền Tuyệt Đối</span>
+            <span className="text-slate-900 dark:text-slate-300 font-medium">Cấm Quyền Tuyệt Đối</span>
           </div>
         </div>
       </div>
@@ -202,7 +202,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         className={`rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 border shadow-lg relative overflow-hidden text-center transition-all ${
           darkMode
             ? 'bg-slate-900/95 border-slate-800 text-slate-100 shadow-pink-950/20'
-            : 'bg-white border-pink-100/80 text-slate-800 shadow-pink-100/50'
+            : 'bg-sky-50 border-sky-200/80 text-slate-900 shadow-pink-100/50'
         }`}
       >
         {/* Soft Decorative Ambient Background */}
@@ -210,7 +210,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <div className="relative z-10 max-w-3xl mx-auto space-y-3 sm:space-y-4">
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-pink-50 dark:bg-pink-950/60 border border-pink-200 dark:border-pink-800/80 text-rose-600 dark:text-rose-300 text-[9.5px] sm:text-[10px] font-black uppercase tracking-wider shadow-xs">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-pink-50 dark:bg-pink-950/60 border border-sky-200 dark:border-pink-800/80 text-rose-600 dark:text-rose-300 text-[9.5px] sm:text-[10px] font-black uppercase tracking-wider shadow-xs">
             <span>🌸 KHU BIỆT GIAM TRÁI TIM MỘNG MƠ · NƠI GIAO THƯƠNG LINH HỒN 🤍</span>
           </div>
 
@@ -224,24 +224,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <span>Nơi Lưu Giữ Các Phạm Nhân Nhỏ</span>
               <span>🔒</span>
             </p>
-            <p className="text-[10px] sm:text-[11px] italic font-serif text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed pt-0.5">
+            <p className="text-[10px] sm:text-[11px] italic font-serif text-slate-900 dark:text-slate-400 max-w-md mx-auto leading-relaxed pt-0.5">
               &ldquo;Khi tình yêu trở thành một bản án vô hạn, chiếc chìa khóa vạn năng chỉ thuộc về người duy nhất.&rdquo;
             </p>
           </div>
 
           {/* Lore Scroll Box */}
-          <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/40 dark:bg-slate-800/50 border border-pink-100 dark:border-slate-800 text-left space-y-1">
-            <div className="flex items-center justify-between text-[9.5px] font-black text-rose-600 dark:text-rose-400">
+          <div className="p-3 sm:p-3.5 rounded-2xl bg-sky-50/90 dark:bg-slate-800/80 border-2 border-sky-400 dark:border-slate-700 text-left space-y-1.5 shadow-sm">
+            <div className="flex items-center justify-between text-[10px] font-black text-blue-900 dark:text-rose-400">
               <span className="flex items-center gap-1 uppercase tracking-wider">
-                <BookOpen className="w-3 h-3" />
+                <BookOpen className="w-3.5 h-3.5 text-blue-700" />
                 <span>CỐT TRUYỆN GIAM CẦM • PRISON LORE</span>
               </span>
-              <span className="text-[8.5px] text-slate-400 flex items-center gap-1">
-                <Shield className="w-2.5 h-2.5 text-slate-400" />
+              <span className="text-[9px] text-blue-800 flex items-center gap-1">
+                <Shield className="w-3 h-3 text-blue-700" />
                 <span>LỆNH TÌM KIẾM ÁI TÌNH</span>
               </span>
             </div>
-            <p className="text-[10.5px] sm:text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 font-serif italic">
+            <p className="text-[11px] sm:text-[11.5px] leading-relaxed text-blue-950 dark:text-slate-300 font-serif italic font-semibold">
               Chào mừng Quản Ngục nhỏ đã đến với Khu Biệt Giam Tình Ái. Nơi đây không có song sắt lạnh lẽo hay tội đồ thế tục, chỉ có những linh hồn cuồng si cam tâm tình nguyện bị giam cầm trong ánh mắt của nàng. Mỗi buồng giam là một trái tim mang án chung thân, mỗi xiềng xích là một lời ước hẹn ngọt ngào không thể buông lơi. Chìa khóa vàng đang nằm trong tay nàng — nàng sẽ bước tới thăm nuôi hay để họ khắc khoải trong đêm muộn?
             </p>
           </div>
@@ -252,7 +252,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={() => onNavigate('cards')}
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-rose-800 via-rose-700 to-indigo-950 text-white flex flex-col items-center justify-center shadow-md shadow-rose-900/30 hover:scale-105 active:scale-95 transition-all cursor-pointer group border-2 border-rose-300/30"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-rose-800 via-rose-700 to-indigo-950 text-white flex flex-col items-center justify-center shadow-md shadow-rose-900/30 hover:scale-105 active:scale-95 transition-all cursor-pointer group border-2 border-sky-300"
               title="Bắt đầu vào buồng giam thăm nuôi"
             >
               <span className="text-[8.5px] sm:text-[9.5px] font-bold text-rose-200">Bắt Đầu</span>
@@ -266,59 +266,59 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={handleHeartClick}
-              className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-rose-200 dark:border-rose-800 bg-white dark:bg-slate-800/90 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-slate-700/80 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 text-[11px] sm:text-xs font-bold"
+              className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border-2 border-sky-400 dark:border-rose-800 bg-sky-50 dark:bg-slate-800/90 text-blue-900 dark:text-rose-400 hover:bg-sky-100 dark:hover:bg-slate-700/80 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 text-[11px] sm:text-xs font-bold"
             >
-              <Heart className="w-3 h-3 fill-rose-500 text-rose-500" />
+              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
               <span>Thả Tim Giữ Chân ({heartCount.toLocaleString('vi-VN')})</span>
             </button>
           </div>
 
           {/* 4 Stat Metric Cards (Updated: 0 Linh Hồn as requested) */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 pt-2.5 border-t-2 border-sky-300 dark:border-slate-800">
             {/* Card 1: 0 Linh Hồn */}
-            <div className="p-2 sm:p-2.5 rounded-xl bg-rose-50/50 dark:bg-slate-800/60 border border-rose-100 dark:border-slate-700/80 text-center space-y-0.5">
-              <span className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-sky-50/90 dark:bg-slate-800/60 border-2 border-sky-400 dark:border-slate-700/80 text-center space-y-1 shadow-xs">
+              <span className="text-[9px] font-black uppercase tracking-wider text-blue-950 dark:text-slate-400 block">
                 PHẠM NHÂN CHỜ GẶP
               </span>
-              <p className="text-sm sm:text-base font-black text-rose-600 dark:text-rose-400">
+              <p className="text-sm sm:text-base font-black text-blue-900 dark:text-rose-400">
                 {characters.length === 0 ? '0 Linh Hồn' : `${characters.length} Linh Hồn`}
               </p>
-              <p className="text-[8.5px] text-slate-400">
+              <p className="text-[9px] font-semibold text-blue-800">
                 {characters.length === 0 ? 'Toàn bộ đã cung khai' : 'Đang ngóng đợi nàng'}
               </p>
             </div>
 
             {/* Card 2: 100% Tuyệt Đối */}
-            <div className="p-2 sm:p-2.5 rounded-xl bg-pink-50/50 dark:bg-slate-800/60 border border-pink-100 dark:border-slate-700/80 text-center space-y-0.5">
-              <span className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-sky-50/90 dark:bg-slate-800/60 border-2 border-sky-400 dark:border-slate-700/80 text-center space-y-1 shadow-xs">
+              <span className="text-[9px] font-black uppercase tracking-wider text-blue-950 dark:text-slate-400 block">
                 ĐỘ SI MÊ TOÀN VIỆN
               </span>
-              <p className="text-sm sm:text-base font-black text-pink-600 dark:text-pink-400">
+              <p className="text-sm sm:text-base font-black text-blue-900 dark:text-pink-400">
                 100% Tuyệt Đối
               </p>
-              <p className="text-[8.5px] text-slate-400">Chỉ hướng về nàng</p>
+              <p className="text-[9px] font-semibold text-blue-800">Chỉ hướng về nàng</p>
             </div>
 
             {/* Card 3: Ngoan Ngoãn */}
-            <div className="p-2 sm:p-2.5 rounded-xl bg-purple-50/50 dark:bg-slate-800/60 border border-purple-100 dark:border-slate-700/80 text-center space-y-0.5">
-              <span className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-sky-50/90 dark:bg-slate-800/60 border-2 border-sky-400 dark:border-slate-700/80 text-center space-y-1 shadow-xs">
+              <span className="text-[9px] font-black uppercase tracking-wider text-blue-950 dark:text-slate-400 block">
                 TRẠNG THÁI AN NINH
               </span>
-              <p className="text-sm sm:text-base font-black text-purple-600 dark:text-purple-400">
+              <p className="text-sm sm:text-base font-black text-blue-900 dark:text-purple-400">
                 • Ngoan Ngoãn
               </p>
-              <p className="text-[8.5px] text-slate-400">Quản Ngục kiểm soát</p>
+              <p className="text-[9px] font-semibold text-blue-800">Quản Ngục kiểm soát</p>
             </div>
 
             {/* Card 4: Thư chứa hồi âm */}
-            <div className="p-2 sm:p-2.5 rounded-xl bg-sky-50/50 dark:bg-slate-800/60 border border-sky-100 dark:border-slate-700/80 text-center space-y-0.5">
-              <span className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-sky-50/90 dark:bg-slate-800/60 border-2 border-sky-400 dark:border-slate-700/80 text-center space-y-1 shadow-xs">
+              <span className="text-[9px] font-black uppercase tracking-wider text-blue-950 dark:text-slate-400 block">
                 THƯ CHỨA HỒI ÂM
               </span>
-              <p className="text-sm sm:text-base font-black text-sky-600 dark:text-sky-400">
+              <p className="text-sm sm:text-base font-black text-blue-900 dark:text-sky-400">
                 {letters.length < 10 ? `0${letters.length}` : letters.length} Phong Bì
               </p>
-              <p className="text-[8.5px] text-slate-400">Nồng nàn hương hoa</p>
+              <p className="text-[9px] font-semibold text-blue-800">Nồng nàn hương hoa</p>
             </div>
           </div>
         </div>
@@ -352,7 +352,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className={`p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex flex-col justify-between group ${
                   darkMode
                     ? 'bg-slate-900/80 border-slate-800 hover:border-pink-500/50 text-slate-100 shadow-sm'
-                    : 'bg-white border-pink-100/90 hover:border-pink-300 text-slate-800 shadow-xs'
+                    : 'bg-sky-50 border-sky-200/90 hover:border-sky-200 text-slate-900 shadow-xs'
                 }`}
               >
                 <div className="space-y-1.5">
@@ -377,7 +377,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-1.5 mt-1.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] font-bold text-rose-500">
+                <div className="pt-1.5 mt-1.5 border-t border-sky-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-bold text-rose-500">
                   <span>{item.footer}</span>
                   <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -415,7 +415,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             className={`py-8 sm:py-10 px-4 text-center rounded-2xl sm:rounded-3xl border border-dashed transition-all ${
               darkMode
                 ? 'bg-slate-900/40 border-slate-800/80 text-slate-300'
-                : 'bg-rose-50/30 border-rose-200/80 text-slate-700'
+                : 'bg-rose-50/30 border-sky-200/80 text-slate-900'
             }`}
           >
             <div className="w-11 h-11 mx-auto mb-2.5 rounded-2xl bg-rose-100/70 dark:bg-slate-800 flex items-center justify-center text-xl shadow-xs">
@@ -438,11 +438,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className={`rounded-3xl border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col group ${
                   darkMode
                     ? 'bg-slate-900/90 border-slate-800 text-slate-100'
-                    : 'bg-white border-pink-100 text-slate-800'
+                    : 'bg-sky-50 border-sky-200 text-slate-900'
                 }`}
               >
                 {/* Header Tag */}
-                <div className="p-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                <div className="p-3 border-b border-sky-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-900 dark:text-slate-400">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-rose-500 inline-block" />
                     <span>Buồng {char.prisonId} · {char.zone || 'Khu Giam Hoa Hồng'}</span>
@@ -480,24 +480,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 border border-sky-200 dark:border-rose-800">
                         Si Tình 100%
                       </span>
                       {char.genres?.[0] && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300">
                           Hệ {char.genres[0]}
                         </span>
                       )}
                     </div>
 
-                    <p className="text-xs text-slate-600 dark:text-slate-400 font-serif italic line-clamp-2">
+                    <p className="text-xs text-slate-900 dark:text-slate-400 font-serif italic line-clamp-2">
                       "{char.firstMessage || char.backstory}"
                     </p>
                   </div>
 
                   <button
                     type="button"
-                    className="w-full py-2.5 rounded-2xl text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/70 border border-rose-200 dark:border-rose-900 hover:bg-rose-100 transition-colors flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+                    className="w-full py-2.5 rounded-2xl text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/70 border border-sky-200 dark:border-rose-900 hover:bg-rose-100 transition-colors flex items-center justify-center gap-1.5 cursor-pointer mt-2"
                   >
                     <span>🗝️ Thăm Buồng Giới Hạn</span>
                   </button>
@@ -509,7 +509,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </div>
 
       {/* 6. HÒM THƯ THĂM NUÔI MẬT (Quick message send) */}
-      <div className="p-5 sm:p-7 rounded-3xl bg-gradient-to-r from-pink-50/90 via-rose-50/70 to-purple-50/80 dark:from-slate-900 dark:via-slate-900/80 dark:to-rose-950/30 border border-pink-200/80 dark:border-slate-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 shadow-xs">
+      <div className="p-5 sm:p-7 rounded-3xl bg-gradient-to-r from-pink-50/90 via-rose-50/70 to-purple-50/80 dark:from-slate-900 dark:via-slate-900/80 dark:to-rose-950/30 border border-sky-200/80 dark:border-slate-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 shadow-xs">
         <div className="flex items-start gap-3.5">
           <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center text-white shrink-0 shadow-md shadow-pink-300/40">
             <Mail className="w-5 h-5" />
@@ -521,7 +521,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-tight">
               Nàng Có Muốn Để Lại Lời Nhắn Nhủ?
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
+            <p className="text-xs text-slate-900 dark:text-slate-400 max-w-xl leading-relaxed">
               Một lá thư tay tẩm hương hoa hồng sẽ xoa dịu nỗi khắc khoải của những tù nhân trong đêm tĩnh lặng. Họ sẽ lập tức hồi âm vào sáng mai!
             </p>
           </div>
@@ -536,7 +536,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             placeholder="Viết vài dòng nhắn gửi ngọt ngào..."
             value={quickMessage}
             onChange={(e) => setQuickMessage(e.target.value)}
-            className="flex-1 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs sm:text-sm focus:border-rose-400 outline-none shadow-xs text-slate-800 dark:text-slate-200"
+            className="flex-1 px-4 py-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs sm:text-sm focus:border-rose-400 outline-none shadow-xs text-slate-900 dark:text-slate-200"
           />
           <button
             type="submit"
@@ -556,9 +556,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* 7. FOOTER BAR */}
       {!hideFooter && (
-        <footer className="pt-6 pb-4 border-t border-slate-200/60 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <footer className="pt-6 pb-4 border-t border-sky-200/60 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="font-extrabold text-slate-800 dark:text-slate-200">Nhật Ký Tù Án</span>
+            <span className="font-extrabold text-slate-900 dark:text-slate-200">Nhật Ký Tù Án</span>
             <span>·</span>
             <span>Cánh cổng giam giữ những rung động ngọt ngào nhất</span>
           </div>

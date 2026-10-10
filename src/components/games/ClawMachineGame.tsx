@@ -15,11 +15,14 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Character } from '../../types';
+import { GameHeader } from './GameHeader';
 
 interface ClawMachineGameProps {
   darkMode: boolean;
   onBack: () => void;
   character?: Character | null;
+  characters?: Character[];
+  onSelectCharacter?: (char: Character) => void;
 }
 
 interface PrizeItem {
@@ -50,7 +53,13 @@ const PACKED_PRIZES: PrizeItem[] = [
   { id: 'p15', name: 'Quả Cầu Tiên Tri Sáng', emoji: '🔮', rarity: 'Huyền Thoại', color: '#8b5cf6', xPos: 60, yPos: 53 },
 ];
 
-export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBack }) => {
+export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ 
+  darkMode, 
+  onBack, 
+  character, 
+  characters, 
+  onSelectCharacter 
+}) => {
   const [coins, setCoins] = useState(30);
   const [clawX, setClawX] = useState(50); // percentage 10% - 90%
   const [clawY, setClawY] = useState(15); // percentage 15% (top) - 75% (bottom)
@@ -154,7 +163,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
           className={`px-3 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
             darkMode
               ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-              : 'bg-white border-rose-200 text-slate-700 hover:bg-rose-50'
+              : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-rose-50'
           }`}
         >
           <ArrowLeft className="w-4 h-4 text-rose-500" />
@@ -170,7 +179,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
       {/* Banner */}
       <div
         className={`p-6 rounded-3xl border shadow-xl ${
-          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100'
+          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200'
         }`}
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -187,7 +196,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
                   Khoang Đầy Ắp Vật Phẩm
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-900 dark:text-slate-400">
                 Khoang kính chứa hàng chục món bảo vật lung linh di chuyển tự do. Căn tọa độ và gắp bất kỳ món quà nào bạn thích!
               </p>
             </div>
@@ -225,7 +234,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
           className={`lg:col-span-2 p-6 rounded-3xl border shadow-2xl flex flex-col items-center justify-between relative overflow-hidden ${
             darkMode
               ? 'bg-slate-950 border-purple-900/50'
-              : 'bg-gradient-to-b from-pink-50 via-white to-purple-50 border-pink-200'
+              : 'bg-gradient-to-b from-pink-50 via-white to-purple-50 border-sky-200'
           }`}
         >
           {/* Glass Chamber */}
@@ -269,7 +278,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
 
                 {/* Caught Prize sticking to claw */}
                 {caughtPrize && (
-                  <div className="text-3xl -mt-2 animate-bounce bg-white/90 dark:bg-slate-900/90 p-1 rounded-full shadow-lg">
+                  <div className="text-3xl -mt-2 animate-bounce bg-sky-50/90 dark:bg-slate-900/90 p-1 rounded-full shadow-lg">
                     {caughtPrize.emoji}
                   </div>
                 )}
@@ -298,7 +307,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
                   <span className="text-3xl sm:text-4xl drop-shadow-lg filter group-hover:brightness-125">
                     {prize.emoji}
                   </span>
-                  <span className="text-[8px] font-bold text-slate-700 dark:text-slate-300 bg-white/90 dark:bg-slate-900/90 px-1 rounded shadow opacity-80 group-hover:opacity-100 whitespace-nowrap">
+                  <span className="text-[8px] font-bold text-slate-900 dark:text-slate-300 bg-sky-50/90 dark:bg-slate-900/90 px-1 rounded shadow opacity-80 group-hover:opacity-100 whitespace-nowrap">
                     {prize.name.split(' ')[0]}
                   </span>
                 </div>
@@ -314,14 +323,14 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
           )}
 
           {/* Control Deck (Joystick Buttons) */}
-          <div className="w-full mt-4 p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          <div className="w-full mt-4 p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-sky-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
             {/* Left/Right buttons */}
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={moveLeft}
                 disabled={isClawing}
-                className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center shadow hover:bg-slate-50 cursor-pointer disabled:opacity-40"
+                className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 flex items-center justify-center shadow hover:bg-slate-50 cursor-pointer disabled:opacity-40"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -329,7 +338,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
                 type="button"
                 onClick={moveRight}
                 disabled={isClawing}
-                className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center shadow hover:bg-slate-50 cursor-pointer disabled:opacity-40"
+                className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 flex items-center justify-center shadow hover:bg-slate-50 cursor-pointer disabled:opacity-40"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -355,7 +364,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
         <div className="space-y-4">
           <div
             className={`p-6 rounded-3xl border shadow-xl space-y-4 ${
-              darkMode ? 'bg-slate-900/70 border-slate-800' : 'bg-white border-pink-100'
+              darkMode ? 'bg-slate-900/70 border-slate-800' : 'bg-sky-50 border-sky-200'
             }`}
           >
             <div className="flex items-center justify-between">
@@ -373,8 +382,8 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
             </p>
 
             {inventory.length === 0 ? (
-              <div className="p-8 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2">
-                <Package className="w-10 h-10 text-slate-300 dark:text-slate-700 mx-auto" />
+              <div className="p-8 rounded-2xl border-2 border-dashed border-sky-200 dark:border-slate-800 text-center space-y-2">
+                <Package className="w-10 h-10 text-slate-300 dark:text-slate-900 mx-auto" />
                 <div className="text-xs font-bold text-slate-400">Tủ quà hiện đang trống</div>
                 <div className="text-[11px] text-slate-400">
                   Hãy thả càng gắp vào khoang bảo vật để thu thập ngay nhé!
@@ -385,7 +394,7 @@ export const ClawMachineGame: React.FC<ClawMachineGameProps> = ({ darkMode, onBa
                 {inventory.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 flex items-center justify-between"
+                    className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-800 flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{item.emoji}</span>

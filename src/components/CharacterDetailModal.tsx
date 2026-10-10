@@ -321,13 +321,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
         className={`w-full max-w-5xl rounded-[32px] border shadow-2xl transition-all my-auto max-h-[95vh] flex flex-col overflow-hidden relative ${
           darkMode
             ? 'bg-slate-950/95 border-slate-800 text-slate-100 shadow-pink-950/40'
-            : 'bg-[#fffbfb] border-pink-200/90 text-slate-800 shadow-pink-200/60'
+            : 'bg-[#fffbfb] border-sky-200/90 text-slate-900 shadow-pink-200/60'
         }`}
       >
         {/* TOP NAVIGATION & ACTION BAR */}
         <div
           className={`px-5 sm:px-8 py-3.5 border-b flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 ${
-            darkMode ? 'border-slate-800 bg-slate-900/60' : 'border-pink-100 bg-white/70'
+            darkMode ? 'border-slate-800 bg-slate-900/60' : 'border-sky-200 bg-sky-50/70'
           }`}
         >
           {/* Breadcrumb & Hot Tags */}
@@ -359,7 +359,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               <button
                 type="button"
                 onClick={handlePrevClick}
-                className="px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-800 transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-900 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-800 transition-colors cursor-pointer flex items-center gap-1"
                 title={`Chuyển sang ${prevPrisoner.name}`}
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -367,13 +367,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </button>
             )}
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-900">|</span>
 
             {nextPrisoner && (
               <button
                 type="button"
                 onClick={handleNextClick}
-                className="px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-800 transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-900 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-800 transition-colors cursor-pointer flex items-center gap-1"
                 title={`Chuyển sang ${nextPrisoner.name}`}
               >
                 <span>Phạm Nhân {nextPrisoner.prisonId.replace('#PRISON-', '#').replace('-KV', '').replace('-LCT', '').replace('-RA', '')}</span>
@@ -388,7 +388,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               className={`p-1.5 px-3 rounded-xl text-[11px] font-bold border transition-colors flex items-center gap-1.5 cursor-pointer ml-1 ${
                 copiedJson
                   ? 'bg-emerald-500/10 border-emerald-400 text-emerald-500'
-                  : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-pink-300'
+                  : 'bg-sky-50 dark:bg-slate-800 border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:border-sky-200'
               }`}
               title="Sao chép toàn bộ mẫu hồ sơ dưới định dạng JSON"
             >
@@ -400,7 +400,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer ml-1"
+              className="p-1.5 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer ml-1"
               aria-label="Đóng"
             >
               <X className="w-5 h-5" />
@@ -416,7 +416,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               className={`p-5 rounded-3xl border transition-all text-center relative overflow-hidden shadow-lg ${
                 darkMode
                   ? 'bg-slate-900/90 border-slate-800'
-                  : 'bg-white border-pink-100 shadow-pink-100/60'
+                  : 'bg-sky-50 border-sky-200 shadow-pink-100/60'
               }`}
             >
               {/* Card top badges */}
@@ -425,13 +425,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                   <Sparkles className="w-3 h-3 text-amber-200 animate-spin" />
                   <span>ĐẲNG CẤP {charRarity}</span>
                 </span>
-                <span className="text-[11px] font-bold font-mono text-slate-400 dark:text-slate-500">
+                <span className="text-[11px] font-bold font-mono text-slate-400 dark:text-slate-900">
                   Mã Số Lồng Giam: {charPrisonId}
                 </span>
               </div>
 
               {/* Photo Card with Overlay ECG Heartbeat */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 shadow-inner group border border-pink-100/60 dark:border-slate-800">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 shadow-inner group border border-sky-200/60 dark:border-slate-800">
                 <img
                   src={charImage}
                   alt={charName}
@@ -453,13 +453,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                 </div>
 
                 {/* Bottom ECG Heartbeat Banner over the photo */}
-                <div className="absolute bottom-2 inset-x-2 p-2.5 rounded-xl bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border border-pink-200/50 dark:border-slate-800 shadow-md z-10 flex items-center justify-between gap-3">
+                <div className="absolute bottom-2 inset-x-2 p-2.5 rounded-xl bg-sky-50/90 dark:bg-slate-950/90 backdrop-blur-md border border-sky-200/50 dark:border-slate-800 shadow-md z-10 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2 text-left">
                     <div className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-sm animate-pulse">
                       💓
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 leading-tight">
+                      <p className="text-[10px] font-bold text-slate-900 dark:text-slate-400 leading-tight">
                         Nhịp Tim Khi Gặp Nàng Quản Ngục
                       </p>
                       <p className="text-xs font-black text-rose-500">
@@ -482,7 +482,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
 
               {/* Character Name & Subtitle under photo */}
               <div className="mt-4 space-y-1">
-                <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">
+                <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100">
                   {charName}
                 </h3>
                 <p className="text-xs italic text-rose-400 font-semibold font-serif">
@@ -491,10 +491,10 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* BỐN CHỈ SỐ XUỐNG DƯỚI: Chiếm Hữu Tuyệt Đối, Án Chung Thân, Độ Trung Thành, Độ Nguy Hiểm */}
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5 text-left">
+              <div className="mt-4 pt-3 border-t border-sky-200 dark:border-slate-800 space-y-2.5 text-left">
                 {/* 1. Chiếm Hữu Tuyệt Đối & Án Chung Thân */}
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="p-2.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 flex items-center gap-2">
+                  <div className="p-2.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/40 border border-sky-200/70 dark:border-rose-900/50 flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center shrink-0">
                       <Lock className="w-4 h-4 text-rose-500" />
                     </div>
@@ -508,15 +508,15 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                     </div>
                   </div>
 
-                  <div className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-slate-200/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-200 flex items-center justify-center text-sm shrink-0">
+                  <div className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-sky-200/70 dark:border-slate-700/60 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-slate-200/80 dark:bg-slate-700/80 text-slate-900 dark:text-slate-200 flex items-center justify-center text-sm shrink-0">
                       ⛓️
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Bản Án
                       </p>
-                      <p className="text-xs font-black text-slate-800 dark:text-slate-100 truncate" title={charSentenceTerm}>
+                      <p className="text-xs font-black text-slate-900 dark:text-slate-100 truncate" title={charSentenceTerm}>
                         {charSentenceTerm}
                       </p>
                     </div>
@@ -525,9 +525,9 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
 
                 {/* 2. Độ Trung Thành & Độ Nguy Hiểm (Gauges) */}
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="p-2.5 rounded-2xl bg-white dark:bg-slate-900/80 border border-pink-200/60 dark:border-slate-800 shadow-2xs">
+                  <div className="p-2.5 rounded-2xl bg-sky-50 dark:bg-slate-900/80 border border-sky-200/60 dark:border-slate-800 shadow-2xs">
                     <div className="flex items-center justify-between text-xs mb-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-900 dark:text-slate-400 flex items-center gap-1">
                         🛡️ Trung Thành
                       </span>
                       <span className="text-xs font-black text-pink-600 dark:text-pink-400">
@@ -542,9 +542,9 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                     </div>
                   </div>
 
-                  <div className="p-2.5 rounded-2xl bg-white dark:bg-slate-900/80 border border-amber-200/60 dark:border-slate-800 shadow-2xs">
+                  <div className="p-2.5 rounded-2xl bg-sky-50 dark:bg-slate-900/80 border border-sky-200/60 dark:border-slate-800 shadow-2xs">
                     <div className="flex items-center justify-between text-xs mb-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-900 dark:text-slate-400 flex items-center gap-1">
                         ⚠️ Nguy Hiểm
                       </span>
                       <span className="text-xs font-black text-amber-500 dark:text-amber-400">
@@ -562,8 +562,8 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* Two Measurement Boxes: Cuồng Ái & Thụ Án */}
-              <div className="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
-                <div className="p-2.5 rounded-2xl bg-rose-50/50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/40 text-center">
+              <div className="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-sky-200 dark:border-slate-800">
+                <div className="p-2.5 rounded-2xl bg-rose-50/50 dark:bg-rose-950/30 border border-sky-200 dark:border-rose-900/40 text-center">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     Mức Độ Cuồng Ái
                   </p>
@@ -607,7 +607,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                   className={`py-2.5 px-3 rounded-2xl font-bold text-xs border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                     isFavorite
                       ? 'bg-pink-500 border-pink-500 text-white shadow-md shadow-pink-400/30'
-                      : 'bg-white dark:bg-slate-800 border-pink-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-pink-400'
+                      : 'bg-sky-50 dark:bg-slate-800 border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:border-pink-400'
                   }`}
                 >
                   <Bookmark className={`w-3.5 h-3.5 ${isFavorite ? 'fill-white' : 'text-amber-500'}`} />
@@ -616,19 +616,19 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* Chat Link Input Bar with Copy & Open */}
-              <div className="mt-3 flex items-center gap-1.5 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs">
+              <div className="mt-3 flex items-center gap-1.5 p-1.5 rounded-2xl border border-sky-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs">
                 <span className="pl-2 text-slate-400">🔗</span>
                 <input
                   type="text"
                   readOnly
                   value={charChatLink}
-                  className="bg-transparent flex-1 outline-none text-[11px] text-slate-500 dark:text-slate-400 truncate font-mono"
+                  className="bg-transparent flex-1 outline-none text-[11px] text-slate-900 dark:text-slate-400 truncate font-mono"
                 />
                 <button
                   type="button"
                   onClick={handleCopyLink}
                   title="Sao chép liên kết"
-                  className="p-1.5 rounded-xl hover:bg-pink-100 dark:hover:bg-slate-800 text-slate-500 hover:text-pink-600 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-xl hover:bg-pink-100 dark:hover:bg-slate-800 text-slate-900 hover:text-pink-600 transition-colors cursor-pointer"
                 >
                   {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
@@ -637,7 +637,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Mở liên kết trò chuyện"
-                  className="p-1.5 rounded-xl hover:bg-pink-100 dark:hover:bg-slate-800 text-slate-500 hover:text-pink-600 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-xl hover:bg-pink-100 dark:hover:bg-slate-800 text-slate-900 hover:text-pink-600 transition-colors cursor-pointer"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
@@ -648,7 +648,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
           {/* ================= RIGHT COLUMN: DETAILED DOSSIER & CONFESSIONS (7 cols) ================= */}
           <div className="lg:col-span-7 space-y-5 text-left">
             {/* Header: Name, Age, Prison Code & Tags */}
-            <div className="space-y-3 pb-3 border-b border-pink-100 dark:border-slate-800">
+            <div className="space-y-3 pb-3 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-start justify-between gap-3 flex-wrap">
                 <div className="flex items-center gap-3">
                   <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
@@ -670,7 +670,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* Sub-info: Identity & Crime */}
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+              <p className="text-xs text-slate-900 dark:text-slate-300 leading-relaxed font-medium">
                 {charOrigin}
               </p>
 
@@ -678,11 +678,11 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {character.genres.map((genre, idx) => {
                   const colors = [
-                    'bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 border-rose-200/50',
-                    'bg-pink-50 dark:bg-pink-950/50 text-pink-600 dark:text-pink-300 border-pink-200/50',
+                    'bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 border-sky-200/50',
+                    'bg-pink-50 dark:bg-pink-950/50 text-pink-600 dark:text-pink-300 border-sky-200/50',
                     'bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-300 border-sky-200/50',
-                    'bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-300 border-purple-200/50',
-                    'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200/50',
+                    'bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-300 border-sky-200/50',
+                    'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-sky-200/50',
                   ];
                   const colorClass = colors[idx % colors.length];
                   return (
@@ -702,13 +702,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               className={`p-5 sm:p-6 rounded-3xl border transition-all relative overflow-hidden space-y-4 ${
                 darkMode
                   ? 'bg-slate-900/75 border-slate-800'
-                  : 'bg-white border-pink-100 shadow-sm shadow-pink-100/30'
+                  : 'bg-sky-50 border-sky-200 shadow-sm shadow-pink-100/30'
               }`}
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <span className="text-base">📖</span>
-                  <h4 className="text-sm font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                  <h4 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-slate-200">
                     Biên Bản Thú Tội & Cốt Truyện Giam Cầm
                   </h4>
                 </div>
@@ -718,7 +718,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* Story Narrative */}
-              <div className="text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-slate-300 space-y-3 whitespace-pre-line font-medium">
+              <div className="text-xs sm:text-[13px] leading-relaxed text-slate-900 dark:text-slate-300 space-y-3 whitespace-pre-line font-medium">
                 {character.backstory}
               </div>
 
@@ -727,7 +727,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                 className={`p-4 rounded-2xl border relative overflow-hidden italic text-xs sm:text-sm font-serif ${
                   darkMode
                     ? 'bg-slate-950/60 border-slate-800 text-rose-300/90'
-                    : 'bg-pink-50/60 border-pink-200/60 text-slate-700'
+                    : 'bg-pink-50/60 border-sky-200/60 text-slate-900'
                 }`}
               >
                 {/* Watermark Lock */}
@@ -745,13 +745,13 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               className={`p-5 sm:p-6 rounded-3xl border transition-all relative overflow-hidden space-y-4 ${
                 darkMode
                   ? 'bg-slate-900/75 border-slate-800'
-                  : 'bg-white border-pink-100 shadow-sm shadow-pink-100/30'
+                  : 'bg-sky-50 border-sky-200 shadow-sm shadow-pink-100/30'
               }`}
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <span className="text-base">💬</span>
-                  <h4 className="text-sm font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                  <h4 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-slate-200">
                     Lời Nhắn Đầu Tiên (First Message)
                   </h4>
                 </div>
@@ -776,7 +776,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                 className={`p-4 rounded-2xl border text-xs sm:text-sm leading-relaxed italic relative ${
                   darkMode
                     ? 'bg-slate-950/80 border-slate-800 text-slate-200'
-                    : 'bg-[#fffafb] border-pink-100 text-slate-800'
+                    : 'bg-[#fffafb] border-sky-200 text-slate-900'
                 }`}
               >
                 <span className="text-pink-500 font-serif text-lg leading-none absolute -top-1 left-2">“</span>
@@ -786,7 +786,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               </div>
 
               {/* Audio visualizer / soundwave strip */}
-              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-sky-200 dark:border-slate-800 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5">
                   <span className={`w-1 h-3 rounded-full bg-rose-400 ${isPlayingVoice ? 'animate-bounce' : ''}`} />
                   <span className={`w-1 h-5 rounded-full bg-pink-500 ${isPlayingVoice ? 'animate-pulse' : ''}`} />
@@ -799,7 +799,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
 
                 <div className="text-right">
                   <p className="text-[10px] text-slate-400 font-medium">
-                    Diễn đọc lồng tiếng: <strong className="text-slate-600 dark:text-slate-300">{charVoiceActor}</strong>
+                    Diễn đọc lồng tiếng: <strong className="text-slate-900 dark:text-slate-300">{charVoiceActor}</strong>
                   </p>
                 </div>
               </div>
@@ -821,7 +821,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
               <button
                 type="button"
                 onClick={() => setShowLoveLetter(!showLoveLetter)}
-                className="py-3.5 px-6 rounded-2xl font-black text-xs sm:text-sm text-rose-600 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-300/60 dark:border-rose-800/60 shadow-md shadow-rose-200/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="py-3.5 px-6 rounded-2xl font-black text-xs sm:text-sm text-rose-600 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-sky-200/60 dark:border-rose-800/60 shadow-md shadow-rose-200/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <span>💌</span>
                 <span>{showLoveLetter ? 'Đóng Thư Thăm Nuôi' : 'Gửi Thư Tình Thăm Nuôi 💌'}</span>
@@ -837,7 +837,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                     onDeleteCharacter(character.id);
                     onClose();
                   }}
-                  className="w-full py-2.5 px-4 rounded-2xl font-black text-xs text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-950/80 border border-rose-200 dark:border-rose-900 flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95 shadow-2xs"
+                  className="w-full py-2.5 px-4 rounded-2xl font-black text-xs text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-950/80 border border-sky-200 dark:border-rose-900 flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95 shadow-2xs"
                   title="Xóa phạm nhân này khỏi danh sách (Bấm xóa luôn)"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
@@ -848,10 +848,10 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
 
             {/* EXPANDABLE LOVE LETTER FORM ("Gửi lời yêu đến chồng nhỏ") */}
             {showLoveLetter && (
-              <div className="p-5 rounded-3xl border border-pink-300/80 bg-pink-50/50 dark:bg-slate-900/90 dark:border-pink-500/30 space-y-4 animate-scale-up">
+              <div className="p-5 rounded-3xl border border-sky-200/80 bg-pink-50/50 dark:bg-slate-900/90 dark:border-pink-500/30 space-y-4 animate-scale-up">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="text-sm font-black text-slate-800 dark:text-slate-100">
+                    <h4 className="text-sm font-black text-slate-900 dark:text-slate-100">
                       💌 Viết Thư Gửi Vào Buồng Giam {charName}
                     </h4>
                     <p className="text-[11px] text-slate-400">
@@ -861,7 +861,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setShowLoveLetter(false)}
-                    className="p-1 rounded-lg text-slate-400 hover:text-slate-600 cursor-pointer"
+                    className="p-1 rounded-lg text-slate-400 hover:text-slate-900 cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -883,7 +883,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                         value={loveSender}
                         onChange={(e) => setLoveSender(e.target.value)}
                         placeholder="VD: Nàng Quản Ngục Nhỏ..."
-                        className="w-full px-3.5 py-2 rounded-xl text-xs border border-pink-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-pink-500"
+                        className="w-full px-3.5 py-2 rounded-xl text-xs border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 outline-none focus:border-pink-500"
                         required
                       />
                     </div>
@@ -898,7 +898,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                             key={idx}
                             type="button"
                             onClick={() => setLoveMessage(preset)}
-                            className="text-[10px] px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-pink-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-pink-400 cursor-pointer text-left"
+                            className="text-[10px] px-2.5 py-1 rounded-lg bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:border-pink-400 cursor-pointer text-left"
                           >
                             {preset}
                           </button>
@@ -911,7 +911,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                         onChange={(e) => setLoveMessage(e.target.value)}
                         placeholder={`Viết đôi dòng nhắn gửi yêu thương đến ${charName}...`}
                         required
-                        className="w-full p-3 rounded-xl text-xs border border-pink-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 outline-none focus:border-pink-500 resize-none font-serif"
+                        className="w-full p-3 rounded-xl text-xs border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 outline-none focus:border-pink-500 resize-none font-serif"
                       />
                     </div>
 
@@ -919,7 +919,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                       <button
                         type="button"
                         onClick={() => setShowLoveLetter(false)}
-                        className="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-slate-600 cursor-pointer"
+                        className="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-slate-900 cursor-pointer"
                       >
                         Hủy
                       </button>
@@ -936,17 +936,17 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
 
                 {/* Love message history if any */}
                 {character.loveMessages && character.loveMessages.length > 0 && (
-                  <div className="pt-2 border-t border-pink-100 dark:border-slate-800 space-y-2 max-h-32 overflow-y-auto">
+                  <div className="pt-2 border-t border-sky-200 dark:border-slate-800 space-y-2 max-h-32 overflow-y-auto">
                     <span className="text-[10px] font-black uppercase text-pink-500">
                       Hộp thư thăm nuôi ({character.loveMessages.length}):
                     </span>
                     {character.loveMessages.map((msg) => (
                       <div
                         key={msg.id}
-                        className="p-2 rounded-xl bg-white dark:bg-slate-800 text-xs border border-pink-100 dark:border-slate-700"
+                        className="p-2 rounded-xl bg-sky-50 dark:bg-slate-800 text-xs border border-sky-200 dark:border-slate-700"
                       >
                         <span className="font-bold text-pink-600 mr-1.5">{msg.senderName}:</span>
-                        <span className="text-slate-600 dark:text-slate-300">"{msg.message}"</span>
+                        <span className="text-slate-900 dark:text-slate-300">"{msg.message}"</span>
                       </div>
                     ))}
                   </div>

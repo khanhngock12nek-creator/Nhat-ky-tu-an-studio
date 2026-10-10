@@ -272,7 +272,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         '“Trời ơi Lục Cảnh Tiêu làm tim em vỡ vụn! Giọng thì thầm nghe nổi da gà luôn á Quản Ngục ơi...”',
       statusTag: '↩ Đang soạn phúc đáp',
       badgeTag: 'Ưu tiên cao',
-      badgeColor: 'bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border-rose-200',
+      badgeColor: 'bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border-sky-200',
     },
     {
       id: 'msg-2',
@@ -300,7 +300,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         '“Hiệu ứng lắc xích buồng giam lúc quay gacha hơi nhỏ một xíu, nếu quản ngục cho tiếng xích kêu giòn giã hơn thì mê ly luôn ạ!”',
       statusTag: '↩ Trả lời thư này',
       badgeTag: 'Âm thanh',
-      badgeColor: 'bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200',
+      badgeColor: 'bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-sky-200',
     },
   ];
 
@@ -316,7 +316,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     content: `“${l.content}”`,
     statusTag: '↩ Trả lời thư này',
     badgeTag: l.category === 'idea' ? 'Ý tưởng mới' : 'Thư tay',
-    badgeColor: 'bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 border-pink-200',
+    badgeColor: 'bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 border-sky-200',
     fullLetter: l,
   }));
 
@@ -748,7 +748,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         className={`w-full max-w-7xl rounded-[2.5rem] overflow-hidden shadow-2xl border transition-all my-auto max-h-[94vh] flex flex-col relative ${
           darkMode
             ? 'bg-slate-950/95 border-pink-900/40 text-slate-100 shadow-pink-950/40'
-            : 'bg-[#fffafd] border-pink-200/90 text-slate-800 shadow-pink-200/50'
+            : 'bg-[#fffafd] border-sky-200/90 text-slate-900 shadow-pink-200/50'
         }`}
       >
         {/* Soft Ambient Rose Background Glow */}
@@ -758,18 +758,18 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         {/* TOP HEADER (Exactly like user screenshot) */}
         <div
           className={`px-5 sm:px-8 py-5 border-b flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shrink-0 relative z-10 ${
-            darkMode ? 'border-slate-800/80 bg-slate-900/60' : 'border-pink-100 bg-white/70'
+            darkMode ? 'border-slate-800/80 bg-slate-900/60' : 'border-sky-200 bg-sky-50/70'
           }`}
         >
           {/* Left Title Zone */}
           <div className="space-y-1 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 text-[11px] font-black text-rose-600 dark:text-rose-300 uppercase tracking-wider shadow-2xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/60 border border-sky-200 dark:border-rose-900 text-[11px] font-black text-rose-600 dark:text-rose-300 uppercase tracking-wider shadow-2xs">
               <span>★ PHÂN KHU THẨM QUYỀN QUẢN NGỤC • Phiên Bản 2.4 Rose–Gold</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight font-serif flex items-center gap-2">
               <span>Bảng Điều Khiển & Sáng Tạo Tù Án</span>
             </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+            <p className="text-xs text-slate-900 dark:text-slate-400 leading-relaxed font-sans">
               Nơi quản ngục dệt nên những xiềng xích ái tình, hồi đáp những bức thư thì thầm từ người hâm mộ và kiến tạo bầu không khí mê hoặc cho toàn bộ ngục thất.
             </p>
           </div>
@@ -779,14 +779,14 @@ export const AdminModal: React.FC<AdminModalProps> = ({
             {isLoggedIn && (
               <>
                 {/* Switcher Pills */}
-                <div className="p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center gap-1 shadow-inner text-xs font-bold">
+                <div className="p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-sky-200/80 dark:border-slate-700/80 flex items-center gap-1 shadow-inner text-xs font-bold">
                   <button
                     type="button"
                     onClick={() => setViewMode('all')}
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                       viewMode === 'all'
                         ? 'bg-rose-500 text-white shadow-xs font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-rose-500'
+                        : 'text-slate-900 dark:text-slate-400 hover:text-rose-500'
                     }`}
                   >
                     <Layers className="w-3.5 h-3.5" />
@@ -799,7 +799,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                       viewMode === 'create'
                         ? 'bg-rose-500 text-white shadow-xs font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-rose-500'
+                        : 'text-slate-900 dark:text-slate-400 hover:text-rose-500'
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" />
@@ -812,7 +812,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                       viewMode === 'charactersList'
                         ? 'bg-rose-500 text-white shadow-xs font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-rose-500'
+                        : 'text-slate-900 dark:text-slate-400 hover:text-rose-500'
                     }`}
                   >
                     <Users className="w-3.5 h-3.5" />
@@ -825,7 +825,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                       viewMode === 'inbox'
                         ? 'bg-rose-500 text-white shadow-xs font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-rose-500'
+                        : 'text-slate-900 dark:text-slate-400 hover:text-rose-500'
                     }`}
                   >
                     <Mail className="w-3.5 h-3.5" />
@@ -838,7 +838,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                       viewMode === 'theme'
                         ? 'bg-rose-500 text-white shadow-xs font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-rose-500'
+                        : 'text-slate-900 dark:text-slate-400 hover:text-rose-500'
                     }`}
                   >
                     <Palette className="w-3.5 h-3.5" />
@@ -847,7 +847,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 </div>
 
                 {/* Status Pill: Buồng giam: 12 Đang hoạt động */}
-                <div className="px-3.5 py-1.5 rounded-2xl bg-rose-50/90 dark:bg-rose-950/70 border border-rose-200/80 dark:border-rose-900/60 flex items-center gap-2 text-xs font-bold text-rose-700 dark:text-rose-300 shadow-2xs">
+                <div className="px-3.5 py-1.5 rounded-2xl bg-rose-50/90 dark:bg-rose-950/70 border border-sky-200/80 dark:border-rose-900/60 flex items-center gap-2 text-xs font-bold text-rose-700 dark:text-rose-300 shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
                   <span>
                     Buồng giam: <strong>{characters.length} Đang hoạt động</strong>
@@ -858,7 +858,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="p-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-rose-950/60 text-slate-600 dark:text-slate-300 cursor-pointer transition-colors"
+                  className="p-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-rose-950/60 text-slate-900 dark:text-slate-300 cursor-pointer transition-colors"
                   title="Đăng xuất quản trị viên"
                 >
                   <LogOut className="w-4 h-4" />
@@ -870,7 +870,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer transition-colors"
+              className="p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 cursor-pointer transition-colors"
               aria-label="Đóng"
             >
               <X className="w-5 h-5" />
@@ -919,7 +919,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       ? 'border-rose-500 bg-rose-50/50 dark:bg-rose-950/20 text-rose-500'
                       : darkMode
                       ? 'bg-slate-800 border-slate-700 text-white focus:border-rose-500'
-                      : 'bg-white border-pink-200 text-slate-800 focus:border-rose-500'
+                      : 'bg-sky-50 border-sky-200 text-slate-900 focus:border-rose-500'
                   }`}
                 />
                 {passwordError && (
@@ -943,11 +943,11 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   className={`rounded-3xl border p-5 sm:p-6 space-y-5 transition-all shadow-sm max-w-4xl mx-auto w-full ${
                     darkMode
                       ? 'bg-slate-900/80 border-slate-800 text-slate-100'
-                      : 'bg-white/90 border-pink-100/90 text-slate-800 shadow-pink-100/30'
+                      : 'bg-sky-50/90 border-sky-200/90 text-slate-900 shadow-pink-100/30'
                   }`}
                 >
                   {/* Header */}
-                  <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between pb-4 border-b border-sky-200 dark:border-slate-800">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-950/60 flex items-center justify-center text-rose-500 shadow-2xs">
                         <Users className="w-5 h-5" />
@@ -962,7 +962,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       </div>
                     </div>
 
-                    <span className="px-3 py-1 rounded-full text-xs font-black bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-900">
+                    <span className="px-3 py-1 rounded-full text-xs font-black bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 border border-sky-200 dark:border-rose-900">
                       Đang giam giữ: {characters.length}
                     </span>
                   </div>
@@ -976,7 +976,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         placeholder="Tìm kiếm phạm nhân, buồng giam..."
                         value={charSearchQuery}
                         onChange={(e) => setCharSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs font-bold text-slate-900 dark:text-white outline-none focus:border-rose-400 shadow-2xs"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs font-bold text-slate-900 dark:text-white outline-none focus:border-rose-400 shadow-2xs"
                       />
                     </div>
 
@@ -991,7 +991,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             setSelectedCharIds(characters.map((c) => c.id));
                           }
                         }}
-                        className="px-3 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+                        className="px-3 py-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-200 text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
                       >
                         {selectedCharIds.length === characters.length
                           ? '✓ Bỏ chọn'
@@ -1045,7 +1045,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             className={`p-4 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
                               darkMode
                                 ? 'bg-slate-800/60 border-slate-700 hover:border-rose-500'
-                                : 'bg-white border-slate-200/90 hover:border-rose-300 shadow-xs'
+                                : 'bg-sky-50 border-sky-200/90 hover:border-sky-200 shadow-xs'
                             }`}
                           >
                             <div className="flex items-center gap-3">
@@ -1062,7 +1062,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 className="w-4 h-4 accent-rose-500 rounded cursor-pointer"
                               />
 
-                              <div className="w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700 bg-slate-900">
+                              <div className="w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-sky-200 dark:border-slate-700 bg-slate-900">
                                 {c.avatarUrl ? (
                                   <img src={c.avatarUrl} alt={c.name} className="w-full h-full object-cover" />
                                 ) : (
@@ -1104,7 +1104,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   handleEditCharacter(c);
                                   setViewMode('create');
                                 }}
-                                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300 cursor-pointer"
+                                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-900 dark:text-slate-300 cursor-pointer"
                                 title="Sửa hồ sơ"
                               >
                                 <Edit3 className="w-4 h-4" />
@@ -1153,12 +1153,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   className={`rounded-3xl border p-5 sm:p-6 flex flex-col justify-between space-y-5 transition-all shadow-sm ${
                     darkMode
                       ? 'bg-slate-900/80 border-slate-800 text-slate-100'
-                      : 'bg-white/90 border-pink-100/90 text-slate-800 shadow-pink-100/30'
+                      : 'bg-sky-50/90 border-sky-200/90 text-slate-900 shadow-pink-100/30'
                   }`}
                 >
                   <div className="space-y-4">
                     {/* Header Col 1 */}
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between pb-3 border-b border-sky-200 dark:border-slate-800">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-950/60 flex items-center justify-center text-rose-500 shadow-2xs">
                           <Heart className="w-5 h-5 fill-rose-500" />
@@ -1174,7 +1174,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       </div>
 
                       {/* Top-Right Badge: Khu A-07 */}
-                      <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-900">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 border border-sky-200 dark:border-rose-900">
                         {zone === 'Phòng Giam Lạnh'
                           ? 'Khu A-07'
                           : zone === 'Phòng Giam Ấm'
@@ -1186,7 +1186,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     {/* Form Fields */}
                     <form onSubmit={handleSaveCharacter} className="space-y-4">
                       {/* Quick preset templates */}
-                      <div className="p-3 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/50 space-y-2">
+                      <div className="p-3 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-sky-200 dark:border-rose-900/50 space-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-[11px] font-black text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
                             <Sparkles className="w-3.5 h-3.5" /> Gợi ý hồ sơ mẫu nhanh:
@@ -1194,7 +1194,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           <button
                             type="button"
                             onClick={resetForm}
-                            className="text-[10px] font-bold text-slate-500 hover:text-rose-600 underline cursor-pointer"
+                            className="text-[10px] font-bold text-slate-900 hover:text-rose-600 underline cursor-pointer"
                           >
                             Xóa trắng form
                           </button>
@@ -1205,7 +1205,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               key={pIdx}
                               type="button"
                               onClick={() => handleLoadPreset(p)}
-                              className="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-800 text-rose-600 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-slate-700 text-[10px] font-bold transition-all shadow-2xs cursor-pointer"
+                              className="px-2.5 py-1 rounded-xl bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-rose-800 text-rose-600 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-slate-700 text-[10px] font-bold transition-all shadow-2xs cursor-pointer"
                             >
                               + {p.name} ({p.prisonId})
                             </button>
@@ -1217,7 +1217,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {/* Họ & Tên */}
                         <div className="space-y-1.5">
-                          <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                          <label className="text-xs font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                             <span>Họ & Tên Phạm Nhân *</span>
                           </label>
                           <div className="relative">
@@ -1230,7 +1230,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               value={name}
                               onChange={(e) => setName(e.target.value)}
                               required
-                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
+                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
                             />
                           </div>
                         </div>
@@ -1238,7 +1238,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         {/* Mã Số Lồng Giam (Quản trị viên tự viết) */}
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between">
-                            <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            <label className="text-xs font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                               <span>Mã Số Lồng Giam *</span>
                               <span className="text-[10px] text-rose-500 font-bold">(Tự viết)</span>
                             </label>
@@ -1256,7 +1256,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               value={prisonId}
                               onChange={(e) => setPrisonId(e.target.value)}
                               required
-                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold font-mono text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
+                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold font-mono text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
                             />
                           </div>
                           <div className="flex flex-wrap gap-1 pt-0.5">
@@ -1265,7 +1265,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 key={chip}
                                 type="button"
                                 onClick={() => setPrisonId(chip)}
-                                className="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 cursor-pointer"
+                                className="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-300 cursor-pointer"
                               >
                                 {chip}
                               </button>
@@ -1276,12 +1276,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                       {/* 2. Chân Dung Áp Giải (1:1 hoặc 3:4) */}
                       <div className="space-y-1.5">
-                        <label className="text-xs font-black text-slate-700 dark:text-slate-300 block">
+                        <label className="text-xs font-black text-slate-900 dark:text-slate-300 block">
                           Chân Dung Áp Giải (1:1 hoặc 3:4)
                         </label>
 
                         {/* Image Preview Card Container */}
-                        <div className="relative h-48 sm:h-52 w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-900 shadow-inner group">
+                        <div className="relative h-48 sm:h-52 w-full rounded-2xl overflow-hidden border border-sky-200 dark:border-slate-700 bg-slate-900 shadow-inner group">
                           {avatarUrl ? (
                             <img
                               src={avatarUrl}
@@ -1326,7 +1326,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             <button
                               type="button"
                               onClick={() => charFileInputRef.current?.click()}
-                              className="flex-1 py-2.5 px-3 rounded-2xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-slate-800/80 hover:bg-rose-100 dark:hover:bg-slate-700 text-rose-600 dark:text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                              className="flex-1 py-2.5 px-3 rounded-2xl border border-sky-200 dark:border-rose-900 bg-rose-50/60 dark:bg-slate-800/80 hover:bg-rose-100 dark:hover:bg-slate-700 text-rose-600 dark:text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
                             >
                               <span>🌸 Tải ảnh từ thiết bị (Tự động nén siêu nhẹ &lt;80KB)</span>
                             </button>
@@ -1337,7 +1337,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   setAvatarUrl('');
                                   showToast('Đã xóa ảnh chân dung, chuyển về gradient mặc định');
                                 }}
-                                className="px-3 py-2 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-slate-800 text-xs font-bold transition-colors cursor-pointer"
+                                className="px-3 py-2 rounded-2xl border border-sky-200 dark:border-slate-700 text-slate-900 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-slate-800 text-xs font-bold transition-colors cursor-pointer"
                                 title="Xóa ảnh chân dung"
                               >
                                 ✕ Bỏ ảnh
@@ -1347,7 +1347,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                           {/* Dán liên kết ảnh trực tuyến (URL) */}
                           <div className="space-y-1">
-                            <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center justify-between">
+                            <label className="text-[11px] font-bold text-slate-900 dark:text-slate-400 flex items-center justify-between">
                               <span>🔗 Hoặc dán liên kết ảnh trực tuyến (URL):</span>
                               <span className="text-[10px] text-rose-500">Khuyên dùng cho ảnh HD</span>
                             </label>
@@ -1357,7 +1357,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 placeholder="https://images.unsplash.com/... hoặc link ảnh bất kỳ"
                                 value={avatarUrl.startsWith('data:') ? '' : avatarUrl}
                                 onChange={(e) => setAvatarUrl(e.target.value.trim())}
-                                className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400 font-mono shadow-2xs"
+                                className="w-full px-3 py-2 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400 font-mono shadow-2xs"
                               />
                             </div>
                             {avatarUrl.startsWith('data:') && (
@@ -1378,7 +1378,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       </div>
 
                       {/* 3. Bản Án (Án Gì), Mức Độ Chiếm Hữu, Độ Nguy Hiểm & Độ Trung Thành */}
-                      <div className="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50/70 via-pink-50/40 to-amber-50/40 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/40 border border-rose-200/80 dark:border-slate-700 space-y-3.5 shadow-2xs">
+                      <div className="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50/70 via-pink-50/40 to-amber-50/40 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/40 border border-sky-200/80 dark:border-slate-700 space-y-3.5 shadow-2xs">
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-black text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
                             <Shield className="w-3.5 h-3.5 text-rose-500" />
@@ -1392,7 +1392,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         {/* Mục chọn Án Gì */}
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between">
-                            <label className="text-[11px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            <label className="text-[11px] font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                               <span>Án Gì (Bản Án / Thời Hạn Thụ Án) *</span>
                             </label>
                             <span className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
@@ -1415,7 +1415,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 className={`px-2.5 py-1 rounded-xl text-[10px] font-bold transition-all cursor-pointer ${
                                   sentenceTerm === term
                                     ? 'bg-rose-500 text-white shadow-xs'
-                                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-rose-300'
+                                    : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:border-sky-200'
                                 }`}
                               >
                                 {term}
@@ -1427,14 +1427,14 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             placeholder="Hoặc tự viết bản án khác (vd: Án Chung Thân Trong Tim Quản Ngục...)"
                             value={sentenceTerm}
                             onChange={(e) => setSentenceTerm(e.target.value)}
-                            className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400"
+                            className="w-full px-3 py-2 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400"
                           />
                         </div>
 
                         {/* Mức Độ Chiếm Hữu */}
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between">
-                            <label className="text-[11px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            <label className="text-[11px] font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                               <span>Mức Độ Chiếm Hữu</span>
                             </label>
                             <span className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
@@ -1456,7 +1456,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 className={`px-2.5 py-1 rounded-xl text-[10px] font-bold transition-all cursor-pointer ${
                                   possession === p
                                     ? 'bg-rose-600 text-white shadow-xs'
-                                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-rose-300'
+                                    : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:border-sky-200'
                                 }`}
                               >
                                 {p}
@@ -1468,16 +1468,16 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             placeholder="Hoặc tự viết đặc tính chiếm hữu..."
                             value={possession}
                             onChange={(e) => setPossession(e.target.value)}
-                            className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400"
+                            className="w-full px-3 py-1.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400"
                           />
                         </div>
 
                         {/* Sliders chọn Độ Nguy Hiểm & Độ Trung Thành */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                           {/* Độ Nguy Hiểm */}
-                          <div className="p-3 rounded-2xl bg-white/95 dark:bg-slate-800/95 border border-amber-200/70 dark:border-slate-700 space-y-2">
+                          <div className="p-3 rounded-2xl bg-sky-50/95 dark:bg-slate-800/95 border border-sky-200/70 dark:border-slate-700 space-y-2">
                             <div className="flex items-center justify-between text-xs font-black">
-                              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                              <span className="flex items-center gap-1 text-slate-900 dark:text-slate-300 text-[11px]">
                                 ⚠️ Độ Nguy Hiểm:
                               </span>
                               <span className={`px-2 py-0.5 rounded-lg text-[11px] font-black ${
@@ -1517,7 +1517,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   className={`px-2 py-0.5 rounded-lg text-[10px] font-bold cursor-pointer transition-colors ${
                                     danger === lvl.val
                                       ? 'bg-amber-500 text-white'
-                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-amber-100'
+                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-300 hover:bg-amber-100'
                                   }`}
                                 >
                                   {lvl.label} ({lvl.val}%)
@@ -1527,9 +1527,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           </div>
 
                           {/* Độ Trung Thành */}
-                          <div className="p-3 rounded-2xl bg-white/95 dark:bg-slate-800/95 border border-pink-200/70 dark:border-slate-700 space-y-2">
+                          <div className="p-3 rounded-2xl bg-sky-50/95 dark:bg-slate-800/95 border border-sky-200/70 dark:border-slate-700 space-y-2">
                             <div className="flex items-center justify-between text-xs font-black">
-                              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                              <span className="flex items-center gap-1 text-slate-900 dark:text-slate-300 text-[11px]">
                                 🛡️ Độ Trung Thành:
                               </span>
                               <span className="px-2 py-0.5 rounded-lg text-[11px] font-black bg-rose-500 text-white">
@@ -1563,7 +1563,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   className={`px-2 py-0.5 rounded-lg text-[10px] font-bold cursor-pointer transition-colors ${
                                     loyalty === lvl.val
                                       ? 'bg-rose-500 text-white'
-                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-rose-100'
+                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-300 hover:bg-rose-100'
                                   }`}
                                 >
                                   {lvl.label} ({lvl.val}%)
@@ -1577,7 +1577,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       {/* 4. Thể Loại & Dấu Ấn Chiếm Hữu */}
                       <div className="space-y-1.5">
                         <div className="flex items-center justify-between">
-                          <label className="text-xs font-black text-slate-700 dark:text-slate-300">
+                          <label className="text-xs font-black text-slate-900 dark:text-slate-300">
                             Thể Loại & Dấu Ấn Chiếm Hữu
                           </label>
                           <span className="text-[10px] font-bold text-slate-400">
@@ -1586,11 +1586,11 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         </div>
 
                         {/* Tag Chips with Remove (×) */}
-                        <div className="flex flex-wrap gap-1.5 p-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 min-h-[44px]">
+                        <div className="flex flex-wrap gap-1.5 p-2 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 min-h-[44px]">
                           {selectedGenres.map((genre) => (
                             <span
                               key={genre}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-black bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 shadow-2xs"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-black bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-sky-200 dark:border-rose-800 shadow-2xs"
                             >
                               <span>{genre}</span>
                               <button
@@ -1618,19 +1618,19 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   handleAddGenre();
                                 }
                               }}
-                              className="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs outline-none focus:border-rose-400"
+                              className="flex-1 px-3 py-1.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs outline-none focus:border-rose-400"
                             />
                             <button
                               type="button"
                               onClick={handleAddGenre}
-                              className="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-rose-500 hover:text-white text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer"
+                              className="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-rose-500 hover:text-white text-slate-900 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer"
                             >
                               + Thêm
                             </button>
                           </div>
 
                           {/* Quick 21 official genres selector chips */}
-                          <div className="max-h-24 overflow-y-auto p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 flex flex-wrap gap-1">
+                          <div className="max-h-24 overflow-y-auto p-2 rounded-xl border border-sky-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 flex flex-wrap gap-1">
                             {allGenres.map((g) => {
                               const isSel = selectedGenres.includes(g);
                               return (
@@ -1647,7 +1647,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   className={`px-2 py-0.5 rounded-lg text-[10px] font-semibold transition-colors cursor-pointer ${
                                     isSel
                                       ? 'bg-rose-500 text-white font-bold'
-                                      : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-600 hover:border-rose-400'
+                                      : 'bg-sky-50 dark:bg-slate-700 text-slate-900 dark:text-slate-200 border border-sky-200 dark:border-slate-600 hover:border-rose-400'
                                   }`}
                                 >
                                   {isSel ? '✓ ' : '+ '}{g}
@@ -1660,7 +1660,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                       {/* Tin Nhắn Đầu (First Message) */}
                       <div className="space-y-1.5">
-                        <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                        <label className="text-xs font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                           <MessageSquare className="w-3.5 h-3.5 text-rose-500" />
                           <span>Tin Nhắn Đầu (First Message) *</span>
                         </label>
@@ -1669,13 +1669,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           value={firstMessage}
                           onChange={(e) => setFirstMessage(e.target.value)}
                           placeholder="Chào nàng quản ngục bé nhỏ, lại tới giờ kiểm tra buồng giam..."
-                          className="w-full p-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400 shadow-2xs resize-none"
+                          className="w-full p-2.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400 shadow-2xs resize-none"
                         />
                       </div>
 
                       {/* Chỗ để link nhân vật (Chat Link) */}
                       <div className="space-y-1.5">
-                        <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                        <label className="text-xs font-black text-slate-900 dark:text-slate-300 flex items-center gap-1">
                           <LinkIcon className="w-3.5 h-3.5 text-rose-500" />
                           <span>Chỗ Để Link Nhân Vật (Chat / Web Link)</span>
                         </label>
@@ -1684,13 +1684,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           value={chatLink}
                           onChange={(e) => setChatLink(e.target.value)}
                           placeholder="https://c.ai/... hoặc link trò chuyện"
-                          className="w-full px-3 py-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400 shadow-2xs font-mono"
+                          className="w-full px-3 py-2 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400 shadow-2xs font-mono"
                         />
                       </div>
 
                       {/* 4. Án Tích & Tội Danh Giam Cầm */}
                       <div className="space-y-1.5">
-                        <label className="text-xs font-black text-slate-700 dark:text-slate-300 block">
+                        <label className="text-xs font-black text-slate-900 dark:text-slate-300 block">
                           Án Tích & Tội Danh Giam Cầm
                         </label>
                         <textarea
@@ -1698,12 +1698,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           value={backstory}
                           onChange={(e) => setBackstory(e.target.value)}
                           placeholder="Từng là vị thẩm phán trẻ tuổi nhất hoàng gia, tự nguyện mang cùm xích bằng bạc đính hoa hồng..."
-                          className="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-800 dark:text-slate-200 font-serif leading-relaxed outline-none focus:border-rose-400 shadow-2xs resize-none"
+                          className="w-full p-3 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs text-slate-900 dark:text-slate-200 font-serif leading-relaxed outline-none focus:border-rose-400 shadow-2xs resize-none"
                         />
                       </div>
 
                       {/* 5. Voice & Audio Dubbing Section (Collapsible Accordion) */}
-                      <div className="rounded-2xl border border-pink-200/80 dark:border-slate-800 bg-pink-50/30 dark:bg-slate-800/30 p-3 space-y-3">
+                      <div className="rounded-2xl border border-sky-200/80 dark:border-slate-800 bg-pink-50/30 dark:bg-slate-800/30 p-3 space-y-3">
                         <div
                           onClick={() => setShowVoiceSection((prev) => !prev)}
                           className="flex items-center justify-between cursor-pointer select-none"
@@ -1721,13 +1721,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           <div className="space-y-3 pt-2 text-xs">
                             {/* Voice actor select */}
                             <div>
-                              <label className="text-[11px] font-bold text-slate-500 block mb-1">
+                              <label className="text-[11px] font-bold text-slate-900 block mb-1">
                                 Diễn viên lồng tiếng mẫu:
                               </label>
                               <select
                                 value={voiceActor}
                                 onChange={(e) => setVoiceActor(e.target.value)}
-                                className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-medium"
+                                className="w-full px-3 py-1.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs font-medium"
                               >
                                 {POPULAR_VOICE_ACTORS.map((va) => (
                                   <option key={va.name} value={va.name}>
@@ -1739,7 +1739,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                             {/* Voice Line Quote */}
                             <div>
-                              <label className="text-[11px] font-bold text-slate-500 block mb-1">
+                              <label className="text-[11px] font-bold text-slate-900 block mb-1">
                                 Lời thoại giọng nói:
                               </label>
                               <input
@@ -1747,7 +1747,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 placeholder="Nhập câu thoại riêng cho giọng nói..."
                                 value={voiceLine}
                                 onChange={(e) => setVoiceLine(e.target.value)}
-                                className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs"
+                                className="w-full px-3 py-1.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs"
                               />
                             </div>
 
@@ -1817,7 +1817,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         <button
                           type="button"
                           onClick={() => setShowCharacterListDrawer((prev) => !prev)}
-                          className="py-3 px-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 font-bold text-xs cursor-pointer"
+                          className="py-3 px-3.5 rounded-2xl border border-sky-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-300 hover:bg-slate-100 font-bold text-xs cursor-pointer"
                           title="Xem danh sách phạm nhân"
                         >
                           📋 ({characters.length})
@@ -1827,7 +1827,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                     {/* Character list drawer if toggled */}
                     {showCharacterListDrawer && (
-                      <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 mt-3 animate-fadeIn">
+                      <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-sky-200 dark:border-slate-700 space-y-2 mt-3 animate-fadeIn">
                         <div className="flex items-center justify-between text-xs font-black">
                           <span>Danh Sách Phạm Nhân Hiện Tại</span>
                           <span className="text-slate-400">{characters.length} buồng</span>
@@ -1841,7 +1841,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             {characters.map((c) => (
                               <div
                                 key={c.id}
-                                className="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-700/60 border border-slate-200/80 dark:border-slate-600 text-xs"
+                                className="flex items-center justify-between p-2 rounded-xl bg-sky-50 dark:bg-slate-700/60 border border-sky-200/80 dark:border-slate-600 text-xs"
                               >
                                 <span className="font-bold truncate max-w-[140px]">{c.name}</span>
                                 <div className="flex items-center gap-1.5">
@@ -1886,12 +1886,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   className={`rounded-3xl border p-5 sm:p-6 flex flex-col justify-between space-y-5 transition-all shadow-sm ${
                     darkMode
                       ? 'bg-slate-900/80 border-slate-800 text-slate-100'
-                      : 'bg-white/90 border-pink-100/90 text-slate-800 shadow-pink-100/30'
+                      : 'bg-sky-50/90 border-sky-200/90 text-slate-900 shadow-pink-100/30'
                   }`}
                 >
                   <div className="space-y-4">
                     {/* Header Col 2 */}
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between pb-3 border-b border-sky-200 dark:border-slate-800">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-sky-500 shadow-2xs">
                           <Mail className="w-5 h-5" />
@@ -1919,7 +1919,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={`px-3 py-1 rounded-xl font-bold transition-all cursor-pointer shrink-0 ${
                           inboxFilter === 'all'
                             ? 'bg-rose-900 text-white shadow-2xs'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300'
                         }`}
                       >
                         Tất cả ({combinedInbox.length})
@@ -1931,7 +1931,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={`px-3 py-1 rounded-xl font-bold transition-all cursor-pointer shrink-0 ${
                           inboxFilter === 'love'
                             ? 'bg-rose-900 text-white shadow-2xs'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300'
                         }`}
                       >
                         Lời Tỏ Tình
@@ -1943,7 +1943,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={`px-3 py-1 rounded-xl font-bold transition-all cursor-pointer shrink-0 ${
                           inboxFilter === 'idea'
                             ? 'bg-rose-900 text-white shadow-2xs'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300'
                         }`}
                       >
                         Ý Tưởng Mới
@@ -1955,7 +1955,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={`px-3 py-1 rounded-xl font-bold transition-all cursor-pointer shrink-0 ${
                           inboxFilter === 'review'
                             ? 'bg-rose-900 text-white shadow-2xs'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300'
                         }`}
                       >
                         Góp Ý
@@ -1969,7 +1969,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         return (
                           <div
                             key={msg.id}
-                            className="p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2.5 transition-all hover:border-pink-300"
+                            className="p-3.5 rounded-2xl border border-sky-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2.5 transition-all hover:border-sky-200"
                           >
                             {/* Card Top: Avatar, Name, Dot, Actions */}
                             <div className="flex items-center justify-between">
@@ -2013,7 +2013,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 <button
                                   type="button"
                                   onClick={() => setDeletedMsgIds((prev) => [...prev, msg.id])}
-                                  className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                                  className="text-slate-400 hover:text-slate-900 transition-colors cursor-pointer"
                                 >
                                   <Trash2 className="w-3.5 h-3.5" />
                                 </button>
@@ -2021,12 +2021,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             </div>
 
                             {/* Letter Content Quote */}
-                            <p className="text-xs text-slate-700 dark:text-slate-300 font-serif leading-relaxed italic">
+                            <p className="text-xs text-slate-900 dark:text-slate-300 font-serif leading-relaxed italic">
                               {msg.content}
                             </p>
 
                             {/* Card Bottom Meta & Reply Trigger */}
-                            <div className="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-slate-700/60 text-[10px]">
+                            <div className="flex items-center justify-between pt-1 border-t border-sky-200/60 dark:border-slate-700/60 text-[10px]">
                               <button
                                 type="button"
                                 onClick={() => {
@@ -2051,7 +2051,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                 {msg.badgeTag && (
                                   <span
                                     className={`px-2 py-0.5 rounded-full font-black border ${
-                                      msg.badgeColor || 'bg-rose-50 text-rose-600 border-rose-200'
+                                      msg.badgeColor || 'bg-rose-50 text-rose-600 border-sky-200'
                                     }`}
                                   >
                                     {msg.badgeTag}
@@ -2067,7 +2067,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     {/* Bottom Reply Box (Phúc Đáp Tới Yuki_Amane) */}
                     <form
                       onSubmit={handleSendReply}
-                      className="p-3.5 rounded-2xl border border-rose-200/90 dark:border-rose-900/60 bg-rose-50/40 dark:bg-slate-800/60 space-y-2 text-xs"
+                      className="p-3.5 rounded-2xl border border-sky-200/90 dark:border-rose-900/60 bg-rose-50/40 dark:bg-slate-800/60 space-y-2 text-xs"
                     >
                       <div className="flex items-center justify-between text-[11px] font-black">
                         <span className="text-rose-700 dark:text-rose-300">
@@ -2081,7 +2081,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         value={replyContent}
                         onChange={(e) => setReplyContent(e.target.value)}
                         placeholder="Nhập nội dung phúc đáp gửi tới nàng..."
-                        className="w-full p-2.5 rounded-xl border border-rose-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400 resize-none font-serif leading-relaxed"
+                        className="w-full p-2.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-slate-200 outline-none focus:border-rose-400 resize-none font-serif leading-relaxed"
                       />
 
                       <button
@@ -2104,12 +2104,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   className={`rounded-3xl border p-5 sm:p-6 flex flex-col justify-between space-y-5 transition-all shadow-sm ${
                     darkMode
                       ? 'bg-slate-900/80 border-slate-800 text-slate-100'
-                      : 'bg-white/90 border-pink-100/90 text-slate-800 shadow-pink-100/30'
+                      : 'bg-sky-50/90 border-sky-200/90 text-slate-900 shadow-pink-100/30'
                   }`}
                 >
                   <div className="space-y-4">
                     {/* Header Col 3 */}
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between pb-3 border-b border-sky-200 dark:border-slate-800">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-2xl bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-purple-500 shadow-2xs">
                           <Palette className="w-5 h-5" />
@@ -2130,7 +2130,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         onClick={() => setIsVibrantMode((prev) => !prev)}
                         className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider transition-all cursor-pointer ${
                           isVibrantMode
-                            ? 'bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-300 border border-pink-200'
+                            ? 'bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-300 border border-sky-200'
                             : 'bg-slate-100 text-slate-400'
                         }`}
                       >
@@ -2145,8 +2145,8 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         onClick={() => setWallpaperTarget('banner')}
                         className={`flex-1 py-1.5 rounded-xl transition-all cursor-pointer ${
                           wallpaperTarget === 'banner'
-                            ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-300 shadow-xs'
-                            : 'text-slate-500'
+                            ? 'bg-sky-50 dark:bg-slate-700 text-rose-600 dark:text-rose-300 shadow-xs'
+                            : 'text-slate-900'
                         }`}
                       >
                         Khung Cửa Nhà Giam
@@ -2156,8 +2156,8 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         onClick={() => setWallpaperTarget('site')}
                         className={`flex-1 py-1.5 rounded-xl transition-all cursor-pointer ${
                           wallpaperTarget === 'site'
-                            ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-300 shadow-xs'
-                            : 'text-slate-500'
+                            ? 'bg-sky-50 dark:bg-slate-700 text-rose-600 dark:text-rose-300 shadow-xs'
+                            : 'text-slate-900'
                         }`}
                       >
                         Toàn Bộ Trang Web
@@ -2166,7 +2166,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                     {/* Chủ Đề Phòng Nền Có Sẵn (4 Cards Grid in Screenshot) */}
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-slate-700 dark:text-slate-300 block">
+                      <label className="text-xs font-black text-slate-900 dark:text-slate-300 block">
                         Chủ Đề Phòng Nền Có Sẵn
                       </label>
 
@@ -2182,7 +2182,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               className={`rounded-2xl border p-2 space-y-1.5 cursor-pointer transition-all relative overflow-hidden group ${
                                 isSelected
                                   ? 'border-rose-500 bg-rose-50/50 dark:bg-rose-950/40 shadow-xs'
-                                  : 'border-slate-200 dark:border-slate-800 hover:border-pink-300 bg-white dark:bg-slate-800/60'
+                                  : 'border-sky-200 dark:border-slate-800 hover:border-sky-200 bg-sky-50 dark:bg-slate-800/60'
                               }`}
                             >
                               <div className="h-20 w-full rounded-xl overflow-hidden relative">
@@ -2207,10 +2207,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
                                     isSelected
                                       ? 'border-rose-500 bg-rose-500 text-white'
-                                      : 'border-slate-300'
+                                      : 'border-sky-200'
                                   }`}
                                 >
-                                  {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                                  {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-sky-50" />}
                                 </div>
                               </div>
                             </div>
@@ -2221,20 +2221,20 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                     {/* Hoặc Tải Nền Cá Nhân (1920x1080) */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-black text-slate-700 dark:text-slate-300 block">
+                      <label className="text-xs font-black text-slate-900 dark:text-slate-300 block">
                         Hoặc Tải Nền Cá Nhân (1920x1080)
                       </label>
 
                       <div
                         onClick={() => wallpaperFileInputRef.current?.click()}
-                        className="p-4 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/40 hover:bg-rose-50/50 dark:hover:bg-slate-800 hover:border-rose-300 text-center cursor-pointer transition-all flex items-center justify-between gap-3"
+                        className="p-4 rounded-2xl border border-dashed border-sky-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/40 hover:bg-rose-50/50 dark:hover:bg-slate-800 hover:border-sky-200 text-center cursor-pointer transition-all flex items-center justify-between gap-3"
                       >
                         <div className="flex items-center gap-2.5 text-left">
                           <div className="w-8 h-8 rounded-xl bg-pink-100 dark:bg-slate-700 flex items-center justify-center text-rose-500">
                             <ImageIcon className="w-4 h-4" />
                           </div>
                           <div>
-                            <p className="text-xs font-black text-slate-800 dark:text-slate-200">
+                            <p className="text-xs font-black text-slate-900 dark:text-slate-200">
                               Tải ảnh nền (.png, .webp, .jpg)
                             </p>
                             <p className="text-[10px] text-slate-400">
@@ -2259,7 +2259,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       {/* 1. Độ Mờ Kính (Glass Blur) */}
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-xs font-bold">
-                          <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                          <span className="text-slate-900 dark:text-slate-300 flex items-center gap-1">
                             <span>✨</span>
                             <span>Độ Mờ Kính (Glass Blur)</span>
                           </span>
@@ -2278,7 +2278,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       {/* 2. Độ Tối Phủ Nền (Overlay) */}
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-xs font-bold">
-                          <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                          <span className="text-slate-900 dark:text-slate-300 flex items-center gap-1">
                             <span>🌙</span>
                             <span>Độ Tối Phủ Nền (Overlay)</span>
                           </span>
@@ -2297,7 +2297,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                     {/* Hiệu Ứng Hạt Không Gian (Particles in Mockup) */}
                     <div className="space-y-1.5 pt-1">
-                      <label className="text-xs font-black text-slate-700 dark:text-slate-300 block">
+                      <label className="text-xs font-black text-slate-900 dark:text-slate-300 block">
                         Hiệu Ứng Hạt Không Gian (Particles)
                       </label>
 
@@ -2311,7 +2311,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           className={`p-2 rounded-2xl border text-center transition-all cursor-pointer ${
                             particleType === 'petals'
                               ? 'border-rose-400 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 font-bold shadow-2xs'
-                              : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
+                              : 'border-sky-200 dark:border-slate-800 text-slate-900 dark:text-slate-400'
                           }`}
                         >
                           <span className="block text-sm mb-0.5">🌸</span>
@@ -2327,7 +2327,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           className={`p-2 rounded-2xl border text-center transition-all cursor-pointer ${
                             particleType === 'stars'
                               ? 'border-rose-400 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 font-bold shadow-2xs'
-                              : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
+                              : 'border-sky-200 dark:border-slate-800 text-slate-900 dark:text-slate-400'
                           }`}
                         >
                           <span className="block text-sm mb-0.5">✨</span>
@@ -2343,7 +2343,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           className={`p-2 rounded-2xl border text-center transition-all cursor-pointer ${
                             particleType === 'rain'
                               ? 'border-rose-400 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300 font-bold shadow-2xs'
-                              : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
+                              : 'border-sky-200 dark:border-slate-800 text-slate-900 dark:text-slate-400'
                           }`}
                         >
                           <span className="block text-sm mb-0.5">🌧️</span>

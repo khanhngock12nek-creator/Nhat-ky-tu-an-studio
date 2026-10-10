@@ -142,14 +142,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 space-y-3 sm:space-y-4 animate-fade-in font-sans">
         {/* Section Header */}
         <div className="text-center space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-100/70 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 text-[9px] font-black tracking-wide border border-rose-200/60 dark:border-rose-900/40">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-100/70 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 text-[9px] font-black tracking-wide border border-sky-200/60 dark:border-rose-900/40">
             <HeartPulse className="w-2.5 h-2.5 text-rose-500 animate-pulse" />
             <span>KHU BIỆT LẬP HOA HỒNG • PHÒNG KHÁM ĐANG TRỐNG</span>
           </div>
           <h1 className="text-lg sm:text-xl lg:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-pink-500 via-rose-400 to-sky-400 bg-clip-text text-transparent font-serif">
             Phòng Giám Sát Tâm Lý & Y Án Mật
           </h1>
-          <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+          <p className="text-[10px] sm:text-[11px] text-slate-900 dark:text-slate-400 max-w-md mx-auto">
             Hồ sơ thần kinh cấp cứu • Nơi theo dõi nhịp tim loạn nhịp si tình, giám sát vết tích còng xích và kê đơn tình dược xoa dịu buồng giam.
           </p>
         </div>
@@ -159,7 +159,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           className={`p-4 sm:p-6 text-center rounded-2xl sm:rounded-3xl border border-dashed relative overflow-hidden transition-all shadow-md ${
             darkMode
               ? 'bg-slate-900/80 border-rose-900/50 text-slate-100 shadow-rose-950/20'
-              : 'bg-white/90 border-rose-200 text-slate-800 shadow-pink-100/40'
+              : 'bg-sky-50/90 border-sky-200 text-slate-900 shadow-pink-100/40'
           }`}
         >
           <div className="absolute -top-20 -left-20 w-48 h-48 bg-rose-400/10 blur-3xl pointer-events-none" />
@@ -173,7 +173,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold mb-1.5 bg-pink-50 dark:bg-slate-800 text-pink-600 dark:text-pink-300 border border-pink-200/60 dark:border-slate-700">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold mb-1.5 bg-pink-50 dark:bg-slate-800 text-pink-600 dark:text-pink-300 border border-sky-200/60 dark:border-slate-700">
             <Stethoscope className="w-2.5 h-2.5" />
             <span>0 BỆNH NHÂN CHỜ KHÁM • BUỒNG TRỰC YÊN TĨNH</span>
           </div>
@@ -181,7 +181,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           <h2 className="text-base sm:text-lg font-black mb-1 font-serif">
             Hiện Chưa Có Tù Nhân Nào Trong Danh Sách Giám Sát Tâm Lý
           </h2>
-          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-3.5 leading-relaxed">
+          <p className="text-[11px] sm:text-xs text-slate-900 dark:text-slate-400 max-w-md mx-auto mb-3.5 leading-relaxed">
             Tất cả các buồng biệt giam hiện đang hoàn toàn yên tĩnh và không có bệnh nhân thần kinh cấp cứu.
             Chưa có phạm nhân nào có dấu hiệu loạn nhịp si tình hay chấn thương do giật xích phòng giam.
             Khi Quản Trị Viên khởi tạo phạm nhân mới, bệnh án và máy đo điện tâm đồ ECG sẽ tự động kích hoạt!
@@ -205,7 +205,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                 className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-bold text-xs transition-all border cursor-pointer ${
                   darkMode
                     ? 'bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700'
-                    : 'bg-white border-pink-200 text-slate-700 hover:bg-pink-50 shadow-2xs'
+                    : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-pink-50 shadow-2xs'
                 }`}
               >
                 <span>Quay Về Cửa Nhà Giam</span>
@@ -223,7 +223,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-rose-100 dark:bg-rose-950/60 text-rose-600 flex items-center justify-center mb-1.5">
@@ -232,14 +232,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Điện Tâm Đồ & Sóng Não
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Máy đo ECG Lead II 135 BPM thời gian thực, đo xung thần kinh hưng phấn và trạng thái loạn nhịp si tình.
               </p>
             </div>
 
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center mb-1.5">
@@ -248,14 +248,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Bản Đồ Thân Thể Vết Tích
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Theo dõi 3 điểm chấn thương: trầy xước cổ tay do giật xích buồng giam và vết bầm xương quai xanh.
               </p>
             </div>
 
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-purple-600 flex items-center justify-center mb-1.5">
@@ -264,14 +264,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Kê Đơn Tình Dược & Liệu Pháp
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Phác đồ điều trị: Siro an thần cánh hồng, Trầm hương hoa chuông xông phòng và tham vấn kín 1:1.
               </p>
             </div>
 
             <div
               className={`p-3 rounded-2xl border transition-all ${
-                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white/80 border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50/80 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="w-7 h-7 rounded-lg bg-sky-100 dark:bg-sky-950/60 text-sky-600 flex items-center justify-center mb-1.5">
@@ -280,7 +280,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               <h4 className="font-bold text-[11px] sm:text-xs mb-0.5 text-slate-900 dark:text-white">
                 Đóng Dấu Y Lệnh Đặc Cách
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[10px] sm:text-[10.5px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Chữ ký điện tử Velvet Warden cùng con dấu đỏ niêm phong hồ sơ bệnh án tối mật buồng giam.
               </p>
             </div>
@@ -299,7 +299,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
         className={`p-4 sm:p-5 rounded-3xl border transition-all relative overflow-hidden shadow-sm ${
           darkMode
             ? 'bg-slate-900/90 border-slate-800 text-slate-100'
-            : 'bg-white/95 border-pink-100 text-slate-800 shadow-pink-100/30'
+            : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-100/30'
         }`}
       >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -317,7 +317,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               </span>
             </div>
 
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-900 dark:text-slate-400">
               Hồ sơ thần kinh cấp cứu • Mã phân loại: Velvet-Psyche #094-S
             </p>
           </div>
@@ -326,7 +326,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           <div className="flex items-center gap-2.5 shrink-0">
             <div
               className={`px-3 py-1.5 rounded-xl border flex items-center gap-1.5 text-xs font-bold ${
-                darkMode ? 'bg-slate-800/80 border-slate-700 text-rose-300' : 'bg-rose-50 border-rose-100 text-rose-600'
+                darkMode ? 'bg-slate-800/80 border-slate-700 text-rose-300' : 'bg-rose-50 border-sky-200 text-rose-600'
               }`}
             >
               <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
@@ -356,10 +356,10 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 1A: Danh Sách Bệnh Án Khẩn */}
           <div
             className={`p-5 rounded-3xl border space-y-3.5 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <Activity className="w-4 h-4 text-rose-500" />
                 <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
@@ -381,13 +381,13 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                       isSelected
                         ? darkMode
                           ? 'bg-slate-800 border-rose-500 shadow-md shadow-rose-950/40'
-                          : 'bg-rose-50/70 border-rose-300 shadow-sm'
+                          : 'bg-rose-50/70 border-sky-200 shadow-sm'
                         : darkMode
                         ? 'bg-slate-800/40 border-slate-700/60 hover:bg-slate-800 text-slate-300'
-                        : 'bg-white border-pink-100 hover:bg-rose-50/30 text-slate-700'
+                        : 'bg-sky-50 border-sky-200 hover:bg-rose-50/30 text-slate-900'
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-2xl overflow-hidden shrink-0 border border-pink-200 shadow-2xs">
+                    <div className="w-10 h-10 rounded-2xl overflow-hidden shrink-0 border border-sky-200 shadow-2xs">
                       <img src={p.avatar} alt={p.name} className="w-full h-full object-cover" />
                     </div>
 
@@ -414,7 +414,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 1B: Hồ Sơ Chi Tiết Bệnh Nhân Đang Chọn */}
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
             {/* Avatar & Patient Name */}
@@ -446,7 +446,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             <div className="grid grid-cols-3 gap-2">
               <div
                 className={`p-2.5 rounded-2xl border text-center ${
-                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-slate-100'
+                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-sky-200'
                 }`}
               >
                 <span className="text-[9px] font-black uppercase text-slate-400 block">CHIỀU CAO</span>
@@ -454,7 +454,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               </div>
               <div
                 className={`p-2.5 rounded-2xl border text-center ${
-                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-slate-100'
+                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-sky-200'
                 }`}
               >
                 <span className="text-[9px] font-black uppercase text-slate-400 block">CÂN NẶNG</span>
@@ -462,7 +462,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               </div>
               <div
                 className={`p-2.5 rounded-2xl border text-center ${
-                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-slate-100'
+                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50 border-sky-200'
                 }`}
               >
                 <span className="text-[9px] font-black uppercase text-slate-400 block">THÂN NHIỆT</span>
@@ -473,14 +473,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* Đánh Giá Trạng Thái Tâm Thần */}
             <div
               className={`p-3.5 rounded-2xl border space-y-1.5 ${
-                darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/50 border-rose-100'
+                darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/50 border-sky-200'
               }`}
             >
               <div className="flex items-center gap-1.5 text-rose-500 font-bold text-xs">
                 <span>🩺</span>
                 <span>Đánh Giá Trạng Thái Tâm Thần</span>
               </div>
-              <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
+              <p className="text-xs text-slate-900 dark:text-slate-300 italic leading-relaxed">
                 &ldquo;{patient.evalMental}&rdquo;
               </p>
             </div>
@@ -489,7 +489,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             <div className="space-y-3 pt-1">
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slate-700 dark:text-slate-300">CHỈ SỐ NGOAN NGOÃN</span>
+                  <span className="text-slate-900 dark:text-slate-300">CHỈ SỐ NGOAN NGOÃN</span>
                   <span className="text-rose-500">{patient.obedienceRate}% (Chỉ trước mặt bạn)</span>
                 </div>
                 <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
@@ -502,7 +502,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slate-700 dark:text-slate-300">ĐỘ NGUY HIỂM ĐỐI VỚI NGƯỜI KHÁC</span>
+                  <span className="text-slate-900 dark:text-slate-300">ĐỘ NGUY HIỂM ĐỐI VỚI NGƯỜI KHÁC</span>
                   <span className="text-rose-600 dark:text-rose-400">{patient.dangerLevel}</span>
                 </div>
                 <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
@@ -523,10 +523,10 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 2A: Điện Tâm Đồ & Xung Điện Não */}
           <div
             className={`p-5 rounded-3xl border space-y-3.5 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <HeartPulse className="w-4 h-4 text-rose-500" />
                 <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
@@ -541,7 +541,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* ECG Graphic / Animated Wave Display */}
             <div
               className={`p-3 rounded-2xl border overflow-hidden relative ${
-                darkMode ? 'bg-slate-950 border-slate-800' : 'bg-rose-50/50 border-rose-100'
+                darkMode ? 'bg-slate-950 border-slate-800' : 'bg-rose-50/50 border-sky-200'
               }`}
             >
               <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
@@ -559,7 +559,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                 </svg>
               </div>
 
-              <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-between text-[10px] text-slate-900 dark:text-slate-400 pt-1 border-t border-sky-200 dark:border-slate-800">
                 <span>Thùy Trán (Sóng Beta): Hưng Phấn</span>
                 <span>Đồng Tử Co Giãn: 5.8mm</span>
               </div>
@@ -569,10 +569,10 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 2B: Bản Đồ Thân Thể & Vết Tích Giam Cầm */}
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <Thermometer className="w-4 h-4 text-rose-500" />
                 <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
@@ -585,7 +585,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* Silhouette Figure with Interactive Nodes */}
             <div
               className={`py-6 px-4 rounded-2xl border relative flex justify-center items-center min-h-[220px] ${
-                darkMode ? 'bg-slate-950/60 border-slate-800' : 'bg-slate-50/70 border-slate-100'
+                darkMode ? 'bg-slate-950/60 border-slate-800' : 'bg-slate-50/70 border-sky-200'
               }`}
             >
               {/* Silhouette Body SVG */}
@@ -633,25 +633,25 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             <div className="space-y-2.5">
               <div
                 className={`p-3 rounded-2xl border space-y-1 ${
-                  darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-slate-50 border-slate-100'
+                  darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-slate-50 border-sky-200'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slate-800 dark:text-slate-200">
+                  <span className="text-slate-900 dark:text-slate-200">
                     🔗 Vết Xích Cổ Tay • Khớp Tay Phải
                   </span>
-                  <span className="text-[10px] text-slate-500 bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded-md">
+                  <span className="text-[10px] text-slate-900 bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded-md">
                     Băng Gạc Tơ Tằm
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                   {patient.wristInjury}
                 </p>
               </div>
 
               <div
                 className={`p-3 rounded-2xl border space-y-1 ${
-                  darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/50 border-rose-100'
+                  darkMode ? 'bg-slate-800/40 border-slate-700/80' : 'bg-rose-50/50 border-sky-200'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs font-bold">
@@ -662,7 +662,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                     Thoa Thuốc Hoa Hồng
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                   {patient.collarInjury}
                 </p>
               </div>
@@ -670,14 +670,14 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
               {/* Bút Ký Bác Sĩ Tâm Lý Trực Ban */}
               <div
                 className={`p-3.5 rounded-2xl border space-y-1.5 ${
-                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-pink-50/60 border-pink-100'
+                  darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-pink-50/60 border-sky-200'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs font-black text-rose-500">
                   <span>BÚT KÝ BÁC SĨ TÂM LÝ TRỰC BAN</span>
                   <span className="text-[10px] font-mono text-slate-400">02:15 AM</span>
                 </div>
-                <p className="text-xs text-slate-700 dark:text-slate-300 italic leading-relaxed">
+                <p className="text-xs text-slate-900 dark:text-slate-300 italic leading-relaxed">
                   &ldquo;{patient.doctorNotes}&rdquo;
                 </p>
               </div>
@@ -692,10 +692,10 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 3A: Kê Đơn Tình Dược & Liệu Pháp */}
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-sky-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <Pill className="w-4 h-4 text-rose-500" />
                 <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
@@ -708,7 +708,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* Item 1: Siro An Thần Cánh Hồng */}
             <div
               className={`p-3.5 rounded-2xl border space-y-2 transition-all ${
-                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-sky-50 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -719,7 +719,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                   Uống Đêm
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Chiết xuất hoa hồng nhung giảm trầm cảm. Tác dụng giảm 20% kích động ban đêm, mô phỏng cảm giác được người thương ôm ấp.
               </p>
               <div className="pt-1.5 flex items-center justify-between">
@@ -741,7 +741,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* Item 2: Trầm Hương Hoa Chuông */}
             <div
               className={`p-3.5 rounded-2xl border space-y-2 transition-all ${
-                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-sky-50 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -752,7 +752,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                   Xông Phòng
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Xua tan ác mộng và ảo giác bị bỏ rơi. Đốt tại buồng biệt giam đúng 02:00 AM mỗi ngày để ổn định sóng não.
               </p>
               <div className="pt-1.5 flex items-center justify-between">
@@ -774,7 +774,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             {/* Item 3: Tham Vấn Kín 1:1 Có Rèm Nhung */}
             <div
               className={`p-3.5 rounded-2xl border space-y-2 transition-all ${
-                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-pink-100 shadow-2xs'
+                darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-sky-50 border-sky-200 shadow-2xs'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -785,7 +785,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                   ĐẶC CÁCH
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-[11px] text-slate-900 dark:text-slate-400 leading-relaxed">
                 Chỉ thị cho phép Quản Ngục Trưởng trực tiếp ngồi đối diện cách 30cm, nắm tay phạm nhân để xoa dịu phản xạ co thắt lồng ngực.
               </p>
               <div className="pt-1.5 flex items-center justify-between">
@@ -804,24 +804,24 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
           {/* Card 3B: Phê Duyệt & Đóng Dấu Y Lệnh */}
           <div
             className={`p-5 rounded-3xl border space-y-4 shadow-sm ${
-              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100 shadow-pink-100/30'
+              darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-pink-100/30'
             }`}
           >
-            <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center gap-2 pb-2 border-b border-sky-200 dark:border-slate-800">
               <Stamp className="w-4 h-4 text-rose-500" />
               <h3 className="font-black text-sm text-slate-900 dark:text-white font-serif">
                 Phê Duyệt & Đóng Dấu Y Lệnh
               </h3>
             </div>
 
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-900 dark:text-slate-400 leading-relaxed">
               Y lệnh điều trị tâm thần đặc cấp bắt buộc phải có chữ ký xác nhận số hóa của Bác Sĩ Trưởng cùng Quản Ngục Phụ Trách.
             </p>
 
             {/* Signature Box */}
             <div
               className={`p-3 rounded-2xl border text-center space-y-1 ${
-                darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-rose-50/40 border-rose-100'
+                darkMode ? 'bg-slate-800/60 border-slate-700' : 'bg-rose-50/40 border-sky-200'
               }`}
             >
               <span className="text-[9px] font-black uppercase text-slate-400 block tracking-wider">
@@ -838,7 +838,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
                 className={`p-2.5 rounded-2xl border text-center shrink-0 ${
                   isSigned
                     ? 'bg-rose-500 text-white border-rose-500'
-                    : 'bg-rose-100 dark:bg-rose-950/70 text-rose-600 border-rose-200'
+                    : 'bg-rose-100 dark:bg-rose-950/70 text-rose-600 border-sky-200'
                 }`}
               >
                 <Stamp className="w-4 h-4 mx-auto mb-0.5" />
@@ -862,7 +862,7 @@ export const PsychWardView: React.FC<PsychWardViewProps> = ({
             </span>
 
             {/* Bottom Emergency Lockdown */}
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div className="pt-2 border-t border-sky-200 dark:border-slate-800 flex items-center justify-between">
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span>Mã Khẩn Cấp Báo Động...</span>

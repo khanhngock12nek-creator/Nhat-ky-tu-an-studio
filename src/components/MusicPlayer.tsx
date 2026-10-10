@@ -142,7 +142,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
           className={`group p-2 rounded-r-2xl shadow-xl transition-all duration-300 border-y border-r cursor-pointer flex items-center justify-center ${
             darkMode
               ? 'bg-slate-900/90 border-pink-500/40 text-slate-100 shadow-pink-950/50 hover:bg-slate-800 hover:scale-105'
-              : 'bg-white/90 border-pink-200 text-slate-800 shadow-pink-200/60 hover:bg-pink-50 hover:scale-105'
+              : 'bg-sky-50/90 border-sky-200 text-slate-900 shadow-pink-200/60 hover:bg-pink-50 hover:scale-105'
           } ${isOpen ? '-translate-x-full opacity-0 pointer-events-none' : 'translate-x-0 opacity-100'}`}
           title={`Âm nhạc: ${currentSong.title} - ${currentSong.artist} (Bấm để mở danh sách)`}
         >
@@ -183,9 +183,9 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
             {/* Equalizer Wave Bars if playing */}
             {isPlaying && (
               <div className="absolute -bottom-1 -left-1 flex items-end gap-0.5 z-20 bg-pink-500/90 px-1 py-0.5 rounded-full shadow-sm">
-                <div className="w-0.5 h-1.5 bg-white rounded-full animate-music-bar-1" />
-                <div className="w-0.5 h-2 bg-white rounded-full animate-music-bar-2" />
-                <div className="w-0.5 h-1 bg-white rounded-full animate-music-bar-3" />
+                <div className="w-0.5 h-1.5 bg-sky-50 rounded-full animate-music-bar-1" />
+                <div className="w-0.5 h-2 bg-sky-50 rounded-full animate-music-bar-2" />
+                <div className="w-0.5 h-1 bg-sky-50 rounded-full animate-music-bar-3" />
               </div>
             )}
           </div>
@@ -210,13 +210,13 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
         className={`fixed top-0 left-0 h-full w-full sm:w-[380px] z-50 shadow-2xl transition-transform duration-300 ease-out flex flex-col border-r ${
           darkMode
             ? 'bg-slate-900/95 border-pink-500/30 text-slate-100 shadow-pink-950/60'
-            : 'bg-white/95 border-pink-200 text-slate-800 shadow-pink-200/50'
+            : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-200/50'
         } ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         {/* Top Header of the Player */}
         <div
           className={`p-4 border-b flex items-center justify-between ${
-            darkMode ? 'border-slate-800 bg-slate-950/50' : 'border-pink-100 bg-pink-50/60'
+            darkMode ? 'border-slate-800 bg-slate-950/50' : 'border-sky-200 bg-pink-50/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -240,7 +240,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                   ? 'bg-pink-500 text-white shadow-md shadow-pink-500/30'
                   : darkMode
                   ? 'hover:bg-slate-800 text-slate-300'
-                  : 'hover:bg-pink-100 text-slate-600'
+                  : 'hover:bg-pink-100 text-slate-900'
               }`}
               title={showVideo ? 'Chuyển về giao diện Đĩa Than' : 'Xem Video MV YouTube'}
             >
@@ -252,7 +252,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
               type="button"
               onClick={() => setIsOpen(false)}
               className={`p-2 rounded-xl transition-all cursor-pointer ${
-                darkMode ? 'hover:bg-slate-800 text-slate-400' : 'hover:bg-pink-100 text-slate-500'
+                darkMode ? 'hover:bg-slate-800 text-slate-400' : 'hover:bg-pink-100 text-slate-900'
               }`}
               title="Thu nhỏ thanh xoay"
             >
@@ -268,7 +268,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
             className={`relative rounded-3xl p-5 overflow-hidden transition-all border shadow-inner flex flex-col items-center justify-center ${
               darkMode
                 ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950/60 border-slate-800'
-                : 'bg-gradient-to-b from-pink-50 via-rose-50/40 to-sky-50 border-pink-100'
+                : 'bg-gradient-to-b from-pink-50 via-rose-50/40 to-sky-50 border-sky-200'
             }`}
           >
             {showVideo ? (
@@ -339,7 +339,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                     }}
                   >
                     {/* Pivot base */}
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-slate-700 to-slate-400 border border-slate-300 shadow-md absolute -top-1 right-2 flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-slate-700 to-slate-400 border border-sky-200 shadow-md absolute -top-1 right-2 flex items-center justify-center">
                       <div className="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-inner" />
                     </div>
 
@@ -406,8 +406,8 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                   isLooping
                     ? 'text-pink-500 bg-pink-500/10'
                     : darkMode
-                    ? 'text-slate-500 hover:text-slate-300'
-                    : 'text-slate-400 hover:text-slate-600'
+                    ? 'text-slate-900 hover:text-slate-300'
+                    : 'text-slate-400 hover:text-slate-900'
                 }`}
                 title={isLooping ? 'Đang lặp lại bài hát' : 'Tắt lặp lại'}
               >
@@ -421,7 +421,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                 className={`p-2.5 rounded-2xl transition-all cursor-pointer active:scale-90 ${
                   darkMode
                     ? 'bg-slate-800 text-slate-200 hover:bg-slate-700'
-                    : 'bg-white text-slate-700 hover:bg-pink-100 shadow-sm'
+                    : 'bg-sky-50 text-slate-900 hover:bg-pink-100 shadow-sm'
                 }`}
                 title="Bài trước đó"
               >
@@ -449,7 +449,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                 className={`p-2.5 rounded-2xl transition-all cursor-pointer active:scale-90 ${
                   darkMode
                     ? 'bg-slate-800 text-slate-200 hover:bg-slate-700'
-                    : 'bg-white text-slate-700 hover:bg-pink-100 shadow-sm'
+                    : 'bg-sky-50 text-slate-900 hover:bg-pink-100 shadow-sm'
                 }`}
                 title="Bài kế tiếp"
               >
@@ -465,7 +465,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                     ? 'text-rose-500 bg-rose-500/10'
                     : darkMode
                     ? 'text-slate-400 hover:text-slate-200'
-                    : 'text-slate-500 hover:text-slate-700'
+                    : 'text-slate-900 hover:text-slate-900'
                 }`}
                 title={isMuted ? 'Mở lại tiếng' : 'Tắt tiếng'}
               >
@@ -510,10 +510,10 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
                       isSelected
                         ? darkMode
                           ? 'bg-pink-950/40 border-pink-500/50 text-white shadow-md shadow-pink-950/30'
-                          : 'bg-gradient-to-r from-pink-50 to-rose-50 border-pink-300 text-pink-900 shadow-sm'
+                          : 'bg-gradient-to-r from-pink-50 to-rose-50 border-sky-200 text-pink-900 shadow-sm'
                         : darkMode
                         ? 'bg-slate-800/50 border-slate-700/60 text-slate-300 hover:bg-slate-800 hover:border-slate-600'
-                        : 'bg-white/80 border-pink-100 text-slate-700 hover:bg-pink-50/50 hover:border-pink-200'
+                        : 'bg-sky-50/80 border-sky-200 text-slate-900 hover:bg-pink-50/50 hover:border-sky-200'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
@@ -572,7 +572,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ darkMode }) => {
         {/* Footer tip */}
         <div
           className={`p-3 border-t text-center text-[11px] opacity-70 ${
-            darkMode ? 'border-slate-800 bg-slate-950/40' : 'border-pink-100 bg-pink-50/40'
+            darkMode ? 'border-slate-800 bg-slate-950/40' : 'border-sky-200 bg-pink-50/40'
           }`}
         >
           <span>🎵 Bấm vào đĩa than để thưởng thức âm nhạc khi dạo chơi trại giam</span>

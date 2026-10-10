@@ -94,7 +94,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
         className={`w-full max-w-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-2xl border transition-all text-center relative overflow-hidden my-auto ${
           darkMode
             ? 'bg-slate-900/95 border-rose-950/80 text-slate-100 shadow-rose-950/60'
-            : 'bg-white/95 border-pink-100 text-slate-800 shadow-pink-200/50'
+            : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-200/50'
         }`}
       >
         {/* Soft Background Radial Glows */}
@@ -104,7 +104,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
         {/* 1. TOP HEADER PILL TAG */}
         <div className="flex items-center justify-center gap-1.5 mb-1.5">
           <div className="h-px w-5 sm:w-8 bg-rose-200/60 dark:bg-rose-900/40" />
-          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-wider uppercase bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40">
+          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-wider uppercase bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 border border-sky-200/60 dark:border-rose-900/40">
             <Lock className="w-2 h-2 text-rose-500" />
             <span>Gilded Velvet Portal • Cổng Trọng Tâm</span>
             <Lock className="w-2 h-2 text-rose-500" />
@@ -117,7 +117,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
           Các nàng yiu có muốn ghé<br className="hidden sm:inline" /> thăm chồng nhỏ không?
         </h2>
 
-        <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto mb-2.5 leading-relaxed">
+        <p className="text-[10px] sm:text-[11px] text-slate-900 dark:text-slate-400 max-w-sm mx-auto mb-2.5 leading-relaxed">
           Cánh cổng hoa hồng và song sắt bọc nhung đang hé mở. Các phạm nhân nhỏ đang đếm từng tiếng bước chân đợi nàng bước vào...
         </p>
 
@@ -126,7 +126,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
           className={`p-2 sm:p-2.5 rounded-xl border mb-2.5 text-center transition-all ${
             darkMode
               ? 'bg-rose-950/30 border-rose-900/50 text-rose-200'
-              : 'bg-rose-50/70 border-rose-200/60 text-rose-900'
+              : 'bg-rose-50/70 border-sky-200/60 text-rose-900'
           }`}
         >
           <div className="flex items-center justify-center gap-1 font-bold text-[11px] text-rose-600 dark:text-rose-400 mb-0.5">
@@ -162,7 +162,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
             className={`w-full sm:w-auto py-2 px-3 rounded-full font-semibold text-[10.5px] sm:text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1 ${
               darkMode
                 ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                : 'bg-slate-100 text-slate-900 hover:bg-slate-200'
             }`}
           >
             <span>⏳</span>
@@ -176,7 +176,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
             className={`p-2.5 sm:p-3 rounded-xl border mb-2.5 text-left space-y-1.5 transition-all animate-in fade-in zoom-in-95 duration-150 ${
               darkMode
                 ? 'bg-slate-800/70 border-slate-700'
-                : 'bg-rose-50/50 border-rose-100 shadow-2xs'
+                : 'bg-rose-50/50 border-sky-200 shadow-2xs'
             }`}
           >
             <span className="text-[8.5px] font-black uppercase text-slate-400 tracking-wider block">
@@ -198,7 +198,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
                 </p>
               </div>
 
-              <span className="px-1.5 py-0.2 rounded-full font-mono font-black text-[10.5px] bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-300 shrink-0 border border-pink-100 dark:border-slate-600">
+              <span className="px-1.5 py-0.2 rounded-full font-mono font-black text-[10.5px] bg-sky-50 dark:bg-slate-700 text-rose-600 dark:text-rose-300 shrink-0 border border-sky-200 dark:border-slate-600">
                 {progress}%
               </span>
             </div>
@@ -215,7 +215,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
               {/* Progress Head Handle */}
               {progress > 2 && progress < 100 && (
                 <div
-                  className="absolute top-0.5 -translate-y-1/4 -translate-x-1/2 w-3 h-3 rounded-full bg-white border-2 border-rose-500 shadow-xs flex items-center justify-center transition-all duration-75"
+                  className="absolute top-0.5 -translate-y-1/4 -translate-x-1/2 w-3 h-3 rounded-full bg-sky-50 border-2 border-rose-500 shadow-xs flex items-center justify-center transition-all duration-75"
                   style={{ left: `${progress}%` }}
                 >
                   <div className="w-1 h-1 rounded-full bg-rose-500" />
@@ -256,7 +256,7 @@ export const GateModal: React.FC<GateModalProps> = ({ onEnter, darkMode }) => {
         )}
 
         {/* 6. THREE FOOTER NOTES */}
-        <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[9px] sm:text-[9.5px] text-slate-400 font-medium">
+        <div className="pt-2 border-t border-sky-200 dark:border-slate-800 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[9px] sm:text-[9.5px] text-slate-400 font-medium">
           <span className="flex items-center gap-0.5">
             <ShieldCheck className="w-2.5 h-2.5 text-emerald-500" />
             Bảo mật tình ái 100%

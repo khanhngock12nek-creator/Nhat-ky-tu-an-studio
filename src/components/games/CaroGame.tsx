@@ -12,18 +12,27 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Character } from '../../types';
+import { GameHeader } from './GameHeader';
 
 interface CaroGameProps {
   darkMode: boolean;
   onBack: () => void;
   character?: Character | null;
+  characters?: Character[];
+  onSelectCharacter?: (char: Character) => void;
 }
 
 const BOARD_SIZE = 12; // 12x12 grid suitable for both mobile and desktop
 
 type CellValue = 'X' | 'O' | null;
 
-export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character }) => {
+export const CaroGame: React.FC<CaroGameProps> = ({
+  darkMode,
+  onBack,
+  character,
+  characters = [],
+  onSelectCharacter,
+}) => {
   const [board, setBoard] = useState<CellValue[][]>(() =>
     Array(BOARD_SIZE)
       .fill(null)
@@ -189,39 +198,21 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
 
   return (
     <div className="space-y-6 animate-fadeIn max-w-4xl mx-auto">
-      {/* Top Header & Notice */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <button
-          type="button"
-          onClick={onBack}
-          className={`px-3 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
-            darkMode
-              ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-              : 'bg-white border-rose-200 text-slate-700 hover:bg-rose-50'
-          }`}
-        >
-          <ArrowLeft className="w-4 h-4 text-rose-500" />
-          <span>Về Khu Trò Chơi</span>
-        </button>
-
-        {/* Notice */}
-        {character ? (
-          <div className="px-3 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs font-bold flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 shrink-0 text-rose-500" />
-            <span>Đang thách đấu cùng: {character.name} ({character.rarity || 'Tù nhân'})</span>
-          </div>
-        ) : (
-          <div className="px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold flex items-center gap-2">
-            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-            <span>Chưa có nhân vật nào để chơi • Đang chạy chế độ Luyện Tập / Bot Giám Thị</span>
-          </div>
-        )}
-      </div>
+      {/* Top Header with Character Selector */}
+      <GameHeader
+        darkMode={darkMode}
+        onBack={onBack}
+        character={character}
+        characters={characters}
+        onSelectCharacter={onSelectCharacter}
+        gameTitle="CỜ CARO NGỤC TỐI"
+        badgeText="Đang đấu với Bot Giám Thị"
+      />
 
       {/* Hero card */}
       <div
         className={`p-5 rounded-3xl border shadow-lg ${
-          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-rose-100'
+          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200'
         }`}
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -232,20 +223,22 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-black text-slate-900 dark:text-white">
-                  TRÒ CHƠI CỜ CARO (GOMOKU)
+                  {character ? `ĐẤU CỜ CARO CÙNG ${character.name.toUpperCase()}` : 'TRÒ CHƠI CỜ CARO (GOMOKU)'}
                 </h2>
                 <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-500">
                   Chuẩn 5 Nước Thắng
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Bàn cờ 12x12 • Đấu trí căng thẳng giữa Quản Ngục và đối thủ
+              <p className="text-xs text-slate-900 dark:text-slate-400">
+                {character
+                  ? `Bàn cờ 12x12 • Đấu trí căng thẳng giữa Nàng Quản Ngục và ${character.name} (${character.prisonId || '#001'})`
+                  : 'Bàn cờ 12x12 • Đấu trí căng thẳng giữa Quản Ngục và đối thủ'}
               </p>
             </div>
           </div>
 
           {/* Mode Selector */}
-          <div className="flex items-center gap-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold">
+          <div className="flex items-center gap-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-xs font-bold">
             <button
               type="button"
               onClick={() => {
@@ -255,10 +248,10 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 gameMode === 'bot'
                   ? 'bg-rose-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-900 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              Đấu Bot Tạm Thời
+              {character ? `Đấu với ${character.name}` : 'Đấu Với Bot'}
             </button>
             <button
               type="button"
@@ -269,22 +262,22 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 gameMode === 'pvp'
                   ? 'bg-rose-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-900 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              2 Người Chơi
+              2 Người Chơi (1v1)
             </button>
           </div>
         </div>
 
         {/* Players Bar */}
-        <div className="mt-5 grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="mt-5 grid grid-cols-2 gap-3 pt-4 border-t border-sky-200 dark:border-slate-800">
           {/* Player X */}
           <div
             className={`p-3 rounded-2xl border flex items-center justify-between transition-all ${
               isXNext && !winner
                 ? 'border-rose-500 bg-rose-50/50 dark:bg-rose-950/20 shadow-sm ring-2 ring-rose-500/20'
-                : 'border-slate-200 dark:border-slate-800'
+                : 'border-sky-200 dark:border-slate-800'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -308,34 +301,50 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
             )}
           </div>
 
-          {/* Player O (Opponent Slot) */}
+          {/* Player O (Opponent Slot - Shows selected character!) */}
           <div
             className={`p-3 rounded-2xl border flex items-center justify-between transition-all ${
               !isXNext && !winner
                 ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-950/20 shadow-sm ring-2 ring-indigo-500/20'
-                : 'border-slate-200 dark:border-slate-800'
+                : 'border-sky-200 dark:border-slate-800'
             }`}
           >
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-slate-300 dark:bg-slate-800 text-indigo-500 dark:text-indigo-400 font-black text-xl flex items-center justify-center border border-dashed border-slate-400 dark:border-slate-600">
-                O
-              </div>
-              <div>
-                <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                  <span className="text-slate-400 italic">
-                    {gameMode === 'bot' ? 'Bot Giám Thị (Tạm thời)' : 'Người chơi 2'}
-                  </span>
-                  {!isXNext && !winner && (
-                    <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping" />
+            <div className="flex items-center gap-2.5 min-w-0">
+              {gameMode === 'bot' && character ? (
+                <div className="w-10 h-10 rounded-xl overflow-hidden shadow-xs border border-indigo-400/60 shrink-0 relative">
+                  {character.avatarUrl ? (
+                    <img src={character.avatarUrl} alt={character.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className={`w-full h-full flex items-center justify-center text-white font-bold text-sm ${character.avatarGradient || 'bg-indigo-500'}`}>
+                      {character.name.charAt(0)}
+                    </div>
                   )}
                 </div>
-                <div className="text-[10px] text-amber-500 font-medium">
-                  {gameMode === 'bot' ? '⚠️ Chưa có nhân vật' : `Thắng: ${scores.o} ván`}
+              ) : (
+                <div className="w-10 h-10 rounded-xl bg-slate-300 dark:bg-slate-800 text-indigo-500 dark:text-indigo-400 font-black text-xl flex items-center justify-center border border-dashed border-slate-400 dark:border-slate-600 shrink-0">
+                  O
+                </div>
+              )}
+              <div className="min-w-0">
+                <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5 truncate">
+                  <span className="truncate">
+                    {gameMode === 'bot'
+                      ? (character ? character.name : 'Bot Giám Thị')
+                      : 'Người chơi 2 (O)'}
+                  </span>
+                  {!isXNext && !winner && (
+                    <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping shrink-0" />
+                  )}
+                </div>
+                <div className="text-[10px] text-indigo-500 dark:text-indigo-400 font-medium truncate">
+                  {gameMode === 'bot' && character
+                    ? `${character.prisonId || '#001'} • Thắng: ${scores.o} ván`
+                    : `Thắng: ${scores.o} ván`}
                 </div>
               </div>
             </div>
             {!isXNext && !winner && (
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500 text-white">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500 text-white shrink-0 ml-1">
                 Lượt đi
               </span>
             )}
@@ -346,18 +355,22 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
       {/* Winner Announcement */}
       {winner && (
         <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-pink-500 text-white text-center shadow-xl animate-bounce flex items-center justify-center gap-3">
-          <Trophy className="w-6 h-6 animate-spin" />
-          <span className="text-base font-black uppercase tracking-wider">
+          <Trophy className="w-6 h-6 animate-spin shrink-0" />
+          <span className="text-sm sm:text-base font-black uppercase tracking-wider">
             {winner === 'Draw'
               ? 'HÒA CỜ! KHÔNG AI THUA CUỘC'
               : winner === 'X'
-              ? '🎉 QUẢN NGỤC (X) CHIẾN THẮNG TUYỆT ĐỐI!'
-              : '⚡ ĐỐI THỦ (O) ĐÃ THẮNG TRẬN NÀY!'}
+              ? (character
+                  ? `🎉 QUẢN NGỤC (X) CHIẾN THẮNG TUYỆT ĐỐI TRƯỚC ${character.name.toUpperCase()}!`
+                  : '🎉 QUẢN NGỤC (X) CHIẾN THẮNG TUYỆT ĐỐI!')
+              : (character
+                  ? `⚡ ${character.name.toUpperCase()} (O) ĐÃ CHIẾN THẮNG TRẬN NÀY!`
+                  : '⚡ ĐỐI THỦ (O) ĐÃ THẮNG TRẬN NÀY!')}
           </span>
           <button
             type="button"
             onClick={resetGame}
-            className="ml-3 px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-black shadow hover:bg-slate-100 cursor-pointer"
+            className="ml-3 px-3 py-1 rounded-xl bg-sky-50 text-slate-900 text-xs font-black shadow hover:bg-slate-100 cursor-pointer shrink-0"
           >
             Chơi ván mới
           </button>
@@ -367,10 +380,10 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
       {/* Caro Board Container */}
       <div
         className={`p-4 sm:p-6 rounded-3xl border shadow-xl flex flex-col items-center justify-center ${
-          darkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-amber-50/40 border-amber-200/80'
+          darkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-amber-50/40 border-sky-200/80'
         }`}
       >
-        <div className="inline-block p-2 rounded-2xl bg-amber-100 dark:bg-slate-900 border-2 border-amber-300 dark:border-slate-800 shadow-inner overflow-x-auto max-w-full">
+        <div className="inline-block p-2 rounded-2xl bg-amber-100 dark:bg-slate-900 border-2 border-sky-200 dark:border-slate-800 shadow-inner overflow-x-auto max-w-full">
           <div
             className="grid gap-[2px] sm:gap-1 bg-amber-200 dark:bg-slate-800 p-1 rounded-xl"
             style={{
@@ -399,7 +412,7 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
                         : cell
                         ? darkMode
                           ? 'bg-slate-950'
-                          : 'bg-white'
+                          : 'bg-sky-50'
                         : darkMode
                         ? 'bg-slate-900/90 hover:bg-slate-800'
                         : 'bg-amber-50/90 hover:bg-amber-100'
@@ -431,7 +444,7 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
             className={`px-4 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
               darkMode
                 ? 'bg-slate-900 border-slate-700 text-slate-200 hover:bg-slate-800'
-                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-slate-50'
             }`}
           >
             <RotateCcw className="w-3.5 h-3.5 text-rose-500" />
@@ -444,7 +457,7 @@ export const CaroGame: React.FC<CaroGameProps> = ({ darkMode, onBack, character 
             className={`px-4 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
               darkMode
                 ? 'bg-slate-900 border-slate-700 text-slate-200 hover:bg-slate-800'
-                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-slate-50'
             }`}
           >
             <RotateCw className="w-3.5 h-3.5 text-indigo-500" />

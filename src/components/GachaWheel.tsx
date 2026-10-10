@@ -314,13 +314,13 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
     switch (rarity) {
       case 'SSR':
         return (
-          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 to-amber-600 text-white shadow-md shadow-amber-400/40 border border-amber-200 animate-pulse">
+          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 to-amber-600 text-white shadow-md shadow-amber-400/40 border border-sky-200 animate-pulse">
             ★ SSR Cực Phẩm
           </span>
         );
       case 'SR':
         return (
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-pink-500 to-rose-600 text-white shadow-sm border border-pink-200">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-pink-500 to-rose-600 text-white shadow-sm border border-sky-200">
             ★ SR Định Mệnh
           </span>
         );
@@ -345,7 +345,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
         );
       case 'Phòng Giam Ấm':
         return (
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-300/40">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-sky-200/40">
             ☀️ Phòng Giam Ấm
           </span>
         );
@@ -371,7 +371,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
         <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-400 to-sky-400">
           Máy Gacha Nhân Phẩm Tình Ái
         </h1>
-        <p className={`text-xs sm:text-sm max-w-xl mx-auto font-medium ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+        <p className={`text-xs sm:text-sm max-w-xl mx-auto font-medium ${darkMode ? 'text-slate-300' : 'text-slate-900'}`}>
           Nếu nàng phân vân chưa biết hôm nay nên ghé thăm phân khu nào hay gặp gỡ chàng trai nào, hãy rút một lá bài định mệnh để duyên phận dẫn lối!
         </p>
 
@@ -402,14 +402,14 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
       </div>
 
       {/* Sub Tabs: Machine / Collection / Drop Rates */}
-      <div className="flex items-center justify-center gap-2 border-b border-pink-200 dark:border-slate-800 pb-3">
+      <div className="flex items-center justify-center gap-2 border-b border-sky-200 dark:border-slate-800 pb-3">
         <button
           type="button"
           onClick={() => setActiveSubTab('machine')}
           className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
             activeSubTab === 'machine'
               ? 'bg-gradient-to-r from-pink-500 to-rose-400 text-white shadow-md shadow-pink-400/30'
-              : 'text-slate-500 hover:bg-pink-50 dark:hover:bg-slate-800'
+              : 'text-slate-900 hover:bg-pink-50 dark:hover:bg-slate-800'
           }`}
         >
           <Dices className="w-4 h-4" />
@@ -422,7 +422,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
           className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
             activeSubTab === 'collection'
               ? 'bg-gradient-to-r from-pink-500 to-rose-400 text-white shadow-md shadow-pink-400/30'
-              : 'text-slate-500 hover:bg-pink-50 dark:hover:bg-slate-800'
+              : 'text-slate-900 hover:bg-pink-50 dark:hover:bg-slate-800'
           }`}
         >
           <FolderHeart className="w-4 h-4" />
@@ -435,7 +435,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
           className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
             activeSubTab === 'rates'
               ? 'bg-gradient-to-r from-pink-500 to-rose-400 text-white shadow-md shadow-pink-400/30'
-              : 'text-slate-500 hover:bg-pink-50 dark:hover:bg-slate-800'
+              : 'text-slate-900 hover:bg-pink-50 dark:hover:bg-slate-800'
           }`}
         >
           <HelpCircle className="w-4 h-4" />
@@ -449,7 +449,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
           {/* Top Control Bar: Tickets & Zone Selection */}
           <div
             className={`p-4 sm:p-5 rounded-3xl border flex flex-col md:flex-row items-center justify-between gap-4 transition-all shadow-sm ${
-              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/90 border-pink-100 shadow-pink-100/50'
+              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-sky-50/90 border-sky-200 shadow-pink-100/50'
             }`}
           >
             {/* Tickets */}
@@ -485,8 +485,8 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                 onClick={() => setSelectedZone('all')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   selectedZone === 'all'
-                    ? 'bg-slate-800 text-white dark:bg-white dark:text-slate-900 shadow-sm'
-                    : 'bg-slate-100 dark:bg-slate-800/60 text-slate-500 hover:text-slate-800'
+                    ? 'bg-slate-800 text-white dark:bg-sky-50 dark:text-slate-900 shadow-sm'
+                    : 'bg-slate-100 dark:bg-slate-800/60 text-slate-900 hover:text-slate-900'
                 }`}
               >
                 🌈 Tất Cả
@@ -532,7 +532,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
             className={`p-6 sm:p-10 rounded-3xl border text-center transition-all relative overflow-hidden ${
               darkMode
                 ? 'bg-slate-900/90 border-slate-800 text-slate-100 shadow-2xl shadow-indigo-950/50'
-                : 'bg-white/95 border-pink-100 text-slate-800 shadow-2xl shadow-pink-200/50'
+                : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-2xl shadow-pink-200/50'
             }`}
           >
             {/* Ambient Background Glows */}
@@ -569,7 +569,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                 {/* Card Display */}
                 <div
                   className={`max-w-md mx-auto p-6 rounded-3xl border transition-all text-left relative overflow-hidden shadow-2xl group ${
-                    darkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-gradient-to-b from-white to-pink-50/50 border-pink-200'
+                    darkMode ? 'bg-slate-800/90 border-slate-700' : 'bg-gradient-to-b from-white to-pink-50/50 border-sky-200'
                   }`}
                 >
                   {/* Glowing header strip */}
@@ -625,7 +625,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   {/* First Message */}
                   <div
                     className={`mt-4 p-3.5 rounded-2xl border text-xs italic ${
-                      darkMode ? 'bg-slate-900/60 border-slate-700 text-slate-300' : 'bg-white/80 border-pink-100 text-slate-700'
+                      darkMode ? 'bg-slate-900/60 border-slate-700 text-slate-300' : 'bg-sky-50/80 border-sky-200 text-slate-900'
                     }`}
                   >
                     <div className="flex items-center gap-1.5 text-[10px] font-bold text-pink-500 not-italic mb-1">
@@ -636,7 +636,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   </div>
 
                   {/* Backstory */}
-                  <div className="mt-3 text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
+                  <div className="mt-3 text-xs text-slate-900 dark:text-slate-400 line-clamp-2">
                     {singleResult.backstory}
                   </div>
 
@@ -717,7 +717,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                           isRevealed
                             ? darkMode
                               ? 'bg-slate-800/90 border-slate-700 shadow-md'
-                              : 'bg-white border-pink-200 shadow-sm'
+                              : 'bg-sky-50 border-sky-200 shadow-sm'
                             : 'bg-gradient-to-br from-pink-400 via-rose-400 to-indigo-500 border-white/40 text-white flex items-center justify-center hover:scale-105 shadow-md'
                         }`}
                       >
@@ -755,12 +755,12 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                                 </div>
                               </div>
 
-                              <p className="text-[10px] text-slate-500 italic line-clamp-2">
+                              <p className="text-[10px] text-slate-900 italic line-clamp-2">
                                 "{card.firstMessage}"
                               </p>
                             </div>
 
-                            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <div className="pt-2 border-t border-sky-200 dark:border-slate-800 flex items-center justify-between">
                               <button
                                 type="button"
                                 onClick={(e) => {
@@ -835,7 +835,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                     type="button"
                     onClick={handleSinglePull}
                     disabled={tickets < 1}
-                    className="w-full sm:w-auto flex-1 py-4 px-6 rounded-2xl font-black text-sm text-pink-600 dark:text-pink-300 bg-pink-100 dark:bg-pink-950/80 hover:bg-pink-200 dark:hover:bg-pink-900/80 border border-pink-300/50 shadow-lg shadow-pink-200/40 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full sm:w-auto flex-1 py-4 px-6 rounded-2xl font-black text-sm text-pink-600 dark:text-pink-300 bg-pink-100 dark:bg-pink-950/80 hover:bg-pink-200 dark:hover:bg-pink-900/80 border border-sky-200/50 shadow-lg shadow-pink-200/40 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <Dices className="w-5 h-5 text-pink-500" />
                     <span>RÚT 1 LẦN (1 VÉ)</span>
@@ -868,7 +868,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
         <div className="space-y-6 animate-fade-in">
           <div
             className={`p-6 rounded-3xl border ${
-              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/90 border-pink-100'
+              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-sky-50/90 border-sky-200'
             }`}
           >
             <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
@@ -901,7 +901,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
               <div className="py-12 text-center space-y-3">
                 <div className="text-4xl">📭</div>
                 <h4 className="text-base font-bold text-slate-400">Chưa có thẻ nào trong bộ sưu tập</h4>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                <p className="text-xs text-slate-900 max-w-sm mx-auto">
                   Hãy quay lại tab Máy Gacha và bốc thăm ngay để sưu tầm các chàng trai nhé!
                 </p>
                 <button
@@ -918,7 +918,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   <div
                     key={card.id}
                     className={`p-4 rounded-2xl border transition-all hover:shadow-lg ${
-                      darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-pink-50/50 border-pink-200'
+                      darkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-pink-50/50 border-sky-200'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-1 mb-2">
@@ -952,11 +952,11 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                       </div>
                     </div>
 
-                    <p className="text-[11px] text-slate-500 italic line-clamp-2 my-2">
+                    <p className="text-[11px] text-slate-900 italic line-clamp-2 my-2">
                       "{card.firstMessage}"
                     </p>
 
-                    <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between gap-2">
+                    <div className="pt-2 border-t border-sky-200 dark:border-slate-700 flex items-center justify-between gap-2">
                       <button
                         type="button"
                         onClick={() => setLoveModalCard(card)}
@@ -987,7 +987,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
         <div className="space-y-6 animate-fade-in">
           <div
             className={`p-6 sm:p-8 rounded-3xl border ${
-              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/90 border-pink-100'
+              darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-sky-50/90 border-sky-200'
             }`}
           >
             <h3 className="text-lg font-black mb-2 flex items-center gap-2">
@@ -1030,17 +1030,17 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   <span className="text-xl">❄️</span>
                   <h5 className="font-bold text-sky-600 dark:text-sky-300">Phòng Giam Lạnh</h5>
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-300">
+                <p className="text-xs text-slate-900 dark:text-slate-300">
                   Dành cho những chàng trai bề ngoài lạnh lùng, trầm mặc, độc chiếm hoặc khó gần nhưng bên trong cháy bỏng khao khát được nàng sưởi ấm.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl border border-amber-300/40 bg-amber-50 dark:bg-amber-950/40 space-y-2">
+              <div className="p-4 rounded-2xl border border-sky-200/40 bg-amber-50 dark:bg-amber-950/40 space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">☀️</span>
                   <h5 className="font-bold text-amber-700 dark:text-amber-300">Phòng Giam Ấm</h5>
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-300">
+                <p className="text-xs text-slate-900 dark:text-slate-300">
                   Dành cho những chàng trai ngọt ngào như nắng sớm, dịu dàng săn sóc, chu đáo và luôn xem nàng là ánh dương rạng ngời nhất.
                 </p>
               </div>
@@ -1050,7 +1050,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   <span className="text-xl">🌿</span>
                   <h5 className="font-bold text-emerald-700 dark:text-emerald-300">Phòng Giam Chữa Lành</h5>
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-300">
+                <p className="text-xs text-slate-900 dark:text-slate-300">
                   Dành cho những tâm hồn êm đềm, biết lắng nghe, giỏi xoa dịu những vết thương lòng và mang lại cảm giác bình yên tuyệt đối.
                 </p>
               </div>
@@ -1064,14 +1064,14 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
           <div
             className={`w-full max-w-md p-6 rounded-3xl border shadow-2xl relative transition-all ${
-              darkMode ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-pink-200 text-slate-800'
+              darkMode ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-sky-50 border-sky-200 text-slate-900'
             }`}
           >
             {/* Close button */}
             <button
               type="button"
               onClick={() => setLoveModalCard(null)}
-              className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+              className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1117,7 +1117,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                     onChange={(e) => setLoveSenderName(e.target.value)}
                     required
                     placeholder="VD: Nàng Quản Ngục Nhỏ..."
-                    className="w-full px-3.5 py-2 rounded-xl text-xs border border-pink-200 dark:border-slate-700 bg-pink-50/30 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                    className="w-full px-3.5 py-2 rounded-xl text-xs border border-sky-200 dark:border-slate-700 bg-pink-50/30 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   />
                 </div>
 
@@ -1131,7 +1131,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                     onChange={(e) => setLoveNoteText(e.target.value)}
                     required
                     placeholder={`Gửi ${loveModalCard.name}, hôm nay em lại nhớ anh rồi...`}
-                    className="w-full px-3.5 py-2 rounded-xl text-xs border border-pink-200 dark:border-slate-700 bg-pink-50/30 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-pink-400 resize-none font-serif"
+                    className="w-full px-3.5 py-2 rounded-xl text-xs border border-sky-200 dark:border-slate-700 bg-pink-50/30 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-pink-400 resize-none font-serif"
                   />
                 </div>
 
@@ -1139,7 +1139,7 @@ export const GachaWheel: React.FC<GachaWheelProps> = ({
                   <button
                     type="button"
                     onClick={() => setLoveModalCard(null)}
-                    className="px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
                   >
                     Hủy bỏ
                   </button>

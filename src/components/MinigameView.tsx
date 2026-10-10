@@ -123,22 +123,70 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
 
   // If a game is active, render that game component
   if (selectedGame === 'caro') {
-    return <CaroGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <CaroGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
   if (selectedGame === 'tarot') {
-    return <TarotGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <TarotGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
   if (selectedGame === 'wheel') {
-    return <WheelGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <WheelGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
   if (selectedGame === 'truth') {
-    return <TruthGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <TruthGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
   if (selectedGame === 'suitcase') {
-    return <SuitcaseGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <SuitcaseGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
   if (selectedGame === 'claw') {
-    return <ClawMachineGame darkMode={darkMode} onBack={() => setSelectedGame(null)} character={selectedCharacter} />;
+    return (
+      <ClawMachineGame
+        darkMode={darkMode}
+        onBack={() => setSelectedGame(null)}
+        character={selectedCharacter}
+        characters={characters}
+        onSelectCharacter={(char) => setSelectedCharacterId(char.id)}
+      />
+    );
   }
 
   return (
@@ -152,7 +200,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
             className={`p-2 rounded-xl border transition-all cursor-pointer flex items-center gap-2 text-xs font-bold ${
               darkMode
                 ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                : 'bg-white border-rose-100 text-slate-700 hover:bg-rose-50'
+                : 'bg-sky-50 border-sky-200 text-slate-900 hover:bg-rose-50'
             }`}
           >
             <ArrowLeft className="w-4 h-4 text-rose-500" />
@@ -185,7 +233,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
         className={`relative overflow-hidden rounded-3xl p-6 sm:p-8 border shadow-xl ${
           darkMode
             ? 'bg-slate-900/90 border-slate-800'
-            : 'bg-gradient-to-br from-rose-50/80 via-white to-pink-50/80 border-rose-100'
+            : 'bg-gradient-to-br from-rose-50/80 via-white to-pink-50/80 border-sky-200'
         }`}
       >
         <div className="absolute -top-12 -right-12 w-48 h-48 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -203,7 +251,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black tracking-wider uppercase bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/20">
                 Sàn Đấu Giải Trí Tù Nhân • 6 Trò Chơi
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-400">
                 Khu Cách Ly Số 07
               </span>
             </div>
@@ -212,7 +260,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
               KHU VỰC TRÒ CHƠI & ĐẤU TRÍ
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-900 dark:text-slate-300 max-w-2xl leading-relaxed">
               Tập hợp đầy đủ 6 minigame: <strong>Cờ Caro</strong>, <strong>Bói Bài Tarot</strong>, <strong>Vòng Quay Thử Thách</strong>, <strong>Nói Thật</strong>, <strong>Vụ Án Vali</strong> và <strong>Máy Gắp Thú</strong>.
               {characters.length > 0 ? ' Chọn nhân vật bên dưới để cùng tham gia thách đấu!' : ''}
             </p>
@@ -224,12 +272,12 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
       {characters.length === 0 ? (
         <div
           className={`rounded-3xl p-6 sm:p-8 border text-center shadow-lg relative overflow-hidden ${
-            darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-amber-200'
+            darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50 border-sky-200'
           }`}
         >
           <div className="max-w-2xl mx-auto space-y-4">
             <div className="relative inline-block">
-              <div className="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/70 flex items-center justify-center mx-auto shadow-inner">
+              <div className="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950/60 border border-sky-200 dark:border-amber-800/70 flex items-center justify-center mx-auto shadow-inner">
                 <Lock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
               </div>
               <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-md text-xs font-bold">
@@ -247,7 +295,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                 CHƯA CÓ NHÂN VẬT NÀO ĐỂ CHƠI
               </h2>
 
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-900 dark:text-slate-400 leading-relaxed">
                 Hiện tại sàn đấu chưa có nhân vật tù nhân nào. Khi Quản Trị Viên tạo và đăng nhân vật mới, các nhân vật sẽ tự động xuất hiện tại đây để bạn chọn thách đấu!
               </p>
             </div>
@@ -256,7 +304,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
       ) : (
         <div
           className={`p-5 sm:p-6 rounded-3xl border shadow-lg space-y-4 ${
-            darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-rose-100'
+            darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-sky-50 border-sky-200'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -284,10 +332,10 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                       ? 'border-rose-500 bg-rose-500/10 shadow-md scale-105'
                       : darkMode
                       ? 'border-slate-800 bg-slate-900/50 hover:bg-slate-800'
-                      : 'border-pink-100 bg-pink-50/40 hover:bg-pink-50'
+                      : 'border-sky-200 bg-pink-50/40 hover:bg-pink-50'
                   }`}
                 >
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xs border border-pink-200/60 relative">
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xs border border-sky-200/60 relative">
                     {char.avatarUrl ? (
                       <img src={char.avatarUrl} alt={char.name} className="w-full h-full object-cover" />
                     ) : (
@@ -344,7 +392,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                 className={`p-5 rounded-3xl border transition-all relative overflow-hidden group cursor-pointer hover:scale-102 hover:shadow-xl ${
                   darkMode
                     ? 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
-                    : 'bg-white border-slate-200 hover:border-rose-300'
+                    : 'bg-sky-50 border-sky-200 hover:border-sky-200'
                 }`}
               >
                 <div className="flex items-start gap-3.5">
@@ -359,7 +407,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                       <h4 className="font-bold text-sm text-slate-900 dark:text-white truncate">
                         {mode.title}
                       </h4>
-                      <span className="text-[9px] font-black px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
+                      <span className="text-[9px] font-black px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-400 shrink-0">
                         {mode.tag}
                       </span>
                     </div>
@@ -368,7 +416,7 @@ export const MinigameView: React.FC<MinigameViewProps> = ({
                       {mode.subtitle}
                     </div>
 
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 pt-1 leading-relaxed">
+                    <p className="text-[11px] text-slate-900 dark:text-slate-400 line-clamp-2 pt-1 leading-relaxed">
                       {mode.description}
                     </p>
 

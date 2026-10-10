@@ -477,7 +477,7 @@ export default function App() {
       className={`min-h-screen relative flex flex-col font-['Quicksand',sans-serif] transition-colors duration-300 ${
         darkMode
           ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100'
-          : 'bg-gradient-to-br from-pink-100/70 via-rose-50/40 to-sky-100/70 text-slate-800'
+          : 'bg-gradient-to-br from-pink-100 via-rose-50 to-sky-100 text-slate-900'
       }`}
     >
       {/* Full-screen Custom Site Background */}
@@ -492,7 +492,7 @@ export default function App() {
           {/* Subtle translucent veil so text and cards remain crystal clear */}
           <div
             className={`absolute inset-0 ${
-              darkMode ? 'bg-slate-950/80 backdrop-blur-[1px]' : 'bg-white/75 backdrop-blur-[1px]'
+              darkMode ? 'bg-slate-950/80 backdrop-blur-[1px]' : 'bg-pink-50/75 via-rose-50/60 to-sky-50/75 backdrop-blur-[1px]'
             }`}
           />
         </div>
@@ -671,7 +671,7 @@ export default function App() {
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           title="Lên đầu trang"
-          className="p-3 rounded-2xl bg-white/90 dark:bg-slate-800/90 hover:bg-rose-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 shadow-lg border border-pink-200 dark:border-slate-700 hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+          className="p-3 rounded-2xl bg-sky-50/90 dark:bg-slate-800/90 hover:bg-rose-50 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-200 shadow-lg border border-sky-200 dark:border-slate-700 hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
         >
           <ArrowUp className="w-4 h-4 text-rose-500" />
         </button>
@@ -737,7 +737,7 @@ export default function App() {
         className={`py-6 border-t text-center transition-colors relative z-10 ${
           darkMode
             ? 'border-slate-800 text-slate-400 bg-slate-950/60'
-            : 'border-pink-100 text-slate-500 bg-white/70'
+            : 'border-sky-200 text-slate-900 bg-sky-50/70'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
@@ -752,7 +752,7 @@ export default function App() {
             <span className="text-rose-500 font-bold">Thẩm Quyền Tối Cao</span>
           </div>
 
-          <div className="flex items-center gap-3 text-xs flex-wrap justify-center sm:justify-end text-slate-400 dark:text-slate-500">
+          <div className="flex items-center gap-3 text-xs flex-wrap justify-center sm:justify-end text-slate-400 dark:text-slate-900">
             <span className="hover:text-rose-500 transition-colors cursor-pointer" onClick={() => setActiveTab('cards')}>
               Lệnh Giữ Người
             </span>

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { Sparkles, Heart, Sliders, X, Check, Sun, Moon } from 'lucide-react';
+import { Sparkles, Heart, Sliders, X, Check, Sun, Moon, Minimize2, Maximize2 } from 'lucide-react';
 
 export type FloatTheme = 'prison_love' | 'pastel_hearts' | 'sakura_dream' | 'crystal_bubbles';
 
@@ -54,7 +54,27 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
     return (localStorage.getItem('nhat_ky_tu_an_float_intensity') as any) || 'normal';
   });
 
+  const [brightness, setBrightness] = useState<number>(() => {
+    const saved = localStorage.getItem('nhat_ky_tu_an_brightness');
+    return saved ? Number(saved) : 100;
+  });
+
+  const handleSetBrightness = (val: number) => {
+    setBrightness(val);
+    localStorage.setItem('nhat_ky_tu_an_brightness', String(val));
+    document.documentElement.style.filter = val !== 100 ? `brightness(${val}%)` : '';
+  };
+
+  useEffect(() => {
+    if (brightness !== 100) {
+      document.documentElement.style.filter = `brightness(${brightness}%)`;
+    } else {
+      document.documentElement.style.filter = '';
+    }
+  }, [brightness]);
+
   const [showConfig, setShowConfig] = useState(false);
+  const [isThemePanelOpen, setIsThemePanelOpen] = useState(true);
 
   const handleSetTheme = (newTheme: FloatTheme) => {
     setTheme(newTheme);
@@ -219,28 +239,90 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
 
       {/* 4. QUICK TOGGLE / EFFECT CUSTOMIZER BUTTON & THEME TOGGLE (Chuyển đổi giao diện sáng tối chuyển xuống trên mục hiệu ứng bay) */}
       <div className="fixed bottom-5 left-5 z-40 flex flex-col items-start gap-2">
-        {/* Nút chuyển đổi Giao diện Sáng / Tối */}
+        {/* Nút chuyển đổi Giao diện Sáng / Tối & Thanh tùy chỉnh độ sáng (Thu ra / thu vào được) */}
         {onToggleTheme && (
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            aria-label="Chuyển chế độ sáng tối"
-            title={darkMode ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
-            className={`px-3 py-2 sm:px-3.5 sm:py-2 rounded-2xl shadow-lg border transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md group hover:scale-105 active:scale-95 ${
-              darkMode
-                ? 'bg-slate-900/95 border-slate-700 text-amber-300 hover:border-amber-400 hover:text-amber-200'
-                : 'bg-white/95 border-pink-200 text-slate-700 hover:text-pink-600 hover:border-pink-300'
-            }`}
-          >
-            {darkMode ? (
-              <Sun className="w-4 h-4 text-amber-300 group-hover:rotate-45 transition-transform" />
+          <div>
+            {isThemePanelOpen ? (
+              <div className={`p-2.5 rounded-2xl shadow-xl border backdrop-blur-md flex flex-col gap-2 w-48 animate-fade-in ${
+                darkMode ? 'bg-slate-900/95 border-slate-700 text-slate-100' : 'bg-sky-50/95 border-sky-200 text-slate-900'
+              }`}>
+                {/* Header với nút thu vào */}
+                <div className="flex items-center justify-between pb-1.5 border-b border-sky-200/50 dark:border-slate-800">
+                  <span className="text-[10px] font-black tracking-wider uppercase opacity-75">
+                    Giao Diện & Sáng
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setIsThemePanelOpen(false)}
+                    title="Thu vào bảng điều khiển"
+                    className="p-1 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+                  >
+                    <Minimize2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onToggleTheme}
+                  aria-label="Chuyển chế độ sáng tối"
+                  title={darkMode ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
+                  className={`w-full px-3 py-2 rounded-xl border transition-all flex items-center justify-between gap-2 cursor-pointer group hover:scale-[1.02] active:scale-98 ${
+                    darkMode
+                      ? 'bg-slate-800 border-slate-700 text-amber-300 hover:border-amber-400'
+                      : 'bg-white border-sky-200 text-slate-900 hover:text-pink-600'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {darkMode ? (
+                      <Sun className="w-4 h-4 text-amber-300 group-hover:rotate-45 transition-transform" />
+                    ) : (
+                      <Moon className="w-4 h-4 text-slate-900 group-hover:-rotate-12 transition-transform" />
+                    )}
+                    <span className="text-xs font-bold">
+                      {darkMode ? 'Giao Diện Sáng' : 'Giao Diện Tối'}
+                    </span>
+                  </div>
+                </button>
+
+                {/* Thanh tùy chỉnh độ sáng */}
+                <div className="px-1 py-0.5 space-y-1">
+                  <div className="flex items-center justify-between text-[10px] font-bold opacity-80">
+                    <span className="flex items-center gap-1">☀️ Độ sáng</span>
+                    <span className="text-pink-500 font-black">{brightness}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="50"
+                    max="150"
+                    step="5"
+                    value={brightness}
+                    onChange={(e) => handleSetBrightness(Number(e.target.value))}
+                    className="w-full h-1.5 bg-pink-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-pink-500"
+                    title="Tùy chỉnh độ sáng giao diện (50% - 150%)"
+                  />
+                </div>
+              </div>
             ) : (
-              <Moon className="w-4 h-4 text-slate-700 group-hover:-rotate-12 transition-transform" />
+              <button
+                type="button"
+                onClick={() => setIsThemePanelOpen(true)}
+                title="Mở rộng bảng Giao diện & Độ sáng"
+                className={`px-3.5 py-2.5 rounded-2xl shadow-lg border transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md group hover:scale-105 active:scale-95 ${
+                  darkMode
+                    ? 'bg-slate-900/95 border-slate-700 text-amber-300 hover:border-amber-400'
+                    : 'bg-sky-50/95 border-sky-200 text-slate-900 hover:text-pink-600'
+                }`}
+              >
+                {darkMode ? (
+                  <Sun className="w-4 h-4 text-amber-300 group-hover:rotate-45 transition-transform" />
+                ) : (
+                  <Moon className="w-4 h-4 text-slate-900 group-hover:-rotate-12 transition-transform" />
+                )}
+                <span className="text-xs font-bold">Giao Diện & Sáng</span>
+                <Maximize2 className="w-3 h-3 opacity-60 ml-1" />
+              </button>
             )}
-            <span className="text-xs font-bold">
-              {darkMode ? 'Giao Diện Sáng' : 'Giao Diện Tối'}
-            </span>
-          </button>
+          </div>
         )}
 
         <div className="relative">
@@ -251,7 +333,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
             className={`px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-2xl shadow-lg border transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md hover:scale-105 active:scale-95 ${
               darkMode
                 ? 'bg-slate-900/95 border-slate-700 text-pink-400 hover:border-pink-500'
-                : 'bg-white/95 border-pink-200 text-pink-600 hover:border-pink-400'
+                : 'bg-sky-50/95 border-sky-200 text-pink-600 hover:border-pink-400'
             }`}
           >
             <Sparkles className="w-4 h-4 animate-spin-slow" />
@@ -264,10 +346,10 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
               className={`absolute bottom-full mb-3 left-0 w-72 sm:w-80 p-4 rounded-3xl shadow-2xl border backdrop-blur-md animate-fade-in z-50 ${
                 darkMode
                   ? 'bg-slate-900/95 border-slate-700 text-slate-100 shadow-slate-950/80'
-                  : 'bg-white/95 border-pink-200 text-slate-800 shadow-pink-200/60'
+                  : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-200/60'
               }`}
             >
-              <div className="flex items-center justify-between pb-2.5 border-b border-pink-100 dark:border-slate-800 mb-3">
+              <div className="flex items-center justify-between pb-2.5 border-b border-sky-200 dark:border-slate-800 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-base">✨</span>
                   <div>
@@ -278,7 +360,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
                 <button
                   type="button"
                   onClick={() => setShowConfig(false)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600 cursor-pointer"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-900 cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -286,7 +368,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
 
               {/* Theme Choice */}
               <div className="space-y-1.5 mb-3">
-                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                <label className="text-[11px] font-bold text-slate-900 uppercase tracking-wider block">
                   1. Kiểu biểu tượng bay:
                 </label>
                 <div className="grid grid-cols-2 gap-1.5">
@@ -319,7 +401,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
                       className={`p-2 rounded-xl text-left border transition-all text-xs cursor-pointer ${
                         theme === t.id
                           ? 'bg-pink-500 text-white font-bold border-pink-500 shadow-sm'
-                          : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 hover:border-pink-300'
+                          : 'bg-slate-50 dark:bg-slate-800/60 border-sky-200 dark:border-slate-700 hover:border-sky-200'
                       }`}
                     >
                       <div className="truncate font-semibold">{t.name}</div>
@@ -331,7 +413,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
 
               {/* Intensity Choice */}
               <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                <label className="text-[11px] font-bold text-slate-900 uppercase tracking-wider block">
                   2. Mật độ rải rác:
                 </label>
                 <div className="flex gap-1.5">
@@ -347,7 +429,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
                       className={`flex-1 py-1.5 px-2 rounded-xl text-[11px] font-bold transition-all cursor-pointer ${
                         intensity === lvl.id
                           ? 'bg-gradient-to-r from-pink-500 to-sky-400 text-white shadow-sm'
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300'
                       }`}
                     >
                       {lvl.label}
@@ -356,7 +438,7 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({ darkMode, onTogg
                 </div>
               </div>
 
-              <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 text-[10px] text-slate-400 text-center">
+              <div className="mt-3 pt-2 border-t border-sky-200 dark:border-slate-800 text-[10px] text-slate-400 text-center">
                 ✨ Di chuyển chuột để thả thêm vệt tim lấp lánh
               </div>
             </div>

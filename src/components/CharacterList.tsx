@@ -130,7 +130,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
         className={`p-4 sm:p-5 rounded-3xl border transition-all ${
           darkMode
             ? 'bg-slate-900/75 border-slate-800'
-            : 'bg-white/80 border-pink-100 shadow-sm'
+            : 'bg-sky-50/80 border-sky-200 shadow-sm'
         }`}
       >
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
@@ -145,14 +145,14 @@ export const CharacterList: React.FC<CharacterListProps> = ({
               className={`w-full pl-10 pr-9 py-2.5 rounded-2xl text-xs sm:text-sm border outline-none transition-all ${
                 darkMode
                   ? 'bg-slate-800/80 border-slate-700 text-slate-100 focus:border-pink-500'
-                  : 'bg-pink-50/50 border-pink-200 text-slate-800 focus:border-pink-400 focus:bg-white'
+                  : 'bg-pink-50/50 border-sky-200 text-slate-900 focus:border-pink-400 focus:bg-sky-50'
               }`}
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -171,7 +171,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                 className={`px-3 py-2 rounded-2xl text-xs font-bold border outline-none cursor-pointer ${
                   darkMode
                     ? 'bg-slate-800 border-slate-700 text-slate-200'
-                    : 'bg-white border-pink-200 text-slate-700'
+                    : 'bg-sky-50 border-sky-200 text-slate-900'
                 }`}
               >
                 <option value="likes">💖 Yêu thích nhất</option>
@@ -192,14 +192,14 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                   ? 'bg-rose-600 border-rose-600 text-white shadow-md shadow-rose-600/30'
                   : darkMode
                   ? 'bg-slate-800 border-slate-700 text-rose-300 hover:border-rose-500'
-                  : 'bg-rose-50 border-rose-200 text-rose-600 hover:bg-rose-100'
+                  : 'bg-rose-50 border-sky-200 text-rose-600 hover:bg-rose-100'
               }`}
               title="Bật/Tắt chế độ chọn và xóa nhân vật"
             >
               <Trash2 className="w-3.5 h-3.5" />
               <span>{isDeleteMode ? 'Đang chọn xóa' : 'Chọn để xóa'}</span>
               {selectedForDelete.length > 0 && (
-                <span className="w-4 h-4 rounded-full bg-white text-rose-600 text-[10px] font-black flex items-center justify-center">
+                <span className="w-4 h-4 rounded-full bg-sky-50 text-rose-600 text-[10px] font-black flex items-center justify-center">
                   {selectedForDelete.length}
                 </span>
               )}
@@ -208,7 +208,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
         </div>
 
         {/* Quick Genre Filter Scroll */}
-        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar">
+        <div className="mt-4 pt-3 border-t border-sky-200 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar">
           <button
             type="button"
             onClick={() => onSelectGenreFilter(null)}
@@ -217,7 +217,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                 ? 'bg-gradient-to-r from-pink-500 to-sky-400 text-white shadow-sm'
                 : darkMode
                 ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                : 'bg-pink-50 text-slate-600 hover:bg-pink-100'
+                : 'bg-pink-50 text-slate-900 hover:bg-pink-100'
             }`}
           >
             Tất cả thể loại ({characters.length})
@@ -236,7 +236,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                     ? 'bg-pink-500 text-white font-bold shadow-sm'
                     : darkMode
                     ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                    : 'bg-pink-50 text-slate-600 hover:bg-pink-100'
+                    : 'bg-pink-50 text-slate-900 hover:bg-pink-100'
                 }`}
               >
                 {genre} {count > 0 && <span className="text-[10px] opacity-75">({count})</span>}
@@ -262,7 +262,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                   Đã chọn: {selectedForDelete.length}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-900 dark:text-slate-400">
                 Tích chọn nhân vật cần xóa rồi bấm nút bên cạnh, hoặc bấm nút thùng rác trên từng thẻ là xóa luôn ngay lập tức!
               </p>
             </div>
@@ -272,7 +272,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
             <button
               type="button"
               onClick={handleSelectAllVisible}
-              className="px-3.5 py-2 rounded-2xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-all"
+              className="px-3.5 py-2 rounded-2xl text-xs font-bold border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800 text-slate-900 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-all"
             >
               {selectedForDelete.length === filteredCharacters.length && filteredCharacters.length > 0
                 ? '✓ Bỏ chọn tất cả'
@@ -297,7 +297,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
                 setIsDeleteMode(false);
                 setSelectedForDelete([]);
               }}
-              className="px-3.5 py-2 rounded-2xl text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 cursor-pointer transition-all"
+              className="px-3.5 py-2 rounded-2xl text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-slate-200 cursor-pointer transition-all"
             >
               Hoàn tất
             </button>
@@ -307,7 +307,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 
       {/* Filter status banner */}
       {(selectedGenreFilter || showOnlyFavorites || searchQuery) && (
-        <div className="flex items-center justify-between text-xs px-2 text-slate-500">
+        <div className="flex items-center justify-between text-xs px-2 text-slate-900">
           <span>
             Tìm thấy{' '}
             <strong className="text-pink-500 font-bold">{filteredCharacters.length}</strong> phạm
@@ -356,7 +356,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
           className={`py-16 px-6 text-center rounded-3xl border transition-all ${
             darkMode
               ? 'bg-slate-900/60 border-slate-800 text-slate-300'
-              : 'bg-white/80 border-pink-100 text-slate-700 shadow-sm'
+              : 'bg-sky-50/80 border-sky-200 text-slate-900 shadow-sm'
           }`}
         >
           <div className="w-20 h-20 mx-auto rounded-3xl bg-pink-100 dark:bg-pink-950/60 flex items-center justify-center text-3xl mb-4 animate-bob">

@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       className={`sticky top-0 z-30 transition-colors backdrop-blur-md border-b ${
         darkMode
           ? 'bg-slate-900/85 border-slate-800/80 text-slate-100'
-          : 'bg-white/80 border-pink-100/80 text-slate-800'
+          : 'bg-sky-50/80 border-sky-200/80 text-slate-900'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* 5 Main Section Nav Tabs (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-2xl bg-pink-50/60 dark:bg-slate-800/60 border border-pink-100/50 dark:border-slate-700/50">
+          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-2xl bg-pink-50/60 dark:bg-slate-800/60 border border-sky-200/50 dark:border-slate-700/50">
             {navTabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       ? 'bg-gradient-to-r from-pink-500 to-sky-400 text-white shadow-sm scale-[1.01]'
                       : darkMode
                       ? 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-                      : 'text-slate-600 hover:text-pink-600 hover:bg-pink-100/50'
+                      : 'text-slate-900 hover:text-pink-600 hover:bg-pink-100/50'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
                         isActive
-                          ? 'bg-white/25 text-white'
+                          ? 'bg-sky-50/25 text-white'
                           : 'bg-pink-200/70 dark:bg-slate-700 text-pink-700 dark:text-pink-300'
                       }`}
                     >
@@ -182,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     ? 'bg-rose-500 text-white border-rose-500 shadow-sm'
                     : darkMode
                     ? 'bg-slate-800 border-slate-700 text-slate-300 hover:text-white'
-                    : 'bg-white border-pink-200 text-slate-700 hover:text-pink-600 shadow-2xs'
+                    : 'bg-sky-50 border-sky-200 text-slate-900 hover:text-pink-600 shadow-2xs'
                 }`}
               >
                 <MoreVertical className="w-3.5 h-3.5" />
@@ -197,10 +197,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`absolute right-0 top-12 z-50 w-64 p-2 rounded-2xl border shadow-2xl transition-all ${
                     darkMode
                       ? 'bg-slate-900 border-slate-800 text-slate-100 shadow-slate-950/80'
-                      : 'bg-white border-pink-100 text-slate-800 shadow-pink-200/60'
+                      : 'bg-sky-50 border-sky-200 text-slate-900 shadow-pink-200/60'
                   }`}
                 >
-                  <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 mb-1 flex items-center justify-between">
+                  <div className="px-3 py-1.5 border-b border-sky-200 dark:border-slate-800 mb-1 flex items-center justify-between">
                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">
                       ★ TIỆN ÍCH & CƠ MẬT
                     </span>
@@ -227,13 +227,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                         ? 'bg-rose-500 text-white font-bold shadow-xs'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         showOnlyFavorites
-                          ? 'bg-white/20 text-white'
+                          ? 'bg-sky-50/20 text-white'
                           : 'bg-rose-100 dark:bg-rose-950/70 text-pink-500'
                       }`}
                     >
@@ -247,7 +247,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <span
                           className={`text-[10px] px-1.5 py-0.5 rounded-md font-bold ${
                             showOnlyFavorites
-                              ? 'bg-white/20 text-white'
+                              ? 'bg-sky-50/20 text-white'
                               : 'bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-300'
                           }`}
                         >
@@ -272,13 +272,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                         ? 'bg-rose-500 text-white font-bold shadow-xs'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         activeTab === 'minigame'
-                          ? 'bg-white/20 text-white'
+                          ? 'bg-sky-50/20 text-white'
                           : 'bg-indigo-100 dark:bg-indigo-950/70 text-indigo-500'
                       }`}
                     >
@@ -290,7 +290,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <span
                           className={`text-[9px] px-1.5 py-0.5 rounded-md font-bold ${
                             activeTab === 'minigame'
-                              ? 'bg-white/20 text-white'
+                              ? 'bg-sky-50/20 text-white'
                               : 'bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300'
                           }`}
                         >
@@ -315,13 +315,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                         ? 'bg-rose-500 text-white font-bold shadow-xs'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         activeTab === 'midnightCourt'
-                          ? 'bg-white/20 text-white'
+                          ? 'bg-sky-50/20 text-white'
                           : 'bg-rose-100 dark:bg-rose-950/70 text-rose-500'
                       }`}
                     >
@@ -347,13 +347,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                         ? 'bg-rose-500 text-white font-bold shadow-xs'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                         activeTab === 'psychWard'
-                          ? 'bg-white/20 text-white'
+                          ? 'bg-sky-50/20 text-white'
                           : 'bg-pink-100 dark:bg-pink-950/70 text-pink-500'
                       }`}
                     >
@@ -377,12 +377,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                       }
                       setIsMoreOpen(false);
                     }}
-                    className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-3 cursor-pointer mt-1 border-t border-slate-100 dark:border-slate-800 ${
+                    className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-3 cursor-pointer mt-1 border-t border-sky-200 dark:border-slate-800 ${
                       activeTab === 'profile'
                         ? 'bg-rose-500 text-white font-bold shadow-xs'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div className="w-8 h-8 rounded-lg bg-pink-50 dark:bg-slate-800 flex items-center justify-center shrink-0">
@@ -411,12 +411,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onOpenAdmin();
                       setIsMoreOpen(false);
                     }}
-                    className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-3 cursor-pointer mt-1 border-t border-slate-100 dark:border-slate-800 ${
+                    className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-3 cursor-pointer mt-1 border-t border-sky-200 dark:border-slate-800 ${
                       isAdminLoggedIn
                         ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
                         : darkMode
                         ? 'hover:bg-slate-800 text-slate-200'
-                        : 'hover:bg-rose-50 text-slate-700'
+                        : 'hover:bg-rose-50 text-slate-900'
                     }`}
                   >
                     <div
@@ -447,7 +447,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Sub-Navigation Bar */}
-        <div className="lg:hidden flex items-center gap-1 py-2 overflow-x-auto no-scrollbar border-t border-pink-100/50 dark:border-slate-800">
+        <div className="lg:hidden flex items-center gap-1 py-2 overflow-x-auto no-scrollbar border-t border-sky-200/50 dark:border-slate-800">
           {navTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -461,7 +461,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     ? 'bg-gradient-to-r from-pink-500 to-sky-400 text-white shadow-sm'
                     : darkMode
                     ? 'text-slate-300 hover:bg-slate-800'
-                    : 'text-slate-600 hover:bg-pink-100/60'
+                    : 'text-slate-900 hover:bg-pink-100/60'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />

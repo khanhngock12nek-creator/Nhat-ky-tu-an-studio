@@ -136,16 +136,16 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
       <div className="space-y-4">
         {/* Top Notification / Season Badge */}
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-100 dark:bg-pink-950/70 text-rose-600 dark:text-pink-300 border border-pink-200/80 dark:border-pink-800/50 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-pink-100 dark:bg-pink-950/70 text-rose-600 dark:text-pink-300 border border-sky-200/80 dark:border-pink-800/50 shadow-sm">
             <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
             <span>Mùa Giam Giữ Thứ IV</span>
             <span className="opacity-50">•</span>
             <span className="text-[11px] font-semibold text-rose-500/80">CẬP NHẬT 5 PHÚT TRƯỚC</span>
           </div>
 
-          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+          <div className="text-xs font-semibold text-slate-900 dark:text-slate-400">
             {characters.length === 0 ? (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 border border-sky-200 dark:border-slate-700">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                 <span>Mẫu Bảng Xếp Hạng · Chưa có nhân vật</span>
               </span>
@@ -168,7 +168,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <br />
               <span className="text-slate-900 dark:text-white">Được Yêu Thích</span>
             </h1>
-            <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+            <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-900'}`}>
               Trái tim nàng thuộc về xiềng xích của ai? Hãy trao gửi những nhịp đập ngọt ngào nhất để cứu rỗi hoặc giam cầm linh hồn họ mãi mãi.
             </p>
           </div>
@@ -178,7 +178,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             className={`p-3.5 sm:p-4 rounded-3xl border shadow-sm flex items-center gap-3.5 shrink-0 self-start lg:self-auto ${
               darkMode
                 ? 'bg-slate-900/90 border-slate-800 text-slate-100 shadow-slate-950/50'
-                : 'bg-white/95 border-rose-100/90 text-slate-800 shadow-rose-100/40'
+                : 'bg-sky-50/95 border-sky-200/90 text-slate-900 shadow-rose-100/40'
             }`}
           >
             {/* Circular Purple Icon with Heart */}
@@ -207,7 +207,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
         </div>
 
         {/* Filter Navigation Row (Time tabs on left, Zone buttons on right) */}
-        <div className="pt-2 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b pb-4 dark:border-slate-800 border-rose-100">
+        <div className="pt-2 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b pb-4 dark:border-slate-800 border-sky-200">
           {/* Time Filter Pills */}
           <div className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 self-start">
             <button
@@ -216,7 +216,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 timeFilter === 'week'
                   ? 'bg-rose-400 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-900 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Tuần này
@@ -227,7 +227,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 timeFilter === 'month'
                   ? 'bg-rose-400 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-900 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Tháng này
@@ -238,7 +238,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 timeFilter === 'all'
                   ? 'bg-rose-400 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-900 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Toàn thời gian
@@ -247,7 +247,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
 
           {/* Area / Zone Filters */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-black uppercase text-slate-500 dark:text-slate-400 tracking-wider">
+            <span className="text-xs font-black uppercase text-slate-900 dark:text-slate-400 tracking-wider">
               PHÂN KHU:
             </span>
             <button
@@ -256,7 +256,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 zoneFilter === 'all'
                   ? 'bg-rose-900 dark:bg-rose-950 text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50'
+                  : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:bg-slate-50'
               }`}
             >
               Tất Cả Phân Khu
@@ -267,7 +267,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                 zoneFilter === 'lanh'
                   ? 'bg-sky-700 text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50'
+                  : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:bg-slate-50'
               }`}
             >
               <span>❄️</span>
@@ -279,7 +279,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                 zoneFilter === 'am'
                   ? 'bg-amber-600 text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50'
+                  : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:bg-slate-50'
               }`}
             >
               <span>☀️</span>
@@ -291,7 +291,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                 zoneFilter === 'chualanh'
                   ? 'bg-emerald-700 text-white shadow-sm'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50'
+                  : 'bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 hover:bg-slate-50'
               }`}
             >
               <span>🌿</span>
@@ -309,7 +309,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
           className={`p-4 rounded-3xl border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs ${
             darkMode
               ? 'bg-indigo-950/40 border-indigo-900/60 text-indigo-200'
-              : 'bg-pink-50/90 border-pink-200 text-pink-900'
+              : 'bg-pink-50/90 border-sky-200 text-pink-900'
           }`}
         >
           <div className="flex items-center gap-3">
@@ -347,22 +347,22 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             className={`relative rounded-3xl p-5 border-2 border-dashed transition-all duration-300 flex flex-col items-center text-center shadow-sm ${
               darkMode
                 ? 'bg-slate-900/60 border-slate-700/80 text-slate-100'
-                : 'bg-white/80 border-slate-300 text-slate-800'
+                : 'bg-sky-50/80 border-sky-200 text-slate-900'
             }`}
           >
             {/* Silver Medal Icon & Badge Tag */}
             <div className="flex flex-col items-center -mt-8 mb-2">
-              <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400 text-slate-700 flex items-center justify-center shadow-md border border-white">
-                <Medal className="w-5 h-5 fill-slate-500 text-slate-700" />
+              <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400 text-slate-900 flex items-center justify-center shadow-md border border-white">
+                <Medal className="w-5 h-5 fill-slate-500 text-slate-900" />
               </div>
-              <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700">
+              <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 border border-sky-200/80 dark:border-slate-700">
                 HẠNG 2 • BẠC
               </span>
             </div>
 
             {/* Circular Placeholder Avatar */}
             <div className="relative my-2">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/70 dark:bg-slate-800/60 shadow-inner flex flex-col items-center justify-center p-2 text-slate-400">
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 border-dashed border-sky-200 dark:border-slate-700 bg-slate-100/70 dark:bg-slate-800/60 shadow-inner flex flex-col items-center justify-center p-2 text-slate-400">
                 <User className="w-10 h-10 opacity-40 mb-1" />
                 <span className="text-[10px] font-bold">Vị Trí Trống</span>
               </div>
@@ -373,7 +373,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
 
             {/* Title & Subtitle */}
             <div className="mt-3 space-y-0.5">
-              <h3 className="text-xl font-extrabold tracking-tight text-slate-700 dark:text-slate-200">
+              <h3 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-200">
                 Vị Trí Hạng 2 Trống
               </h3>
               <p className="text-xs italic font-medium opacity-60">“Phòng Giam Lạnh · Chờ ứng viên Á Quân”</p>
@@ -384,13 +384,13 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-sky-100 dark:bg-sky-950/70 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
                 ❄️ Phòng Giam Lạnh
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-900 border border-sky-200 dark:border-slate-700">
                 Chưa có dữ liệu
               </span>
             </div>
 
             {/* Quote placeholder */}
-            <p className="mt-3 text-xs italic opacity-60 leading-relaxed min-h-[44px] flex items-center justify-center px-2 font-serif text-slate-500 dark:text-slate-400">
+            <p className="mt-3 text-xs italic opacity-60 leading-relaxed min-h-[44px] flex items-center justify-center px-2 font-serif text-slate-900 dark:text-slate-400">
               Vị trí Á Quân Án Tù tại Phòng Giam Lạnh đang để trống. Khi có nhân vật được thêm vào, bảng xếp hạng sẽ tự động cập nhật tại đây.
             </p>
 
@@ -413,7 +413,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <button
                 type="button"
                 disabled
-                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
+                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-sky-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
               >
                 <Heart className="w-3.5 h-3.5" />
                 <span>Chờ nhân vật</span>
@@ -421,7 +421,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <button
                 type="button"
                 disabled
-                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
+                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-sky-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Chờ nhân vật</span>
@@ -434,7 +434,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             className={`relative rounded-3xl p-6 sm:p-7 border-2 border-dashed transition-all duration-300 flex flex-col items-center text-center shadow-md md:-translate-y-4 ${
               darkMode
                 ? 'bg-slate-900/80 border-amber-500/60 text-slate-100'
-                : 'bg-white/95 border-amber-400 text-slate-800'
+                : 'bg-sky-50/95 border-amber-400 text-slate-900'
             }`}
           >
             {/* Floating Crown Icon on Top */}
@@ -446,7 +446,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
 
             {/* Top Badge: ★ QUÁN QUÂN ÁN TÙ • HẠNG 1 VÀNG */}
             <div className="mt-3 mb-2">
-              <span className="px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-950 border border-amber-300 shadow-sm inline-flex items-center gap-1">
+              <span className="px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-950 border border-sky-200 shadow-sm inline-flex items-center gap-1">
                 <span>★ QUÁN QUÂN ÁN TÙ • HẠNG 1 VÀNG</span>
               </span>
             </div>
@@ -474,16 +474,16 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
 
             {/* Tags row */}
             <div className="mt-2.5 flex items-center justify-center gap-1.5 flex-wrap">
-              <span className="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border border-amber-300/80 dark:border-amber-800">
+              <span className="px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border border-sky-200/80 dark:border-amber-800">
                 ☀️ Phòng Giam Ấm
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-900">
                 Chưa có dữ liệu
               </span>
             </div>
 
             {/* Quote placeholder */}
-            <p className="mt-3.5 text-xs sm:text-sm italic text-slate-500 dark:text-slate-400 leading-relaxed min-h-[48px] flex items-center justify-center px-2 font-serif">
+            <p className="mt-3.5 text-xs sm:text-sm italic text-slate-900 dark:text-slate-400 leading-relaxed min-h-[48px] flex items-center justify-center px-2 font-serif">
               Ngai vàng Quán Quân Án Tù số 1 tại Phòng Giam Ấm đang chờ đón chàng trai nhận được nhiều tình cảm nhất từ các nàng quản ngục.
             </p>
 
@@ -514,7 +514,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <button
                 type="button"
                 disabled
-                className="py-3 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
+                className="py-3 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-sky-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
               >
                 <Send className="w-4 h-4" />
                 <span>Chờ nhân vật</span>
@@ -527,7 +527,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             className={`relative rounded-3xl p-5 border-2 border-dashed transition-all duration-300 flex flex-col items-center text-center shadow-sm ${
               darkMode
                 ? 'bg-slate-900/60 border-slate-700/80 text-slate-100'
-                : 'bg-white/80 border-slate-300 text-slate-800'
+                : 'bg-sky-50/80 border-sky-200 text-slate-900'
             }`}
           >
             {/* Bronze Medal Icon & Badge Tag */}
@@ -535,7 +535,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800 text-white flex items-center justify-center shadow-md border border-white">
                 <Medal className="w-5 h-5 fill-amber-200 text-amber-200" />
               </div>
-              <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100/80 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-800">
+              <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100/80 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-sky-200 dark:border-amber-800">
                 HẠNG 3 • ĐỒNG
               </span>
             </div>
@@ -553,7 +553,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
 
             {/* Title & Subtitle */}
             <div className="mt-3 space-y-0.5">
-              <h3 className="text-xl font-extrabold tracking-tight text-slate-700 dark:text-slate-200">
+              <h3 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-200">
                 Vị Trí Hạng 3 Trống
               </h3>
               <p className="text-xs italic font-medium opacity-60">“Phòng Giam Chữa Lành · Chờ ứng viên Quý Quân”</p>
@@ -564,13 +564,13 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                 🌿 Phòng Giam Chữa Lành
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-900 border border-sky-200 dark:border-slate-700">
                 Chưa có dữ liệu
               </span>
             </div>
 
             {/* Quote placeholder */}
-            <p className="mt-3 text-xs italic opacity-60 leading-relaxed min-h-[44px] flex items-center justify-center px-2 font-serif text-slate-500 dark:text-slate-400">
+            <p className="mt-3 text-xs italic opacity-60 leading-relaxed min-h-[44px] flex items-center justify-center px-2 font-serif text-slate-900 dark:text-slate-400">
               Vị trí Quý Quân Án Tù tại Phòng Giam Chữa Lành đang để trống. Sẽ tự động ghi nhận khi các nàng quản ngục bắt đầu bình chọn.
             </p>
 
@@ -593,7 +593,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <button
                 type="button"
                 disabled
-                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
+                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-sky-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
               >
                 <Heart className="w-3.5 h-3.5" />
                 <span>Chờ nhân vật</span>
@@ -601,7 +601,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
               <button
                 type="button"
                 disabled
-                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
+                className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-400 border border-sky-200 dark:border-slate-800 flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Chờ nhân vật</span>
@@ -617,14 +617,14 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             {sortedReal[1] ? (
               <div
                 className={`relative rounded-3xl p-5 border transition-all duration-300 flex flex-col items-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 ${
-                  darkMode ? 'bg-slate-900/90 border-slate-700/80 text-slate-100 shadow-slate-950/60' : 'bg-white border-slate-200/90 text-slate-800 shadow-slate-200/50'
+                  darkMode ? 'bg-slate-900/90 border-slate-700/80 text-slate-100 shadow-slate-950/60' : 'bg-sky-50 border-sky-200/90 text-slate-900 shadow-slate-200/50'
                 }`}
               >
                 <div className="flex flex-col items-center -mt-8 mb-2">
-                  <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400 text-slate-700 flex items-center justify-center shadow-md">
-                    <Medal className="w-5 h-5 fill-slate-500 text-slate-700" />
+                  <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-slate-300 via-slate-100 to-slate-400 text-slate-900 flex items-center justify-center shadow-md">
+                    <Medal className="w-5 h-5 fill-slate-500 text-slate-900" />
                   </div>
-                  <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                  <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 border border-sky-200 dark:border-slate-700">
                     HẠNG 2 • BẠC
                   </span>
                 </div>
@@ -673,7 +673,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => handleVoteReal(sortedReal[1].id)}
-                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
+                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 hover:bg-sky-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
                   >
                     <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
                     <span>+1 Thả Tim</span>
@@ -681,7 +681,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => setSelectedTarget({ id: sortedReal[1].id, name: sortedReal[1].name })}
-                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border border-pink-200 text-pink-600 hover:bg-pink-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-sky-50 dark:bg-slate-900 border border-sky-200 text-pink-600 hover:bg-pink-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Gửi Thư Tình</span>
@@ -689,7 +689,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="h-64 rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 flex flex-col items-center justify-center text-xs text-slate-400 p-4 text-center">
+              <div className="h-64 rounded-3xl border border-dashed border-sky-200 dark:border-slate-800 flex flex-col items-center justify-center text-xs text-slate-400 p-4 text-center">
                 <Medal className="w-6 h-6 opacity-30 mb-2" />
                 <span>Đang chờ ứng viên Hạng 2</span>
               </div>
@@ -701,7 +701,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 className={`relative rounded-3xl p-6 sm:p-7 border-2 transition-all duration-300 flex flex-col items-center text-center shadow-2xl md:-translate-y-4 ${
                   darkMode
                     ? 'bg-gradient-to-b from-slate-900 via-slate-900 to-pink-950/40 border-amber-400/80 text-slate-100'
-                    : 'bg-gradient-to-b from-white via-white to-pink-50/50 border-amber-400 text-slate-800'
+                    : 'bg-gradient-to-b from-white via-white to-pink-50/50 border-amber-400 text-slate-900'
                 }`}
               >
                 <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-20">
@@ -711,7 +711,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </div>
 
                 <div className="mt-3 mb-2">
-                  <span className="px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-950 border border-amber-300 shadow-sm inline-flex items-center gap-1">
+                  <span className="px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-950 border border-sky-200 shadow-sm inline-flex items-center gap-1">
                     <span>★ QUÁN QUÂN ÁN TÙ • HẠNG 1 VÀNG</span>
                   </span>
                 </div>
@@ -736,7 +736,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </h3>
                 <p className="text-sm italic font-serif text-rose-700 dark:text-rose-400 font-bold">{sortedReal[0].genres.join(' · ')}</p>
 
-                <p className="mt-3.5 text-xs sm:text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed min-h-[48px] flex items-center justify-center px-1 font-serif line-clamp-2">
+                <p className="mt-3.5 text-xs sm:text-sm italic text-slate-900 dark:text-slate-300 leading-relaxed min-h-[48px] flex items-center justify-center px-1 font-serif line-clamp-2">
                   “{sortedReal[0].backstory || 'Chồng nhỏ quốc dân đang nhận trọn vẹn tình cảm từ các nàng quản ngục...'}”
                 </p>
 
@@ -770,7 +770,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => setSelectedTarget({ id: sortedReal[0].id, name: sortedReal[0].name })}
-                    className="py-3 px-3 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border border-rose-200 text-rose-600 hover:bg-rose-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                    className="py-3 px-3 rounded-2xl font-bold text-xs bg-sky-50 dark:bg-slate-900 border border-sky-200 text-rose-600 hover:bg-rose-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
                     <Send className="w-4 h-4" />
                     <span>Gửi Thư Tình</span>
@@ -778,7 +778,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="h-64 rounded-3xl border border-dashed border-amber-300 dark:border-amber-900/60 flex flex-col items-center justify-center text-xs text-amber-500 p-4 text-center">
+              <div className="h-64 rounded-3xl border border-dashed border-sky-200 dark:border-amber-900/60 flex flex-col items-center justify-center text-xs text-amber-500 p-4 text-center">
                 <Crown className="w-8 h-8 opacity-40 mb-2" />
                 <span>Đang chờ Quán Quân Án Tù</span>
               </div>
@@ -788,14 +788,14 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             {sortedReal[2] ? (
               <div
                 className={`relative rounded-3xl p-5 border transition-all duration-300 flex flex-col items-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 ${
-                  darkMode ? 'bg-slate-900/90 border-slate-700/80 text-slate-100 shadow-slate-950/60' : 'bg-white border-slate-200/90 text-slate-800 shadow-slate-200/50'
+                  darkMode ? 'bg-slate-900/90 border-slate-700/80 text-slate-100 shadow-slate-950/60' : 'bg-sky-50 border-sky-200/90 text-slate-900 shadow-slate-200/50'
                 }`}
               >
                 <div className="flex flex-col items-center -mt-8 mb-2">
                   <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800 text-white flex items-center justify-center shadow-md">
                     <Medal className="w-5 h-5 fill-amber-200 text-amber-200" />
                   </div>
-                  <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100/80 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-800">
+                  <span className="mt-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100/80 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-sky-200 dark:border-amber-800">
                     HẠNG 3 • ĐỒNG
                   </span>
                 </div>
@@ -844,7 +844,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => handleVoteReal(sortedReal[2].id)}
-                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-purple-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
+                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-200 hover:bg-purple-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
                   >
                     <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
                     <span>+1 Thả Tim</span>
@@ -852,7 +852,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => setSelectedTarget({ id: sortedReal[2].id, name: sortedReal[2].name })}
-                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border border-pink-200 text-pink-600 hover:bg-pink-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                    className="py-2.5 px-3 rounded-2xl font-bold text-xs bg-sky-50 dark:bg-slate-900 border border-sky-200 text-pink-600 hover:bg-pink-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Gửi Thư Tình</span>
@@ -860,7 +860,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="h-64 rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 flex flex-col items-center justify-center text-xs text-slate-400 p-4 text-center">
+              <div className="h-64 rounded-3xl border border-dashed border-sky-200 dark:border-slate-800 flex flex-col items-center justify-center text-xs text-slate-400 p-4 text-center">
                 <Medal className="w-6 h-6 opacity-30 mb-2" />
                 <span>Đang chờ ứng viên Hạng 3</span>
               </div>
@@ -871,10 +871,10 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
           {sortedReal.length > 3 && (
             <div
               className={`rounded-3xl border overflow-hidden ${
-                darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-pink-100 shadow-sm'
+                darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-sky-50 border-sky-200 shadow-sm'
               }`}
             >
-              <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div className="p-4 border-b border-sky-200 dark:border-slate-800 flex items-center justify-between">
                 <span className="text-sm font-extrabold flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-amber-500" />
                   <span>Các Hạng Kế Tiếp (Từ Hạng 4)</span>
@@ -889,14 +889,14 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                     className="p-3 sm:p-4 flex items-center justify-between gap-3 hover:bg-pink-50/40 dark:hover:bg-slate-800/50 cursor-pointer transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-black text-slate-500">
+                      <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-black text-slate-900">
                         {idx + 4}
                       </span>
                       <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-200 shrink-0">
                         {char.avatarUrl ? (
                           <img src={char.avatarUrl} alt={char.name} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center font-bold text-slate-600">
+                          <div className="w-full h-full flex items-center justify-center font-bold text-slate-900">
                             {char.name.charAt(0)}
                           </div>
                         )}
@@ -932,7 +932,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
             className={`w-full max-w-md rounded-3xl p-6 border shadow-2xl relative transition-all ${
               darkMode
                 ? 'bg-slate-900 border-pink-500/40 text-slate-100 shadow-pink-950/60'
-                : 'bg-white border-pink-200 text-slate-800 shadow-pink-200/60'
+                : 'bg-sky-50 border-sky-200 text-slate-900 shadow-pink-200/60'
             }`}
           >
             <button
@@ -973,7 +973,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                     value={loveSender}
                     onChange={(e) => setLoveSender(e.target.value)}
                     placeholder="Ví dụ: Nàng Quản Ngục Bé Nhỏ"
-                    className="w-full px-3.5 py-2.5 rounded-2xl text-xs border outline-none bg-pink-50/40 dark:bg-slate-800/60 border-pink-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-400"
+                    className="w-full px-3.5 py-2.5 rounded-2xl text-xs border outline-none bg-pink-50/40 dark:bg-slate-800/60 border-sky-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-400"
                   />
                 </div>
 
@@ -987,7 +987,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                     onChange={(e) => setLoveLetterText(e.target.value)}
                     required
                     placeholder="Viết những lời dỗ dành, yêu thương gửi đến chàng trong phòng giam..."
-                    className="w-full px-3.5 py-2.5 rounded-2xl text-xs border outline-none bg-pink-50/40 dark:bg-slate-800/60 border-pink-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-400 resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-2xl text-xs border outline-none bg-pink-50/40 dark:bg-slate-800/60 border-sky-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-400 resize-none"
                   />
                 </div>
 
@@ -1014,7 +1014,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({
                   <button
                     type="button"
                     onClick={() => setSelectedTarget(null)}
-                    className="flex-1 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-50 cursor-pointer"
+                    className="flex-1 py-2.5 rounded-2xl text-xs font-bold border border-sky-200 dark:border-slate-700 text-slate-900 hover:bg-slate-50 cursor-pointer"
                   >
                     Hủy bỏ
                   </button>

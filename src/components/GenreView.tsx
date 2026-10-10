@@ -52,14 +52,14 @@ export const GenreView: React.FC<GenreViewProps> = ({
         <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
           Các Thể Loại Cốt Truyện
         </h2>
-        <p className={`text-xs sm:text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+        <p className={`text-xs sm:text-sm ${darkMode ? 'text-slate-400' : 'text-slate-900'}`}>
           Bấm vào bất kỳ thể loại nào dưới đây để xem ngay danh sách các chàng trai mang thiết lập đó
         </p>
       </div>
 
       {/* 3 Phân Khu Nhà Giam Showcase */}
       <div className="space-y-3">
-        <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+        <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-slate-400 flex items-center gap-1.5">
           <span>🏛️</span>
           <span>Ba Phân Khu Nhà Giam</span>
         </h3>
@@ -68,14 +68,14 @@ export const GenreView: React.FC<GenreViewProps> = ({
             className={`p-4 rounded-3xl border transition-all ${
               darkMode
                 ? 'bg-sky-950/40 border-sky-800/60 text-slate-100'
-                : 'bg-sky-50/90 border-sky-200 text-slate-800'
+                : 'bg-sky-50/90 border-sky-200 text-slate-900'
             }`}
           >
             <div className="flex items-center gap-2 text-sky-600 dark:text-sky-300 font-extrabold text-base mb-1.5">
               <span className="text-xl">❄️</span>
               <span>Phòng Giam Lạnh</span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-900 dark:text-slate-300 leading-relaxed">
               Dành cho những chàng trai mang nét lạnh lùng, kuudere, quý tộc sa ngã, ngoài lạnh trong nóng nhưng si tình sâu sắc.
             </p>
           </div>
@@ -84,14 +84,14 @@ export const GenreView: React.FC<GenreViewProps> = ({
             className={`p-4 rounded-3xl border transition-all ${
               darkMode
                 ? 'bg-amber-950/40 border-amber-800/60 text-slate-100'
-                : 'bg-amber-50/90 border-amber-200 text-slate-800'
+                : 'bg-amber-50/90 border-sky-200 text-slate-900'
             }`}
           >
             <div className="flex items-center gap-2 text-amber-600 dark:text-amber-300 font-extrabold text-base mb-1.5">
               <span className="text-xl">☀️</span>
               <span>Phòng Giam Ấm</span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-900 dark:text-slate-300 leading-relaxed">
               Dành cho những chàng trai ngọt sủng, cún con nuôi vợ từ bé, nuông chiều sủng ái và bám người không rời.
             </p>
           </div>
@@ -100,14 +100,14 @@ export const GenreView: React.FC<GenreViewProps> = ({
             className={`p-4 rounded-3xl border transition-all ${
               darkMode
                 ? 'bg-emerald-950/40 border-emerald-800/60 text-slate-100'
-                : 'bg-emerald-50/90 border-emerald-200 text-slate-800'
+                : 'bg-emerald-50/90 border-emerald-200 text-slate-900'
             }`}
           >
             <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-300 font-extrabold text-base mb-1.5">
               <span className="text-xl">🌿</span>
               <span>Phòng Giam Chữa Lành</span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-900 dark:text-slate-300 leading-relaxed">
               Dành cho những chàng trai dịu dàng, thanh xuân vườn trường, vỗ về mọi vết thương và đem lại sự bình yên trong tim.
             </p>
           </div>
@@ -127,7 +127,7 @@ export const GenreView: React.FC<GenreViewProps> = ({
               className={`p-5 rounded-3xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col justify-between group ${
                 darkMode
                   ? 'bg-slate-900/80 border-slate-800 hover:border-pink-500/50 hover:shadow-pink-950/30 text-slate-100'
-                  : 'bg-white/80 border-pink-100 hover:border-pink-300 hover:shadow-pink-200/40 text-slate-800'
+                  : 'bg-sky-50/80 border-sky-200 hover:border-sky-200 hover:shadow-pink-200/40 text-slate-900'
               }`}
             >
               <div>
@@ -151,14 +151,14 @@ export const GenreView: React.FC<GenreViewProps> = ({
                 </h3>
                 <p
                   className={`text-xs line-clamp-2 leading-relaxed ${
-                    darkMode ? 'text-slate-400' : 'text-slate-500'
+                    darkMode ? 'text-slate-400' : 'text-slate-900'
                   }`}
                 >
                   {info.desc}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-pink-500">
+              <div className="mt-4 pt-3 border-t border-sky-200 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-pink-500">
                 <span>Khám phá thể loại</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>

@@ -23,7 +23,7 @@ export const NotificationToast: React.FC<NotificationToastProps> = ({
         className={`p-4 rounded-2xl shadow-xl border flex items-start gap-3 backdrop-blur-md transition-all ${
           darkMode
             ? 'bg-slate-900/95 border-pink-500/40 text-slate-100 shadow-pink-950/40'
-            : 'bg-white/95 border-pink-200 text-slate-800 shadow-pink-200/50'
+            : 'bg-sky-50/95 border-sky-200 text-slate-900 shadow-pink-200/50'
         }`}
       >
         <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-sky-400 flex items-center justify-center text-white shrink-0 shadow-md shadow-pink-400/30">
@@ -58,7 +58,7 @@ export const NotificationToast: React.FC<NotificationToastProps> = ({
         <button
           type="button"
           onClick={onClose}
-          className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+          className="p-1 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer"
           aria-label="Đóng thông báo"
         >
           <X className="w-4 h-4" />

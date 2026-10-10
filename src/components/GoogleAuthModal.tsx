@@ -79,7 +79,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
         className={`w-full max-w-lg rounded-[28px] p-5 sm:p-7 shadow-2xl border transition-all text-center relative overflow-hidden my-auto ${
           darkMode
             ? 'bg-slate-900 border-rose-950/80 text-slate-100 shadow-rose-950/50'
-            : 'bg-white border-pink-100 text-slate-800 shadow-pink-200/50'
+            : 'bg-sky-50 border-sky-200 text-slate-900 shadow-pink-200/50'
         } border-t-4 border-t-pink-400 dark:border-t-rose-500`}
       >
         {/* Soft Background Ambient Glows */}
@@ -91,7 +91,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
           type="button"
           onClick={onClose}
           aria-label="Đóng"
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center justify-center transition-all cursor-pointer z-20"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center justify-center transition-all cursor-pointer z-20"
         >
           <X className="w-4 h-4" />
         </button>
@@ -113,7 +113,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   alt={currentUser.name}
                   className="w-14 h-14 rounded-full object-cover border-2 border-rose-400 shadow-md"
                 />
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-xs">
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-sky-50 dark:bg-slate-800 flex items-center justify-center shadow-xs">
                   {/* Google Mini G */}
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
                     <path
@@ -139,21 +139,21 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                 <h3 className="text-base font-black text-slate-900 dark:text-white">
                   {currentUser.name}
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                <p className="text-xs text-slate-900 dark:text-slate-400 font-mono">
                   {currentUser.email}
                 </p>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="text-[10px] font-bold text-rose-500 bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded-full border border-rose-200 dark:border-rose-900">
+                  <span className="text-[10px] font-bold text-rose-500 bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded-full border border-sky-200 dark:border-rose-900">
                     {currentUser.wardNumber}
                   </span>
-                  <span className="text-[10px] font-bold text-purple-600 bg-purple-50 dark:bg-purple-950/60 px-2 py-0.5 rounded-full border border-purple-200 dark:border-purple-900">
+                  <span className="text-[10px] font-bold text-purple-600 bg-purple-50 dark:bg-purple-950/60 px-2 py-0.5 rounded-full border border-sky-200 dark:border-purple-900">
                     {currentUser.privilegeLevel}
                   </span>
                 </div>
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed pt-1">
+            <p className="text-xs text-slate-900 dark:text-slate-400 max-w-sm mx-auto leading-relaxed pt-1">
               Toàn bộ tiến trình trò chuyện, thư từ mật, bệnh án thần kinh và phán quyết đang được đồng bộ và lưu trữ bảo mật vĩnh viễn.
             </p>
 
@@ -171,7 +171,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   onLogout();
                   onClose();
                 }}
-                className="px-4 py-2.5 rounded-full font-bold text-xs border border-rose-200 dark:border-rose-900 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2.5 rounded-full font-bold text-xs border border-sky-200 dark:border-rose-900 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
                 <span>Đăng Xuất</span>
@@ -184,7 +184,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
           /* ======================================================== */
           <>
             {/* 1. TOP HEADER PILL TAG */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 dark:bg-rose-950/60 border border-pink-200/80 dark:border-rose-900/60 text-rose-600 dark:text-rose-300 text-[10px] sm:text-[10.5px] font-extrabold uppercase tracking-wider mb-2.5 shadow-2xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 dark:bg-rose-950/60 border border-sky-200/80 dark:border-rose-900/60 text-rose-600 dark:text-rose-300 text-[10px] sm:text-[10.5px] font-extrabold uppercase tracking-wider mb-2.5 shadow-2xs">
               <Sparkles className="w-3 h-3 text-rose-500" />
               <span>QUYỀN LỰC TỐI THƯỢNG • WARD NO. 07</span>
             </div>
@@ -195,7 +195,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
             </h2>
 
             {/* 3. SUBTITLE */}
-            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 max-w-sm sm:max-w-md mx-auto leading-relaxed mb-4">
+            <p className="text-[11px] sm:text-xs text-slate-900 dark:text-slate-400 max-w-sm sm:max-w-md mx-auto leading-relaxed mb-4">
               Lưu giữ vĩnh viễn tiến trình tương tác, thư từ, bệnh án mật và phán quyết cùng các chồng nhỏ.
             </p>
 
@@ -205,7 +205,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                 type="button"
                 onClick={handleGoogleSubmit}
                 disabled={isProcessing}
-                className="mx-auto flex items-center justify-center gap-2.5 py-2.5 sm:py-3 px-6 sm:px-7 rounded-full bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all cursor-pointer group"
+                className="mx-auto flex items-center justify-center gap-2.5 py-2.5 sm:py-3 px-6 sm:px-7 rounded-full bg-sky-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-bold text-xs sm:text-sm border border-sky-200 dark:border-slate-700 shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all cursor-pointer group"
               >
                 {/* Official 4-color Google G Icon */}
                 <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -242,23 +242,23 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
               </div>
 
               {showCustomInput && (
-                <div className="mt-2 p-2.5 rounded-xl border border-pink-200 dark:border-slate-700 bg-pink-50/50 dark:bg-slate-800/60 text-left space-y-1.5 animate-fadeIn text-xs">
+                <div className="mt-2 p-2.5 rounded-xl border border-sky-200 dark:border-slate-700 bg-pink-50/50 dark:bg-slate-800/60 text-left space-y-1.5 animate-fadeIn text-xs">
                   <div>
-                    <label className="text-[10px] font-bold text-slate-500 block">Email Google:</label>
+                    <label className="text-[10px] font-bold text-slate-900 block">Email Google:</label>
                     <input
                       type="email"
                       value={customEmail}
                       onChange={(e) => setCustomEmail(e.target.value)}
-                      className="w-full px-2.5 py-1 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"
+                      className="w-full px-2.5 py-1 text-xs rounded-lg border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-slate-500 block">Tên hiển thị Quản Ngục:</label>
+                    <label className="text-[10px] font-bold text-slate-900 block">Tên hiển thị Quản Ngục:</label>
                     <input
                       type="text"
                       value={customName}
                       onChange={(e) => setCustomName(e.target.value)}
-                      className="w-full px-2.5 py-1 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100"
+                      className="w-full px-2.5 py-1 text-xs rounded-lg border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
                     />
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                 className={`p-2.5 sm:p-3 rounded-2xl border transition-all flex items-start gap-2.5 ${
                   darkMode
                     ? 'bg-slate-800/60 border-slate-700/80'
-                    : 'bg-rose-50/40 border-rose-100/80 shadow-2xs'
+                    : 'bg-rose-50/40 border-sky-200/80 shadow-2xs'
                 }`}
               >
                 <div className="w-8 h-8 rounded-xl bg-pink-100 dark:bg-rose-950/80 text-rose-500 flex items-center justify-center shrink-0 shadow-2xs">
@@ -290,7 +290,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
                     Gửi Thư Góp Ý & Đánh Giá Web
                   </h4>
-                  <p className="text-[9.5px] sm:text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[9.5px] sm:text-[10px] text-slate-900 dark:text-slate-400 leading-tight mt-0.5">
                     Gửi tâm thư kín, đóng dấu sáp bí mật
                   </p>
                 </div>
@@ -311,7 +311,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
                     Trò Chuyện Riêng Tư 1:1
                   </h4>
-                  <p className="text-[9.5px] sm:text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[9.5px] sm:text-[10px] text-slate-900 dark:text-slate-400 leading-tight mt-0.5">
                     Thì thầm nửa đêm, gửi quà thăm nuôi cho phạm nhân
                   </p>
                 </div>
@@ -332,7 +332,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
                     Phòng Khám Tâm Lý & Y Án Mật
                   </h4>
-                  <p className="text-[9.5px] sm:text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[9.5px] sm:text-[10px] text-slate-900 dark:text-slate-400 leading-tight mt-0.5">
                     Bắt mạch cuồng si, bản đồ thương tích, kê đơn tình dược
                   </p>
                 </div>
@@ -343,7 +343,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                 className={`p-2.5 sm:p-3 rounded-2xl border transition-all flex items-start gap-2.5 ${
                   darkMode
                     ? 'bg-slate-800/60 border-slate-700/80'
-                    : 'bg-amber-50/40 border-amber-100/80 shadow-2xs'
+                    : 'bg-amber-50/40 border-sky-200/80 shadow-2xs'
                 }`}
               >
                 <div className="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-500 flex items-center justify-center shrink-0 shadow-2xs">
@@ -353,7 +353,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
                     Phiên Tòa Nửa Đêm
                   </h4>
-                  <p className="text-[9.5px] sm:text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[9.5px] sm:text-[10px] text-slate-900 dark:text-slate-400 leading-tight mt-0.5">
                     Thẩm vấn, cân đo cuồng ái, tuyên án giam cầm hoặc đặc xá
                   </p>
                 </div>
@@ -364,7 +364,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                 className={`sm:col-span-2 p-2.5 sm:p-3 rounded-2xl border transition-all flex items-start gap-2.5 ${
                   darkMode
                     ? 'bg-slate-800/60 border-slate-700/80'
-                    : 'bg-purple-50/40 border-purple-100/80 shadow-2xs'
+                    : 'bg-purple-50/40 border-sky-200/80 shadow-2xs'
                 }`}
               >
                 <div className="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950/80 text-purple-500 flex items-center justify-center shrink-0 shadow-2xs">
@@ -374,7 +374,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-slate-100">
                     Quay Gacha Tù Nhân
                   </h4>
-                  <p className="text-[9.5px] sm:text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                  <p className="text-[9.5px] sm:text-[10px] text-slate-900 dark:text-slate-400 leading-tight mt-0.5">
                     Rút duyên phận, sưu tầm thẻ bài SSR và giọng nói mật độc bản của các chàng tù nhân
                   </p>
                 </div>
@@ -382,8 +382,8 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
             </div>
 
             {/* 7. FOOTER */}
-            <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] sm:text-[10.5px]">
-              <div className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500 font-medium">
+            <div className="pt-2.5 border-t border-sky-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] sm:text-[10.5px]">
+              <div className="flex items-center gap-1.5 text-slate-400 dark:text-slate-900 font-medium">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                 <span>Bảo mật an toàn tuyệt đối theo chuẩn Google Auth</span>
               </div>
@@ -391,7 +391,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-300 font-medium cursor-pointer transition-colors"
+                className="text-slate-900 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-300 font-medium cursor-pointer transition-colors"
               >
                 Để sau, tiếp tục tham quan với tư cách Khách
               </button>

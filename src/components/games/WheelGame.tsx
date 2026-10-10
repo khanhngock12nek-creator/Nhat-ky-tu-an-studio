@@ -11,11 +11,14 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Character } from '../../types';
+import { GameHeader } from './GameHeader';
 
 interface WheelGameProps {
   darkMode: boolean;
   onBack: () => void;
   character?: Character | null;
+  characters?: Character[];
+  onSelectCharacter?: (char: Character) => void;
 }
 
 interface WheelSegment {
@@ -85,7 +88,13 @@ const SEGMENTS: WheelSegment[] = [
   },
 ];
 
-export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
+export const WheelGame: React.FC<WheelGameProps> = ({
+  darkMode,
+  onBack,
+  character,
+  characters = [],
+  onSelectCharacter,
+}) => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [result, setResult] = useState<WheelSegment | null>(null);
@@ -125,31 +134,21 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
 
   return (
     <div className="space-y-6 animate-fadeIn max-w-4xl mx-auto">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <button
-          type="button"
-          onClick={onBack}
-          className={`px-3 py-2 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
-            darkMode
-              ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-              : 'bg-white border-rose-200 text-slate-700 hover:bg-rose-50'
-          }`}
-        >
-          <ArrowLeft className="w-4 h-4 text-rose-500" />
-          <span>Về Khu Trò Chơi</span>
-        </button>
-
-        <div className="px-3 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs font-bold flex items-center gap-2">
-          <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-          <span>Chưa có nhân vật nào để thách đấu • Đang quay thử nghiệm buồng giam</span>
-        </div>
-      </div>
+      {/* Top Header with Character Selector */}
+      <GameHeader
+        darkMode={darkMode}
+        onBack={onBack}
+        character={character}
+        characters={characters}
+        onSelectCharacter={onSelectCharacter}
+        gameTitle="VÒNG QUAY THỬ THÁCH"
+        badgeText="Đang quay thử nghiệm buồng giam"
+      />
 
       {/* Banner */}
       <div
         className={`p-6 rounded-3xl border shadow-xl ${
-          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-pink-100'
+          darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-sky-50 border-sky-200'
         }`}
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -160,14 +159,16 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-black text-slate-900 dark:text-white">
-                  VÒNG QUAY THỬ THÁCH CẢM XÚC
+                  {character ? `VÒNG QUAY ${character.name.toUpperCase()}` : 'VÒNG QUAY THỬ THÁCH CẢM XÚC'}
                 </h2>
                 <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-pink-500/15 text-pink-500">
                   Truth or Dare • Ngục Tối
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Quay bánh xe số phận để nhận các mệnh lệnh, câu hỏi bí mật hoặc hình phạt bất ngờ
+              <p className="text-xs text-slate-900 dark:text-slate-400">
+                {character
+                  ? `Quay bánh xe số phận để cùng ${character.name} thực hiện các thử thách Truth or Dare đầy kịch tính`
+                  : 'Quay bánh xe số phận để nhận các mệnh lệnh, câu hỏi bí mật hoặc hình phạt bất ngờ'}
               </p>
             </div>
           </div>
@@ -183,7 +184,7 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div
           className={`lg:col-span-2 p-6 sm:p-10 rounded-3xl border shadow-xl flex flex-col items-center justify-center relative overflow-hidden ${
-            darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-pink-100'
+            darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50 border-sky-200'
           }`}
         >
           {/* Wheel Pointer (Top Needle) */}
@@ -262,7 +263,7 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
           {result && (
             <div
               className={`p-6 rounded-3xl border shadow-xl animate-scaleIn space-y-4 ${
-                darkMode ? 'bg-slate-900/90 border-rose-900/60' : 'bg-white border-rose-200'
+                darkMode ? 'bg-slate-900/90 border-rose-900/60' : 'bg-sky-50 border-sky-200'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -288,7 +289,7 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
                 <button
                   type="button"
                   onClick={() => setResult(null)}
-                  className="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700"
+                  className="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-400 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
                   <XCircle className="w-4 h-4" />
                   <span>Bỏ Qua / Quay Lại</span>
@@ -300,7 +301,7 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
           {/* History */}
           <div
             className={`p-5 rounded-3xl border shadow-md space-y-3 ${
-              darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-100'
+              darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-sky-50 border-sky-200'
             }`}
           >
             <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
@@ -317,9 +318,9 @@ export const WheelGame: React.FC<WheelGameProps> = ({ darkMode, onBack }) => {
                 {history.map((h, i) => (
                   <div
                     key={i}
-                    className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs"
+                    className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-800 flex items-center justify-between text-xs"
                   >
-                    <span className="font-medium text-slate-800 dark:text-slate-200 truncate pr-2">
+                    <span className="font-medium text-slate-900 dark:text-slate-200 truncate pr-2">
                       {h.text}
                     </span>
                     <span
