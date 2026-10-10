@@ -57,6 +57,10 @@ export interface CharacterPreset {
   voiceActor?: string;
   voiceLine?: string;
   voiceDuration?: string;
+  danger?: number;
+  loyalty?: number;
+  sentenceTerm?: string;
+  possession?: string;
 }
 
 export const ADMIN_PRESETS: CharacterPreset[] = [

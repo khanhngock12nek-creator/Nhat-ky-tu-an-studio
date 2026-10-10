@@ -231,7 +231,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
           </div>
 
           {/* Backstory (Cốt truyện) */}
-          <div className="mb-4 flex-1">
+          <div className="mb-2 flex-1">
             <p
               className={`text-xs line-clamp-3 leading-relaxed ${
                 darkMode ? 'text-slate-300' : 'text-slate-600'
@@ -239,6 +239,24 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
             >
               {character.backstory}
             </p>
+          </div>
+
+          {/* Chỉ số thụ án & trói buộc xuống dưới */}
+          <div className="grid grid-cols-2 gap-1.5 mb-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[10px] font-bold">
+            <span className="truncate px-2 py-1 rounded-xl bg-rose-50/70 dark:bg-rose-950/40 text-rose-600 dark:text-rose-300 border border-rose-100 dark:border-rose-900/40" title={character.possession || 'Chiếm Hữu Tuyệt Đối'}>
+              🔒 {character.possession || 'Chiếm Hữu Tuyệt Đối'}
+            </span>
+            <span className="truncate px-2 py-1 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700" title={character.sentenceTerm || character.crime || 'Án Chung Thân'}>
+              ⛓️ {character.sentenceTerm || character.crime || 'Án Chung Thân'}
+            </span>
+            <div className="flex items-center justify-between px-2 py-0.5 rounded-lg bg-pink-50/60 dark:bg-slate-800/60 text-pink-600 dark:text-pink-400">
+              <span>🛡️ TT:</span>
+              <span className="font-black">{character.loyalty ?? 99}%</span>
+            </div>
+            <div className="flex items-center justify-between px-2 py-0.5 rounded-lg bg-amber-50/60 dark:bg-slate-800/60 text-amber-600 dark:text-amber-400">
+              <span>⚠️ NH:</span>
+              <span className="font-black">{character.danger ?? 50}%</span>
+            </div>
           </div>
 
           {/* Button "Xem chi tiết về nhân vật" */}

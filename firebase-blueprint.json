@@ -2,13 +2,40 @@
   "entities": {
     "Character": {
       "title": "Character",
-      "description": "Prisoner/Character entity",
+      "description": "Prisoner / Character entity",
       "type": "object",
       "properties": {
         "id": { "type": "string" },
-        "name": { "type": "string" },
         "prisonId": { "type": "string" },
+        "name": { "type": "string" },
+        "age": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "origin": { "type": "string" },
+        "crime": { "type": "string" },
+        "rarity": { "type": "string" },
+        "loyalty": { "type": "number" },
+        "danger": { "type": "number" },
+        "sentenceTerm": { "type": "string" },
+        "possession": { "type": "string" },
+        "heartbeat": { "type": "number" },
+        "loveRate": { "type": "string" },
+        "zone": { "type": "string" },
+        "genres": { "type": "array" },
+        "backstory": { "type": "string" },
+        "firstMessage": { "type": "string" },
+        "chatLink": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "avatarGradient": { "type": "string" },
+        "status": { "type": "string" },
         "likes": { "type": "number" },
+        "loveCount": { "type": "number" },
+        "loveMessages": { "type": "array" },
+        "voiceActor": { "type": "string" },
+        "voiceAudioUrl": { "type": "string" },
+        "voiceLine": { "type": "string" },
+        "voiceDuration": { "type": "string" },
+        "voicePitch": { "type": "number" },
+        "voiceRate": { "type": "number" },
         "createdAt": { "type": "number" }
       },
       "required": ["id", "name", "prisonId"]
@@ -30,11 +57,11 @@
   "firestore": {
     "/characters/{charId}": {
       "schema": { "$ref": "#/entities/Character" },
-      "description": "Characters/Prisoners collection"
+      "description": "Characters / Prisoners collection"
     },
     "/letters/{letterId}": {
       "schema": { "$ref": "#/entities/Letter" },
-      "description": "Letters/Postcards collection"
+      "description": "Letters / Postcards collection"
     }
   }
 }

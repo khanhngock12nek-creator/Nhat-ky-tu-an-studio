@@ -64,10 +64,7 @@ export const getStoredCharacters = (): Character[] => {
       (c: Character) =>
         c.id !== 'char-kaelen-valerius-06' &&
         c.id !== 'char-luc-canh-tieu-07' &&
-        c.id !== 'char-ren-amamiya-08' &&
-        !c.name?.toLowerCase().includes('kaelen') &&
-        !c.name?.toLowerCase().includes('lục cảnh tiêu') &&
-        !c.name?.toLowerCase().includes('ren amamiya')
+        c.id !== 'char-ren-amamiya-08'
     );
     if (filtered.length !== parsed.length) {
       localStorage.setItem(CHARACTERS_KEY, JSON.stringify(filtered));

@@ -21,6 +21,7 @@ export interface Character {
   heartbeat?: number;
   loveRate?: string;
   sentenceTerm?: string;
+  possession?: string;
   quote?: string;
   voiceActor?: string;
   voiceAudioUrl?: string;

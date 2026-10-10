@@ -49,8 +49,17 @@ import {
   getStoredWardenProfile,
   saveWardenProfile,
 } from './utils/storage';
-import { db, charactersCollection, lettersCollection, initializeFirestoreData } from './utils/firebase';
-import { onSnapshot, setDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { 
+  db, 
+  charactersCollection, 
+  lettersCollection, 
+  initializeFirestoreData,
+  sanitizeForFirestore,
+  handleFirestoreError,
+  OperationType,
+} from './utils/firebase';
+import { compressBase64Image } from './utils/imageUtils';
+import { onSnapshot, setDoc, doc, deleteDoc, updateDoc, getDocs } from 'firebase/firestore';
 import {
   ShieldCheck,
   ArrowUp,
@@ -106,33 +115,47 @@ export default function App() {
   useEffect(() => {
     initializeFirestoreData();
 
+    // 1. Initial eager fetch to ensure instant display for any user opening the app
+    getDocs(charactersCollection).then((snapshot) => {
+      if (!snapshot.empty) {
+        const initialChars: Character[] = [];
+        snapshot.forEach((docSnap) => {
+          const char = docSnap.data() as Character;
+          initialChars.push({ ...char, id: docSnap.id });
+        });
+        initialChars.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        setCharacters(initialChars);
+        saveCharacters(initialChars);
+      }
+    }).catch((err) => {
+      console.warn("Initial characters fetch note:", err);
+    });
+
+    // 2. Real-time subscription to characters collection for all users
     const unsubscribeChars = onSnapshot(charactersCollection, (snapshot) => {
       const chars: Character[] = [];
       snapshot.forEach((docSnap) => {
         const char = docSnap.data() as Character;
-        // Purge Kaelen Valerius if still lingering in database
-        if (docSnap.id === 'char-kaelen-valerius-06' || char?.name?.toLowerCase().includes('kaelen')) {
-          deleteDoc(doc(db, 'characters', docSnap.id)).catch(() => {});
-          return;
-        }
-        chars.push(char);
+        chars.push({ ...char, id: docSnap.id });
       });
-      // Always sync state and local storage with real-time Firestore
+      // Sort newest first
+      chars.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      // Always sync state and local storage with real-time Firestore across all clients
       setCharacters(chars);
       saveCharacters(chars);
     }, (error) => {
-      console.error("Error listening to characters:", error);
+      console.warn("Real-time characters listener notice:", error);
     });
 
     const unsubscribeLetters = onSnapshot(lettersCollection, (snapshot) => {
       const ltrs: Letter[] = [];
       snapshot.forEach((docSnap) => {
-        ltrs.push(docSnap.data() as Letter);
+        ltrs.push({ ...(docSnap.data() as Letter), id: docSnap.id });
       });
       setLetters(ltrs);
       saveLetters(ltrs);
     }, (error) => {
-      console.error("Error listening to letters:", error);
+      console.warn("Real-time letters listener notice:", error);
     });
 
     return () => {
@@ -210,45 +233,67 @@ export default function App() {
 
   // Add / Edit / Delete Characters
   const handleAddCharacter = async (newChar: Character) => {
+    let safeChar = { ...newChar };
+    if (safeChar.avatarUrl?.startsWith('data:image/') && safeChar.avatarUrl.length > 150000) {
+      try {
+        safeChar.avatarUrl = await compressBase64Image(safeChar.avatarUrl, 640, 640, 0.7);
+      } catch (err) {
+        console.warn('Avatar compression fallback:', err);
+      }
+    }
+    const payload = sanitizeForFirestore(safeChar);
+
     // Optimistic state and storage update
     setCharacters((prev) => {
-      const next = [newChar, ...prev.filter((c) => c.id !== newChar.id)];
+      const next = [safeChar, ...prev.filter((c) => c.id !== safeChar.id)];
       saveCharacters(next);
       return next;
     });
 
     try {
-      await setDoc(doc(db, 'characters', newChar.id), newChar);
+      await setDoc(doc(db, 'characters', safeChar.id), payload);
     } catch (e) {
       console.error("Error adding character to Firestore:", e);
+      handleFirestoreError(e, OperationType.WRITE, `characters/${safeChar.id}`);
     }
 
     // Show system notification
     const notif: SystemNotification = {
       id: `notif-${Date.now()}`,
       title: 'Phạm nhân mới đã nhập trại!',
-      message: `${newChar.name} (${newChar.prisonId}) đã được tiếp nhận vào Nhật Ký Tù Án.`,
-      characterId: newChar.id,
+      message: `${safeChar.name} (${safeChar.prisonId}) đã được tiếp nhận và đồng bộ trực tuyến.`,
+      characterId: safeChar.id,
       timestamp: Date.now(),
     };
     setCurrentNotification(notif);
   };
 
   const handleUpdateCharacter = async (updatedChar: Character) => {
+    let safeChar = { ...updatedChar };
+    if (safeChar.avatarUrl?.startsWith('data:image/') && safeChar.avatarUrl.length > 150000) {
+      try {
+        safeChar.avatarUrl = await compressBase64Image(safeChar.avatarUrl, 640, 640, 0.7);
+      } catch (err) {
+        console.warn('Avatar compression fallback:', err);
+      }
+    }
+    const payload = sanitizeForFirestore(safeChar);
+
     // Optimistic state and storage update
     setCharacters((prev) => {
-      const next = prev.map((c) => (c.id === updatedChar.id ? updatedChar : c));
+      const next = prev.map((c) => (c.id === safeChar.id ? safeChar : c));
       saveCharacters(next);
       return next;
     });
-    if (selectedCharacter?.id === updatedChar.id) {
-      setSelectedCharacter(updatedChar);
+    if (selectedCharacter?.id === safeChar.id) {
+      setSelectedCharacter(safeChar);
     }
 
     try {
-      await setDoc(doc(db, 'characters', updatedChar.id), updatedChar, { merge: true });
+      await setDoc(doc(db, 'characters', safeChar.id), payload, { merge: true });
     } catch (e) {
       console.error("Error updating character in Firestore:", e);
+      handleFirestoreError(e, OperationType.UPDATE, `characters/${safeChar.id}`);
     }
   };
 
@@ -275,6 +320,7 @@ export default function App() {
       await deleteDoc(doc(db, 'characters', id));
     } catch (e) {
       console.error("Error deleting character from Firestore:", e);
+      handleFirestoreError(e, OperationType.DELETE, `characters/${id}`);
     }
 
     if (charToDelete) {
@@ -314,6 +360,7 @@ export default function App() {
       }
     } catch (e) {
       console.error("Error deleting multiple characters from Firestore:", e);
+      handleFirestoreError(e, OperationType.DELETE, 'characters');
     }
 
     setCurrentNotification({

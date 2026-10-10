@@ -21,7 +21,6 @@ import {
 import confetti from 'canvas-confetti';
 import { Character } from '../types';
 import defaultLucCanhTieuImg from '../assets/images/luc_canh_tieu_avatar_1791553296431.jpg';
-import { ALL_SAMPLE_PRISONERS } from '../data/sampleCharacters';
 
 interface CharacterDetailModalProps {
   character: Character | null;
@@ -120,7 +119,8 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
   const charDanger = character.danger ?? 50;
   const charHeartbeat = character.heartbeat ?? 136;
   const charLoveRate = character.loveRate || '100%';
-  const charSentenceTerm = character.sentenceTerm || 'Vĩnh Viễn';
+  const charSentenceTerm = character.sentenceTerm || character.crime || 'Án Chung Thân';
+  const charPossession = character.possession || 'Chiếm Hữu Tuyệt Đối';
   const charQuote =
     character.quote ||
     '“Em tưởng buồng giam này khóa giữ anh sao? Không đâu, nó là nơi anh tự nguyện giam giữ để em không thể quay lưng với anh…”';
@@ -430,7 +430,7 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                 </span>
               </div>
 
-              {/* Photo Card with Overlay Badges and ECG Heartbeat */}
+              {/* Photo Card with Overlay ECG Heartbeat */}
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 shadow-inner group border border-pink-100/60 dark:border-slate-800">
                 <img
                   src={charImage}
@@ -439,29 +439,8 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
 
-                {/* Overlaid Badges Top Left */}
-                <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start z-10">
-                  <span className="px-2.5 py-1 rounded-xl text-[10px] font-extrabold bg-slate-900/80 text-white backdrop-blur-md border border-white/20 shadow-md flex items-center gap-1">
-                    <Lock className="w-3 h-3 text-pink-400" />
-                    <span>Chiếm Hữu Tuyệt Đối</span>
-                  </span>
-                  <span className="px-2.5 py-1 rounded-xl text-[10px] font-extrabold bg-rose-950/80 text-rose-200 backdrop-blur-md border border-rose-400/30 shadow-md">
-                    ⛓️ Án Chung Thân
-                  </span>
-                </div>
-
-                {/* Overlaid Stats Top Right */}
-                <div className="absolute top-3 right-3 flex flex-col gap-1.5 items-end z-10 text-right">
-                  <span className="px-2.5 py-1 rounded-xl text-[10px] font-black bg-white/90 dark:bg-slate-900/90 text-rose-500 backdrop-blur-md border border-pink-200/50 shadow-md">
-                    Độ Trung Thành: {charLoyalty}%
-                  </span>
-                  <span className="px-2.5 py-1 rounded-xl text-[10px] font-black bg-white/90 dark:bg-slate-900/90 text-amber-500 backdrop-blur-md border border-amber-200/50 shadow-md">
-                    Độ Nguy Hiểm: {charDanger}%
-                  </span>
-                </div>
-
                 {/* Decorative floating mini icons on left overlay */}
-                <div className="absolute left-3 top-24 flex flex-col gap-2 z-10 opacity-80">
+                <div className="absolute left-3 top-3 flex flex-col gap-2 z-10 opacity-80">
                   <span className="w-6 h-6 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center text-xs shadow-sm">
                     👑
                   </span>
@@ -509,6 +488,77 @@ export const CharacterDetailModal: React.FC<CharacterDetailModalProps> = ({
                 <p className="text-xs italic text-rose-400 font-semibold font-serif">
                   "{charSubtitle}"
                 </p>
+              </div>
+
+              {/* BỐN CHỈ SỐ XUỐNG DƯỚI: Chiếm Hữu Tuyệt Đối, Án Chung Thân, Độ Trung Thành, Độ Nguy Hiểm */}
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5 text-left">
+                {/* 1. Chiếm Hữu Tuyệt Đối & Án Chung Thân */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="p-2.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/40 border border-rose-200/70 dark:border-rose-900/50 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center shrink-0">
+                      <Lock className="w-4 h-4 text-rose-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">
+                        Đặc Tính
+                      </p>
+                      <p className="text-xs font-black text-rose-600 dark:text-rose-300 truncate" title={charPossession}>
+                        {charPossession}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-slate-200/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-200 flex items-center justify-center text-sm shrink-0">
+                      ⛓️
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">
+                        Bản Án
+                      </p>
+                      <p className="text-xs font-black text-slate-800 dark:text-slate-100 truncate" title={charSentenceTerm}>
+                        {charSentenceTerm}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Độ Trung Thành & Độ Nguy Hiểm (Gauges) */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="p-2.5 rounded-2xl bg-white dark:bg-slate-900/80 border border-pink-200/60 dark:border-slate-800 shadow-2xs">
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        🛡️ Trung Thành
+                      </span>
+                      <span className="text-xs font-black text-pink-600 dark:text-pink-400">
+                        {charLoyalty}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-pink-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-pink-400 to-rose-500 h-full rounded-full transition-all duration-500"
+                        style={{ width: `${Math.min(100, Math.max(0, charLoyalty))}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-2xl bg-white dark:bg-slate-900/80 border border-amber-200/60 dark:border-slate-800 shadow-2xs">
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        ⚠️ Nguy Hiểm
+                      </span>
+                      <span className="text-xs font-black text-amber-500 dark:text-amber-400">
+                        {charDanger}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-amber-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-amber-400 to-red-500 h-full rounded-full transition-all duration-500"
+                        style={{ width: `${Math.min(100, Math.max(0, charDanger))}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Two Measurement Boxes: Cuồng Ái & Thụ Án */}

@@ -33,9 +33,11 @@ import {
   MessageSquare,
   Link as LinkIcon,
   Search,
+  Shield,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Character, PrisonZone, Letter } from '../types';
+import { compressImageFile, compressBase64Image } from '../utils/imageUtils';
 import {
   ADMIN_PASSWORD,
   OFFICIAL_GENRES,
@@ -164,6 +166,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [avatarGradient, setAvatarGradient] = useState(AVATAR_GRADIENTS[0]);
   const [status, setStatus] = useState('Đã khoá buồng giam');
   const [chatLink, setChatLink] = useState('https://c.ai');
+  const [danger, setDanger] = useState<number>(50);
+  const [loyalty, setLoyalty] = useState<number>(99);
+  const [sentenceTerm, setSentenceTerm] = useState('Án Chung Thân');
+  const [possession, setPossession] = useState('Chiếm Hữu Tuyệt Đối');
 
   // Voice & Audio Dubbing states
   const [showVoiceSection, setShowVoiceSection] = useState(false);
@@ -343,24 +349,45 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     }
   };
 
-  // Avatar upload
-  const handleCharAvatarUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Avatar upload with automatic compression to fit within Firestore 1MB limits
+  const handleCharAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        setAvatarUrl(reader.result);
-        showToast('Đã tải lên chân dung áp giải mới!');
-      }
-    };
-    reader.readAsDataURL(file);
+
+    try {
+      showToast('Đang tối ưu hóa và nén chân dung áp giải...');
+      const compressed = await compressImageFile(file, 640, 0.7);
+      setAvatarUrl(compressed);
+      showToast('Đã tải lên và nén tối ưu chân dung áp giải thành công! ✨');
+    } catch (err) {
+      console.error('Lỗi khi nén ảnh:', err);
+      const reader = new FileReader();
+      reader.onload = async () => {
+        if (typeof reader.result === 'string') {
+          try {
+            const compressedFallback = await compressBase64Image(reader.result, 640, 640, 0.7);
+            setAvatarUrl(compressedFallback);
+          } catch {
+            setAvatarUrl(reader.result.slice(0, 200000));
+          }
+          showToast('Đã tải lên chân dung áp giải!');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // Voice file upload
   const handleVoiceFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Check size limit: prevent exceeding Firestore limits (max 800KB for audio)
+    if (file.size > 800 * 1024) {
+      showToast('Tệp âm thanh quá lớn (>800KB). Vui lòng chọn tệp ngắn hoặc sử dụng tính năng ghi âm mic trực tiếp!');
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === 'string') {
@@ -488,65 +515,123 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     }
   };
 
+  const resetForm = () => {
+    setIsEditingExisting(false);
+    setEditingCharId(null);
+    setName('');
+    setPrisonId('');
+    setZone('Phòng Giam Lạnh');
+    setSelectedGenres(['Chiếm hữu', 'Ngọt sủng']);
+    setBackstory('');
+    setFirstMessage('');
+    setChatLink('');
+    setAvatarUrl('');
+    setAvatarGradient(AVATAR_GRADIENTS[0]);
+    setStatus('Đang thụ án');
+    setDanger(50);
+    setLoyalty(99);
+    setSentenceTerm('Án Chung Thân');
+    setPossession('Chiếm Hữu Tuyệt Đối');
+    setVoiceActor('Haruto K. [Độc quyền AI]');
+    setVoiceAudioUrl('');
+    setVoiceLine('');
+    setVoiceDuration('0:14');
+  };
+
+  const handleLoadPreset = (preset: typeof ADMIN_PRESETS[number]) => {
+    setIsEditingExisting(false);
+    setEditingCharId(null);
+    setName(preset.name);
+    setPrisonId(preset.prisonId);
+    if (preset.zone) setZone(preset.zone as PrisonZone);
+    setSelectedGenres([...preset.genres]);
+    setBackstory(preset.backstory);
+    setFirstMessage(preset.firstMessage);
+    setChatLink(preset.chatLink || 'https://c.ai');
+    setAvatarUrl(preset.avatarUrl || '');
+    setStatus(preset.status);
+    if (preset.danger !== undefined) setDanger(preset.danger);
+    if (preset.loyalty !== undefined) setLoyalty(preset.loyalty);
+    if (preset.sentenceTerm) setSentenceTerm(preset.sentenceTerm);
+    if (preset.possession) setPossession(preset.possession);
+    if (preset.voiceActor) setVoiceActor(preset.voiceActor);
+    if (preset.voiceDuration) setVoiceDuration(preset.voiceDuration);
+    showToast(`Đã áp dụng mẫu: ${preset.name}`);
+  };
+
   // Character Submit Handler
-  const handleSaveCharacter = (e: React.FormEvent) => {
+  const handleSaveCharacter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
       showToast('Vui lòng nhập họ & tên phạm nhân!');
       return;
     }
 
-    if (isEditingExisting && editingCharId) {
-      const existing = characters.find((c) => c.id === editingCharId);
-      const updated: Character = {
-        id: editingCharId,
-        name: name.trim(),
-        prisonId: prisonId.trim() || existing?.prisonId || '#001',
-        zone,
-        genres: selectedGenres.length > 0 ? selectedGenres : ['Ngọt sủng'],
-        backstory: backstory.trim(),
-        firstMessage: firstMessage.trim(),
-        chatLink: chatLink.trim(),
-        avatarUrl: avatarUrl.trim(),
-        avatarGradient,
-        status: status.trim() || 'Đang thụ án',
-        likes: existing?.likes || 0,
-        voiceActor: voiceActor.trim(),
-        voiceAudioUrl: voiceAudioUrl.trim(),
-        voiceLine: voiceLine.trim(),
-        voiceDuration: voiceDuration.trim() || '0:14',
-        voicePitch,
-        voiceRate,
-        createdAt: existing?.createdAt || Date.now(),
-      };
-      onUpdateCharacter(updated);
-      showToast(`Đã cập nhật thành công hồ sơ của "${name}"!`);
-      setIsEditingExisting(false);
-      setEditingCharId(null);
-    } else {
-      const newChar: Character = {
-        id: `char-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
-        name: name.trim(),
-        prisonId: prisonId.trim() || `#00${characters.length + 1}`,
-        zone,
-        genres: selectedGenres.length > 0 ? selectedGenres : ['Chiếm hữu'],
-        backstory: backstory.trim() || 'Hồ sơ phạm nhân bảo mật.',
-        firstMessage: firstMessage.trim() || 'Chào nàng quản ngục bé nhỏ...',
-        chatLink: chatLink.trim() || 'https://c.ai',
-        avatarUrl: avatarUrl.trim(),
-        avatarGradient,
-        status: status.trim() || 'Đã khoá buồng giam',
-        likes: 0,
-        voiceActor: voiceActor.trim(),
-        voiceAudioUrl: voiceAudioUrl.trim(),
-        voiceLine: voiceLine.trim(),
-        voiceDuration: voiceDuration.trim() || '0:14',
-        voicePitch,
-        voiceRate,
-        createdAt: Date.now(),
-      };
-      onAddCharacter(newChar);
-      showToast(`Đã khởi tạo và tiếp nhận phạm nhân "${name}" vào buồng giam!`);
+    try {
+      if (isEditingExisting && editingCharId) {
+        const existing = characters.find((c) => c.id === editingCharId);
+        const updated: Character = {
+          id: editingCharId,
+          name: name.trim(),
+          prisonId: prisonId.trim() || existing?.prisonId || '#001',
+          zone,
+          genres: selectedGenres.length > 0 ? selectedGenres : ['Ngọt sủng'],
+          backstory: backstory.trim(),
+          firstMessage: firstMessage.trim(),
+          chatLink: chatLink.trim(),
+          avatarUrl: avatarUrl.trim(),
+          avatarGradient,
+          status: status.trim() || 'Đang thụ án',
+          likes: existing?.likes || 0,
+          danger,
+          loyalty,
+          sentenceTerm: sentenceTerm.trim() || 'Án Chung Thân',
+          possession: possession.trim() || 'Chiếm Hữu Tuyệt Đối',
+          voiceActor: voiceActor.trim(),
+          voiceAudioUrl: voiceAudioUrl.trim(),
+          voiceLine: voiceLine.trim(),
+          voiceDuration: voiceDuration.trim() || '0:14',
+          voicePitch,
+          voiceRate,
+          createdAt: existing?.createdAt || Date.now(),
+        };
+        await onUpdateCharacter(updated);
+        showToast(`Đã cập nhật thành công hồ sơ của "${name}"!`);
+        setIsEditingExisting(false);
+        setEditingCharId(null);
+      } else {
+        const newChar: Character = {
+          id: `char-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+          name: name.trim(),
+          prisonId: prisonId.trim() || `#00${characters.length + 1}`,
+          zone,
+          genres: selectedGenres.length > 0 ? selectedGenres : ['Chiếm hữu'],
+          backstory: backstory.trim() || 'Hồ sơ phạm nhân bảo mật.',
+          firstMessage: firstMessage.trim() || 'Chào nàng quản ngục bé nhỏ...',
+          chatLink: chatLink.trim() || 'https://c.ai',
+          avatarUrl: avatarUrl.trim(),
+          avatarGradient,
+          status: status.trim() || 'Đang thụ án',
+          likes: 0,
+          danger,
+          loyalty,
+          sentenceTerm: sentenceTerm.trim() || 'Án Chung Thân',
+          possession: possession.trim() || 'Chiếm Hữu Tuyệt Đối',
+          voiceActor: voiceActor.trim(),
+          voiceAudioUrl: voiceAudioUrl.trim(),
+          voiceLine: voiceLine.trim(),
+          voiceDuration: voiceDuration.trim() || '0:14',
+          voicePitch,
+          voiceRate,
+          createdAt: Date.now(),
+        };
+        await onAddCharacter(newChar);
+        showToast(`Đã lưu "${name}"! Hồ sơ đã được đồng bộ lên máy chủ để tất cả người dùng khác cùng thấy.`);
+        resetForm();
+      }
+    } catch (err) {
+      console.error("Lỗi khi lưu nhân vật:", err);
+      showToast(`Đã lưu cục bộ hồ sơ của "${name}". Đang tiếp tục đồng bộ máy chủ.`);
     }
 
     try {
@@ -574,6 +659,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     setAvatarUrl(char.avatarUrl || '');
     setAvatarGradient(char.avatarGradient || AVATAR_GRADIENTS[0]);
     setStatus(char.status || 'Đã khoá buồng giam');
+    setDanger(char.danger !== undefined ? char.danger : 50);
+    setLoyalty(char.loyalty !== undefined ? char.loyalty : 99);
+    setSentenceTerm(char.sentenceTerm || char.crime || 'Án Chung Thân');
+    setPossession(char.possession || 'Chiếm Hữu Tuyệt Đối');
     setVoiceActor(char.voiceActor || 'Haruto K. [Độc quyền AI]');
     setVoiceAudioUrl(char.voiceAudioUrl || '');
     setVoiceLine(char.voiceLine || '');
@@ -1096,23 +1185,92 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                     {/* Form Fields */}
                     <form onSubmit={handleSaveCharacter} className="space-y-4">
-                      {/* 1. Họ & Tên Phạm Nhân */}
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                          <span>Họ & Tên Phạm Nhân *</span>
-                        </label>
-                        <div className="relative">
-                          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm opacity-60">
-                            📇
+                      {/* Quick preset templates */}
+                      <div className="p-3 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/50 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-black text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+                            <Sparkles className="w-3.5 h-3.5" /> Gợi ý hồ sơ mẫu nhanh:
                           </span>
-                          <input
-                            type="text"
-                            placeholder="Lục Cảnh Tiêu"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                            className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
-                          />
+                          <button
+                            type="button"
+                            onClick={resetForm}
+                            className="text-[10px] font-bold text-slate-500 hover:text-rose-600 underline cursor-pointer"
+                          >
+                            Xóa trắng form
+                          </button>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {ADMIN_PRESETS.map((p, pIdx) => (
+                            <button
+                              key={pIdx}
+                              type="button"
+                              onClick={() => handleLoadPreset(p)}
+                              className="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-800 text-rose-600 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-slate-700 text-[10px] font-bold transition-all shadow-2xs cursor-pointer"
+                            >
+                              + {p.name} ({p.prisonId})
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* 1. Họ & Tên Phạm Nhân & Mã Số Lồng Giam (Quản Trị Viên Tự Viết) */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {/* Họ & Tên */}
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            <span>Họ & Tên Phạm Nhân *</span>
+                          </label>
+                          <div className="relative">
+                            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm opacity-60">
+                              📇
+                            </span>
+                            <input
+                              type="text"
+                              placeholder="Lục Cảnh Tiêu"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              required
+                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Mã Số Lồng Giam (Quản trị viên tự viết) */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <label className="text-xs font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                              <span>Mã Số Lồng Giam *</span>
+                              <span className="text-[10px] text-rose-500 font-bold">(Tự viết)</span>
+                            </label>
+                            <span className="text-[10px] font-mono text-slate-400">
+                              {prisonId || 'Chưa đặt'}
+                            </span>
+                          </div>
+                          <div className="relative">
+                            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm opacity-60">
+                              🗝️
+                            </span>
+                            <input
+                              type="text"
+                              placeholder="Nhập mã lồng (vd: #007, #LỒNG-01)"
+                              value={prisonId}
+                              onChange={(e) => setPrisonId(e.target.value)}
+                              required
+                              className="w-full pl-9 pr-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 text-xs sm:text-sm font-bold font-mono text-slate-900 dark:text-white focus:border-rose-400 outline-none shadow-2xs"
+                            />
+                          </div>
+                          <div className="flex flex-wrap gap-1 pt-0.5">
+                            {['#001', '#007', '#013', '#LỒNG-01', '#LỒNG-07', '#PRISON-99'].map((chip) => (
+                              <button
+                                key={chip}
+                                type="button"
+                                onClick={() => setPrisonId(chip)}
+                                className="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 cursor-pointer"
+                              >
+                                {chip}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       </div>
 
@@ -1162,15 +1320,53 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           </div>
                         </div>
 
-                        {/* Upload trigger button */}
-                        <div className="flex gap-2">
-                          <button
-                            type="button"
-                            onClick={() => charFileInputRef.current?.click()}
-                            className="flex-1 py-2.5 px-3 rounded-2xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-slate-800/80 hover:bg-rose-100 text-rose-600 dark:text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
-                          >
-                            <span>🌸 Kéo thả tệp hoặc bấm để đổi chân dung</span>
-                          </button>
+                        {/* Image URL input & upload triggers */}
+                        <div className="space-y-2">
+                          <div className="flex gap-2">
+                            <button
+                              type="button"
+                              onClick={() => charFileInputRef.current?.click()}
+                              className="flex-1 py-2.5 px-3 rounded-2xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-slate-800/80 hover:bg-rose-100 dark:hover:bg-slate-700 text-rose-600 dark:text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                            >
+                              <span>🌸 Tải ảnh từ thiết bị (Tự động nén siêu nhẹ &lt;80KB)</span>
+                            </button>
+                            {avatarUrl && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setAvatarUrl('');
+                                  showToast('Đã xóa ảnh chân dung, chuyển về gradient mặc định');
+                                }}
+                                className="px-3 py-2 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-slate-800 text-xs font-bold transition-colors cursor-pointer"
+                                title="Xóa ảnh chân dung"
+                              >
+                                ✕ Bỏ ảnh
+                              </button>
+                            )}
+                          </div>
+
+                          {/* Dán liên kết ảnh trực tuyến (URL) */}
+                          <div className="space-y-1">
+                            <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center justify-between">
+                              <span>🔗 Hoặc dán liên kết ảnh trực tuyến (URL):</span>
+                              <span className="text-[10px] text-rose-500">Khuyên dùng cho ảnh HD</span>
+                            </label>
+                            <div className="relative">
+                              <input
+                                type="url"
+                                placeholder="https://images.unsplash.com/... hoặc link ảnh bất kỳ"
+                                value={avatarUrl.startsWith('data:') ? '' : avatarUrl}
+                                onChange={(e) => setAvatarUrl(e.target.value.trim())}
+                                className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400 font-mono shadow-2xs"
+                              />
+                            </div>
+                            {avatarUrl.startsWith('data:') && (
+                              <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                                ✓ Đang dùng ảnh tải lên đã nén an toàn cho Firestore ({Math.round(avatarUrl.length / 1024)} KB)
+                              </p>
+                            )}
+                          </div>
+
                           <input
                             ref={charFileInputRef}
                             type="file"
@@ -1181,7 +1377,204 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         </div>
                       </div>
 
-                      {/* 3. Thể Loại & Dấu Ấn Chiếm Hữu */}
+                      {/* 3. Bản Án (Án Gì), Mức Độ Chiếm Hữu, Độ Nguy Hiểm & Độ Trung Thành */}
+                      <div className="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50/70 via-pink-50/40 to-amber-50/40 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/40 border border-rose-200/80 dark:border-slate-700 space-y-3.5 shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-black text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+                            <Shield className="w-3.5 h-3.5 text-rose-500" />
+                            <span>Bản Án & Mức Độ Nguy Hiểm / Trung Thành</span>
+                          </span>
+                          <span className="text-[10px] font-bold text-slate-400">
+                            Quản trị viên thiết lập
+                          </span>
+                        </div>
+
+                        {/* Mục chọn Án Gì */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <label className="text-[11px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                              <span>Án Gì (Bản Án / Thời Hạn Thụ Án) *</span>
+                            </label>
+                            <span className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
+                              {sentenceTerm || 'Án Chung Thân'}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {[
+                              'Án Chung Thân',
+                              'Tử Hình Ái Tình',
+                              'Biệt Giam Vĩnh Viễn',
+                              'Thụ Án 100 Đêm',
+                              'Giam Cầm Vô Hạn',
+                              'Đặc Xá Có Điều Kiện',
+                            ].map((term) => (
+                              <button
+                                key={term}
+                                type="button"
+                                onClick={() => setSentenceTerm(term)}
+                                className={`px-2.5 py-1 rounded-xl text-[10px] font-bold transition-all cursor-pointer ${
+                                  sentenceTerm === term
+                                    ? 'bg-rose-500 text-white shadow-xs'
+                                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-rose-300'
+                                }`}
+                              >
+                                {term}
+                              </button>
+                            ))}
+                          </div>
+                          <input
+                            type="text"
+                            placeholder="Hoặc tự viết bản án khác (vd: Án Chung Thân Trong Tim Quản Ngục...)"
+                            value={sentenceTerm}
+                            onChange={(e) => setSentenceTerm(e.target.value)}
+                            className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400"
+                          />
+                        </div>
+
+                        {/* Mức Độ Chiếm Hữu */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <label className="text-[11px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                              <span>Mức Độ Chiếm Hữu</span>
+                            </label>
+                            <span className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
+                              {possession || 'Chiếm Hữu Tuyệt Đối'}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {[
+                              'Chiếm Hữu Tuyệt Đối',
+                              'Độc Chiếm Cuồng Si',
+                              'Bảo Vệ Ngầm',
+                              'Phục Tùng Vô Điều Kiện',
+                              'Thao Túng Dịu Dàng',
+                            ].map((p) => (
+                              <button
+                                key={p}
+                                type="button"
+                                onClick={() => setPossession(p)}
+                                className={`px-2.5 py-1 rounded-xl text-[10px] font-bold transition-all cursor-pointer ${
+                                  possession === p
+                                    ? 'bg-rose-600 text-white shadow-xs'
+                                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-rose-300'
+                                }`}
+                              >
+                                {p}
+                              </button>
+                            ))}
+                          </div>
+                          <input
+                            type="text"
+                            placeholder="Hoặc tự viết đặc tính chiếm hữu..."
+                            value={possession}
+                            onChange={(e) => setPossession(e.target.value)}
+                            className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 outline-none focus:border-rose-400"
+                          />
+                        </div>
+
+                        {/* Sliders chọn Độ Nguy Hiểm & Độ Trung Thành */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                          {/* Độ Nguy Hiểm */}
+                          <div className="p-3 rounded-2xl bg-white/95 dark:bg-slate-800/95 border border-amber-200/70 dark:border-slate-700 space-y-2">
+                            <div className="flex items-center justify-between text-xs font-black">
+                              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                                ⚠️ Độ Nguy Hiểm:
+                              </span>
+                              <span className={`px-2 py-0.5 rounded-lg text-[11px] font-black ${
+                                danger >= 80
+                                  ? 'bg-red-500 text-white'
+                                  : danger >= 50
+                                  ? 'bg-amber-500 text-white'
+                                  : 'bg-emerald-500 text-white'
+                              }`}>
+                                {danger}% {danger >= 80 ? '• Cực Nguy Hiểm' : danger >= 50 ? '• Thận Trọng' : '• An Toàn'}
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={100}
+                              value={danger}
+                              onChange={(e) => setDanger(Number(e.target.value))}
+                              className="w-full accent-amber-500 cursor-pointer"
+                            />
+                            <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                              <span>0% Lành tính</span>
+                              <span>50%</span>
+                              <span>100% Cuồng loạn</span>
+                            </div>
+                            <div className="flex flex-wrap gap-1 pt-0.5">
+                              {[
+                                { label: 'An Toàn', val: 15 },
+                                { label: 'Thận Trọng', val: 40 },
+                                { label: 'Nguy Hiểm', val: 65 },
+                                { label: 'Cuồng Nộ', val: 95 },
+                              ].map((lvl) => (
+                                <button
+                                  key={lvl.label}
+                                  type="button"
+                                  onClick={() => setDanger(lvl.val)}
+                                  className={`px-2 py-0.5 rounded-lg text-[10px] font-bold cursor-pointer transition-colors ${
+                                    danger === lvl.val
+                                      ? 'bg-amber-500 text-white'
+                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-amber-100'
+                                  }`}
+                                >
+                                  {lvl.label} ({lvl.val}%)
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Độ Trung Thành */}
+                          <div className="p-3 rounded-2xl bg-white/95 dark:bg-slate-800/95 border border-pink-200/70 dark:border-slate-700 space-y-2">
+                            <div className="flex items-center justify-between text-xs font-black">
+                              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 text-[11px]">
+                                🛡️ Độ Trung Thành:
+                              </span>
+                              <span className="px-2 py-0.5 rounded-lg text-[11px] font-black bg-rose-500 text-white">
+                                {loyalty}% {loyalty >= 95 ? '• Tuyệt Đối' : loyalty >= 75 ? '• Rất Cao' : '• Thăm Dò'}
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={100}
+                              value={loyalty}
+                              onChange={(e) => setLoyalty(Number(e.target.value))}
+                              className="w-full accent-rose-500 cursor-pointer"
+                            />
+                            <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                              <span>0% Bất định</span>
+                              <span>50%</span>
+                              <span>100% Tuyệt đối</span>
+                            </div>
+                            <div className="flex flex-wrap gap-1 pt-0.5">
+                              {[
+                                { label: 'Thăm Dò', val: 50 },
+                                { label: 'Trung Thành', val: 80 },
+                                { label: 'Tận Tụy', val: 95 },
+                                { label: 'Tuyệt Đối', val: 100 },
+                              ].map((lvl) => (
+                                <button
+                                  key={lvl.label}
+                                  type="button"
+                                  onClick={() => setLoyalty(lvl.val)}
+                                  className={`px-2 py-0.5 rounded-lg text-[10px] font-bold cursor-pointer transition-colors ${
+                                    loyalty === lvl.val
+                                      ? 'bg-rose-500 text-white'
+                                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-rose-100'
+                                  }`}
+                                >
+                                  {lvl.label} ({lvl.val}%)
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 4. Thể Loại & Dấu Ấn Chiếm Hữu */}
                       <div className="space-y-1.5">
                         <div className="flex items-center justify-between">
                           <label className="text-xs font-black text-slate-700 dark:text-slate-300">
